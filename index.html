@@ -1,0 +1,1363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPATIUM GINZA PONY 中文房间使用手册</title>
+  <style>
+    :root {
+      --ink: #152631;
+      --ink-2: #20343f;
+      --paper: #f2eee5;
+      --paper-2: #e7ddcc;
+      --cream: #fbf7ee;
+      --card: #fffdf8;
+      --gold: #bda262;
+      --sage: #6f7f68;
+      --clay: #a76f5a;
+      --muted: #677780;
+      --line: rgba(21, 38, 49, .12);
+      --shadow: 0 24px 70px rgba(21, 38, 49, .16);
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, "Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px) 0 0 / 74px 100%,
+        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 34%),
+        var(--paper);
+      line-height: 1.55;
+      letter-spacing: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 auto 0 52px;
+      width: 3px;
+      background: var(--gold);
+      z-index: 20;
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    main {
+      display: flex;
+      flex-direction: column;
+    }
+
+    #washer-guide { order: 1; }
+    #appliances { order: 2; }
+    #room { order: 3; }
+    #housekeeping { order: 4; }
+    #rules { order: 5; }
+    #checkout { order: 6; }
+    #cafe { order: 7; }
+    #neighborhood { order: 8; }
+    #hotel-info { order: 9; }
+
+    .site-nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 14px clamp(22px, 5vw, 70px);
+      color: #f7f3ea;
+      background: rgba(21, 38, 49, .92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .brand-mark {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      color: rgba(255,255,255,.82);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: 92vh;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
+      gap: 0;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .hero-image {
+      min-height: 560px;
+      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22)), url("assets/room-hero.jpg") center / cover no-repeat;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(36px, 7vw, 84px);
+      background:
+        radial-gradient(circle at 12% 16%, rgba(189, 162, 98, .18), transparent 24%),
+        linear-gradient(135deg, #162631, #24363e);
+    }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin: 0 0 16px;
+    }
+
+    .rule {
+      width: 72px;
+      height: 3px;
+      background: var(--gold);
+      margin: 0 0 34px;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: clamp(48px, 8vw, 96px);
+      line-height: .96;
+      font-weight: 500;
+      margin-bottom: 28px;
+    }
+
+    .hero-lead {
+      max-width: 620px;
+      font-size: clamp(20px, 2.4vw, 30px);
+      line-height: 1.35;
+      margin-bottom: 20px;
+    }
+
+    .hero-note {
+      color: rgba(255,255,255,.7);
+      max-width: 540px;
+      font-size: 15px;
+    }
+
+    .quick-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,.1);
+      margin-top: 44px;
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .quick-strip div {
+      min-height: 84px;
+      padding: 16px;
+      background: rgba(255,255,255,.05);
+    }
+
+    .quick-strip b {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .quick-strip span {
+      color: rgba(255,255,255,.68);
+      font-size: 12px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .hero-actions a,
+    .hero-actions button {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 4px;
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      font: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .hero-actions a:first-child {
+      color: var(--ink);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 44px));
+      margin: 0 auto;
+      padding: clamp(46px, 7vw, 82px) 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      gap: clamp(20px, 4vw, 54px);
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .section-kicker {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      border-top: 3px solid var(--gold);
+      padding-top: 14px;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.08;
+      font-weight: 520;
+      margin-bottom: 16px;
+    }
+
+    .section-lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .stay-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .ticket {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: clamp(24px, 4vw, 42px);
+      box-shadow: var(--shadow);
+    }
+
+    .ticket-grid {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,.18);
+    }
+
+    .ticket-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+    }
+
+    .label {
+      color: var(--gold);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .fill {
+      color: rgba(255,255,255,.9);
+      font-size: 16px;
+    }
+
+    .jp {
+      display: block;
+      color: rgba(255,255,255,.48);
+      font-size: 12px;
+      margin-top: 3px;
+    }
+
+    .side-panel {
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .map-box {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: #fff;
+    }
+
+    .map-box a {
+      display: block;
+      padding: 14px 16px;
+      margin-top: 14px;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 4px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .privacy-note,
+    .alert-panel {
+      border-radius: var(--radius);
+      padding: 18px;
+      font-size: 14px;
+    }
+
+    .privacy-note {
+      color: var(--muted);
+      background: rgba(189, 162, 98, .12);
+      border: 1px solid rgba(189, 162, 98, .25);
+    }
+
+    .alert-panel {
+      color: #4b1815;
+      background: #f6dfdc;
+      border: 1px solid rgba(164, 49, 43, .25);
+    }
+
+    .alert-panel strong {
+      display: block;
+      color: #a4312b;
+      margin-bottom: 6px;
+    }
+
+    .warning-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 18px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .warning-main {
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(21,38,49,.96), rgba(70,42,35,.94)),
+        var(--ink);
+      border-radius: var(--radius);
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: var(--shadow);
+    }
+
+    .warning-main h3 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      font-weight: 520;
+      margin-bottom: 18px;
+    }
+
+    .warning-main p {
+      color: rgba(255,255,255,.76);
+      font-size: 17px;
+    }
+
+    .do-dont {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .do-dont div {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      padding: 18px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .do-dont b {
+      display: block;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .do-dont ul {
+      color: rgba(255,255,255,.75);
+      font-size: 14px;
+    }
+
+    .warning-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .warning-card {
+      min-height: 0;
+      padding: 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+    }
+
+    .warning-card h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .warning-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .washer-guide {
+      display: grid;
+      grid-template-columns: minmax(320px, .88fr) minmax(0, 1.12fr);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: start;
+    }
+
+    .washer-visual {
+      display: grid;
+      gap: 18px;
+    }
+
+    .washer-panel {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel-screen {
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+      color: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 6px;
+      font-size: 12px;
+    }
+
+    .panel-buttons {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .panel-button {
+      min-height: 58px;
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .panel-button b {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+      margin-bottom: 3px;
+    }
+
+    .panel-button span {
+      color: rgba(255,255,255,.58);
+      font-size: 11px;
+    }
+
+    .panel-button.primary {
+      color: var(--ink);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .panel-button.primary b,
+    .panel-button.primary span { color: var(--ink); }
+
+    .washer-steps {
+      display: grid;
+      gap: 12px;
+    }
+
+    .washer-route {
+      margin-bottom: 14px;
+      padding: 20px;
+      color: var(--ink);
+      background: rgba(189, 162, 98, .16);
+      border: 1px solid rgba(189, 162, 98, .32);
+      border-radius: var(--radius);
+      font-size: clamp(20px, 2.2vw, 28px);
+      line-height: 1.25;
+      font-weight: 560;
+    }
+
+    .washer-route span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .washer-step {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      align-items: start;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 34px rgba(21,38,49,.07);
+    }
+
+    .washer-step .num {
+      width: 38px;
+      height: 38px;
+      background: var(--ink);
+    }
+
+    .washer-step h3 {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .washer-step p {
+      color: var(--muted);
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .washer-notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .washer-note {
+      padding: 18px;
+      border-radius: var(--radius);
+      background: rgba(167,111,90,.1);
+      border: 1px solid rgba(167,111,90,.2);
+    }
+
+    .washer-note b {
+      display: block;
+      color: var(--clay);
+      margin-bottom: 6px;
+    }
+
+    .washer-note span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .source-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 18px;
+    }
+
+    .source-note a {
+      color: var(--ink);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .cafe-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: start;
+    }
+
+    .cafe-copy {
+      padding: clamp(22px, 3vw, 30px);
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+    }
+
+    .cafe-copy h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .cafe-copy > p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cafe-menu {
+      display: grid;
+      gap: 10px;
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .cafe-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cafe-row b {
+      display: block;
+      font-size: 16px;
+      color: var(--ink);
+    }
+
+    .cafe-row span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .cafe-price {
+      color: var(--gold);
+      font-weight: 640;
+      white-space: nowrap;
+    }
+
+    .cafe-photos {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cafe-photos .photo-card:first-child img {
+      aspect-ratio: 4 / 3;
+      object-position: center 34%;
+    }
+
+    .cafe-mini-photo {
+      margin-top: 18px;
+    }
+
+    .cafe-mini-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+    }
+
+    .layout-2 {
+      display: grid;
+      grid-template-columns: minmax(300px, .9fr) minmax(0, 1.1fr);
+      gap: clamp(24px, 5vw, 58px);
+      align-items: center;
+    }
+
+    .photo-card {
+      padding: 10px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 12px;
+      padding: 10px 2px 0;
+      text-align: right;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .cards.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cards.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      min-height: 142px;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+    }
+
+    .card::before {
+      content: "";
+      display: block;
+      width: 54px;
+      height: 3px;
+      background: var(--accent, var(--gold));
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      font-weight: 520;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card p strong, .card li strong { color: var(--ink); }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li + li { margin-top: 6px; }
+
+    .feature-band {
+      background: transparent;
+      color: var(--ink);
+      margin: 0;
+      padding: 0;
+    }
+
+    .feature-band .page {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .feature-band .section-lead,
+    .feature-band .card p,
+    .feature-band .card li {
+      color: var(--muted);
+    }
+
+    .feature-band .card {
+      background: var(--card);
+      border-color: var(--line);
+      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+    }
+
+    .feature-band .card h3,
+    .feature-band .card p strong,
+    .feature-band .card li strong {
+      color: var(--ink);
+    }
+
+    .feature-band h2 { color: var(--ink); }
+
+    .steps {
+      display: grid;
+      gap: 14px;
+      counter-reset: step;
+    }
+
+    .step {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 14px 34px rgba(21,38,49,.07);
+    }
+
+    .step::before {
+      content: counter(step, decimal-leading-zero);
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      color: #fff;
+      background: var(--ink);
+      border-radius: 50%;
+      font-size: 13px;
+    }
+
+    .step h3 { margin-bottom: 6px; font-size: 19px; }
+    .step p { color: var(--muted); margin-bottom: 0; }
+
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 12px 32px rgba(21,38,49,.06);
+    }
+
+    .tool-card h3 {
+      color: var(--ink);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .tool-card dl {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+    }
+
+    .tool-card dt {
+      color: var(--gold);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .tool-card dd {
+      margin: -4px 0 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    details {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0 22px;
+      box-shadow: 0 12px 36px rgba(21,38,49,.06);
+    }
+
+    details + details { margin-top: 12px; }
+
+    summary {
+      cursor: pointer;
+      padding: 19px 0;
+      font-size: 18px;
+      font-weight: 520;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: "+";
+      float: right;
+      color: var(--gold);
+    }
+
+    details[open] summary::after { content: "-"; }
+
+    details p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 15px;
+    }
+
+    .message-template {
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .message-template code {
+      display: block;
+      white-space: pre-line;
+      color: rgba(255,255,255,.78);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 14px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      align-items: start;
+      padding: 22px;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+    }
+
+    .num {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      color: #fff;
+      background: var(--gold);
+      border-radius: 50%;
+      font-size: 13px;
+    }
+
+    .check h3 { margin-bottom: 4px; font-size: 18px; }
+    .check p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+
+    .footer {
+      color: rgba(255,255,255,.82);
+      background: var(--ink);
+      padding: 56px clamp(22px, 5vw, 70px);
+    }
+
+    .footer-grid {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: end;
+    }
+
+    .footer h2 { color: #fff; margin-bottom: 10px; }
+    .footer p { color: rgba(255,255,255,.65); margin-bottom: 0; }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 4px;
+      color: #fff;
+      background: rgba(255,255,255,.06);
+      font-size: 14px;
+    }
+
+    .button.primary {
+      background: var(--gold);
+      color: var(--ink);
+      border-color: var(--gold);
+    }
+
+    @media (max-width: 860px) {
+      body::before { left: 16px; }
+      .site-nav { align-items: flex-start; flex-direction: column; gap: 10px; padding-left: 28px; }
+      .hero { grid-template-columns: 1fr; min-height: 0; }
+      .hero-image { min-height: 360px; }
+      .hero-copy { padding: 34px 28px 44px; }
+      .quick-strip { grid-template-columns: repeat(2, 1fr); }
+      .page { width: min(100% - 38px, 680px); padding: 56px 0; }
+      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid, .cafe-photos { grid-template-columns: 1fr; }
+      .cards, .cards.two, .cards.four, .tool-grid, .warning-grid, .do-dont, .washer-notes { grid-template-columns: 1fr; }
+      .panel-buttons { grid-template-columns: repeat(2, 1fr); }
+      .ticket-row { grid-template-columns: 1fr; gap: 6px; }
+      .footer .actions { justify-content: flex-start; }
+    }
+
+    @media print {
+      .site-nav { display: none; }
+      body { background: #fff; }
+      body::before { display: none; }
+      .hero, .feature-band, .footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .page, .hero { page-break-after: always; }
+      a { text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Guest guide navigation">
+    <a class="brand-mark" href="#top">SPATIUM GINZA PONY</a>
+    <div class="nav-links">
+      <a href="#washer-guide">洗衣机</a>
+      <a href="#appliances">设备注意</a>
+      <a href="#room">设备速查</a>
+      <a href="#housekeeping">清扫</a>
+      <a href="#rules">住宿规则</a>
+      <a href="#checkout">退房</a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-image" role="img" aria-label="SPATIUM GINZA PONY room interior"></div>
+    <div class="hero-copy">
+      <p class="eyebrow">中文房间使用手册 / Room Guide</p>
+      <div class="rule"></div>
+      <h1>SPATIUM<br>GINZA PONY</h1>
+      <p class="hero-lead">欢迎入住 SPATIUM GINZA PONY。</p>
+      <p class="hero-note">这里整理了房内设备的常用方法和注意事项。使用洗衣机、微波炉、空调、浴室等设备前，请先看对应说明。</p>
+      <div class="quick-strip" aria-label="quick facts">
+        <div><b>洗衣</b><span>不要超量，异常请停止使用</span></div>
+        <div><b>微波炉</b><span>禁止加热锡纸、金属、密封容器</span></div>
+        <div><b>禁烟</b><span>客房内、酒店门口及入口周边请勿吸烟</span></div>
+        <div><b>退房</b><span>11:00 前完成</span></div>
+      </div>
+      <div class="hero-actions">
+        <a href="#washer-guide">洗衣机说明</a>
+        <a href="#appliances">微波炉注意</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page" id="hotel-info">
+      <div class="section-head">
+        <div class="section-kicker">09 / 酒店信息</div>
+        <div>
+          <h2>酒店基本信息</h2>
+          <p class="section-lead">房号、门锁等入住信息请以入住通知为准。本手册主要说明房内设备和退房前检查。</p>
+        </div>
+      </div>
+      <div class="layout-2">
+        <div class="photo-card">
+          <img src="assets/exterior.jpg" alt="SPATIUM GINZA PONY exterior">
+          <div class="caption">酒店入口 / 筑地 6 丁目</div>
+        </div>
+        <div class="cards two">
+          <article class="card" style="--accent: var(--sage)">
+            <h3>地址</h3>
+            <p><strong>6-6-11 Tsukiji, Chuo-ku, Tokyo 104-0045</strong><br>〒104-0045 東京都中央区築地6丁目6-11</p>
+          </article>
+          <article class="card" style="--accent: var(--gold)">
+            <h3>所在区域</h3>
+            <p>酒店位于筑地区域，前往银座、东银座、筑地市场一带较方便。</p>
+          </article>
+          <article class="card" style="--accent: var(--clay)">
+            <h3>退房时间</h3>
+            <p><strong>11:00 前退房。</strong> 离开前请检查个人物品、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。</p>
+          </article>
+          <article class="card" style="--accent: var(--sage)">
+            <h3>怎么看</h3>
+            <p>洗衣服看“洗衣机”；加热食品看“微波炉”；离开前看“退房”。其他部分可按需要查看。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band" id="room">
+      <div class="page">
+        <div class="section-head">
+          <div class="section-kicker">03 / 设备速查</div>
+          <div>
+            <h2>房间设备速查</h2>
+            <p class="section-lead">这里放空调、浴室、冰箱和水壶的简单说明。洗衣机和微波炉请看前两页。</p>
+          </div>
+        </div>
+        <div class="layout-2">
+          <div class="photo-card">
+            <img src="assets/room-toolkit.jpg" alt="washer, storage and desk area">
+            <div class="caption">洗烘机 / 桌面 / 收纳空间</div>
+          </div>
+          <div class="tool-grid">
+            <article class="tool-card">
+              <h3>空调</h3>
+              <dl><dt>使用</dt><dd>用房间里的遥控器或控制面板。开空调时请关好窗户。</dd><dt>离开前</dt><dd>退房前请关掉空调。</dd></dl>
+            </article>
+            <article class="tool-card">
+              <h3>浴室 / 淋浴</h3>
+              <dl><dt>使用前</dt><dd>如需淋浴，请先确认热水正常。</dd><dt>使用后</dt><dd>淋浴后请开启换气或保持通风。</dd></dl>
+            </article>
+            <article class="tool-card">
+              <h3>冰箱</h3>
+              <dl><dt>可以放</dt><dd>饮料、早餐和轻食。</dd><dt>退房前</dt><dd>请带走自己的食物。</dd></dl>
+            </article>
+            <article class="tool-card">
+              <h3>电热水壶</h3>
+              <dl><dt>只能烧水</dt><dd>不要煮茶、咖啡、汤、牛奶或食物。</dd><dt>保持干净</dt><dd>有溢出或明显异味时，请停止使用。</dd></dl>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="washer-guide">
+      <div class="section-head">
+        <div class="section-kicker">01 / 洗衣机</div>
+        <div>
+          <h2>SHARP ES-S7E 洗烘机使用说明</h2>
+          <p class="section-lead">这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。</p>
+        </div>
+      </div>
+      <div class="washer-guide">
+        <div class="washer-visual">
+          <div class="photo-card">
+            <img src="assets/room-toolkit.jpg" alt="SPATIUM GINZA PONY room washer dryer">
+            <div class="caption">房内洗烘机位置 / ES-S7E</div>
+          </div>
+          <div class="washer-panel" aria-label="washer control panel guide">
+            <div class="panel-screen"><span>常用按钮示意</span><strong>ES-S7E</strong></div>
+            <div class="panel-buttons">
+              <div class="panel-button"><b>電源</b><span>开机 / 关机</span></div>
+              <div class="panel-button primary"><b>洗〜乾</b><span>洗衣 + 烘干</span></div>
+              <div class="panel-button"><b>洗濯</b><span>只洗不烘</span></div>
+              <div class="panel-button"><b>標準</b><span>日常衣物</span></div>
+              <div class="panel-button primary"><b>スタート</b><span>开始 / 暂停</span></div>
+              <div class="panel-button"><b>ロック解除</b><span>结束后开门</span></div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="washer-route">電源 → 洗〜乾 → 標準 → スタート<span>日常衣物最常用。只洗不烘时，把“洗〜乾”换成“洗濯”。</span></div>
+          <div class="washer-steps">
+            <div class="washer-step"><div class="num">01</div><div><h3>放衣物：洗烘请半桶以内</h3><p>官方容量是洗涤 7kg、洗烘/干燥 3.5kg。请勿塞满。厚毛巾、牛仔裤等较难烘干，请减少数量后再使用。</p></div></div>
+            <div class="washer-step"><div class="num">02</div><div><h3>放洗衣液：只能用洗衣用洗剂</h3><p>请勿使用洗手液、沐浴露、洗洁精或过量洗衣液。泡沫太多会影响脱水，也可能让机器停住。</p></div></div>
+            <div class="washer-step"><div class="num">03</div><div><h3>日常推荐：電源 → 洗〜乾 → 標準 → スタート</h3><p>需要洗完后直接烘干，请选择“洗〜乾”。如果只是清洗后自行晾干，请选择“洗濯”。普通衣物选择“標準”即可。</p></div></div>
+            <div class="washer-step"><div class="num">04</div><div><h3>运行中不要强行开机门</h3><p>机门锁定时不要用力拉。需要暂停时按“スタート/一時停止”；如果机门仍不开，请等机器解锁，不要硬拉。</p></div></div>
+            <div class="washer-step"><div class="num">05</div><div><h3>结束后请取出衣物</h3><p>程序结束后请尽早取出衣物，避免起皱、潮味和遗忘。</p></div></div>
+          </div>
+          <div class="washer-notes">
+            <div class="washer-note"><b>不要洗</b><span>防水衣物、胶底垫、地毯、枕头、皮革、宠物毛很多的衣物。</span></div>
+            <div class="washer-note"><b>不要烘</b><span>羊毛、丝绸、皮革、橡胶/海绵、带油污或溶剂的衣物。</span></div>
+            <div class="washer-note"><b>看到 U05</b><span>通常是衣物太多或滤网堵塞。请减少衣物，不要继续硬烘。</span></div>
+          </div>
+          <p class="source-note">参考：<a href="https://jp.sharp/support/washer/doc/ess7e_mn.pdf?productId=ES-S7E" target="_blank" rel="noreferrer">SHARP ES-S7E 取扱説明書</a>。本页为客人简化版，以安全、少误操作、少损坏为优先。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="appliances">
+      <div class="section-head">
+        <div class="section-kicker">02 / 设备注意</div>
+        <div>
+          <h2>请先看这几个注意事项</h2>
+          <p class="section-lead">微波炉、水壶和洗衣机最容易用错。下面几项请特别注意。</p>
+        </div>
+      </div>
+      <div class="warning-grid">
+        <div class="warning-main">
+          <p class="eyebrow">Microwave Safety</p>
+          <h3>请不要把锡纸便当放进微波炉。</h3>
+          <p>便当盒、包装纸或外卖容器中可能含有铝膜或金属边。不确定是否可微波加热时，请不要加热。</p>
+          <div class="do-dont">
+            <div>
+              <b>可以</b>
+              <ul>
+                <li>可微波加热容器</li>
+                <li>打开盖子的便当</li>
+                <li>少量多次加热</li>
+                <li>加热后擦掉汤汁</li>
+              </ul>
+            </div>
+            <div>
+              <b>不要</b>
+              <ul>
+                <li>锡纸、铝箔、金属餐具</li>
+                <li>带金边或银边的餐具</li>
+                <li>密封容器、生鸡蛋</li>
+                <li>不可加热的一次性包装</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="warning-stack">
+          <article class="warning-card">
+            <h3>洗衣机不要超量</h3>
+            <p>衣物放太满会影响脱水，也容易产生异响或漏水。请留出空间，让衣物可以转动。</p>
+          </article>
+          <article class="warning-card">
+            <h3>水壶只烧水</h3>
+            <p>请不要用水壶煮茶包、咖啡、牛奶、汤或食物。这样会留下味道，也可能损坏设备。</p>
+          </article>
+          <article class="warning-card">
+            <h3>强烈气味请避免</h3>
+            <p>房内可简单加热食品。请避免烹调重油烟或气味较重的食物。</p>
+          </article>
+          <article class="warning-card">
+            <h3>异常时先停止</h3>
+            <p>设备冒烟、异味、漏水、跳闸、持续报警或明显异常时，先停止使用，再按入住信息中的渠道反馈。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="housekeeping">
+      <div class="section-head">
+        <div class="section-kicker">04 / 清扫与毛巾</div>
+        <div>
+          <h2>连住期间的清扫方式</h2>
+          <p class="section-lead">为减少打扰，房间不做每日完整清扫。毛巾和垃圾每天可以处理；房间清扫按固定周期安排。</p>
+        </div>
+      </div>
+      <div class="cards two">
+        <article class="card" style="--accent: var(--gold)">
+          <h3>每 3 天清扫一次</h3>
+          <p>连住期间，每 3 天安排一次房间清扫。清扫时可更换床单、整理床铺，并进行房间清洁。</p>
+        </article>
+        <article class="card" style="--accent: var(--sage)">
+          <h3>每天提供新毛巾</h3>
+          <p>非清扫日不会进入房间。新的毛巾会挂在房门口，请自行取用。</p>
+        </article>
+        <article class="card" style="--accent: var(--clay)">
+          <h3>旧毛巾请放门口</h3>
+          <p>需要更换时，请把使用过的毛巾拿出来，放在房门口。工作人员会回收。</p>
+        </article>
+        <article class="card" style="--accent: var(--sage)">
+          <h3>垃圾请放门口</h3>
+          <p>如有垃圾需要回收，请装好后放在房门口。工作人员会在巡回时收走。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="rules">
+      <div class="section-head">
+        <div class="section-kicker">05 / 住宿规则</div>
+        <div>
+          <h2>住宿注意事项</h2>
+          <p class="section-lead">请特别注意禁烟、夜间安静和垃圾处理。</p>
+        </div>
+      </div>
+      <div class="cards two">
+        <article class="card" style="--accent: var(--gold)">
+          <h3>客房内和酒店门口禁烟</h3>
+          <p>客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟味带入房间。</p>
+        </article>
+        <article class="card" style="--accent: var(--sage)">
+          <h3>夜间安静</h3>
+          <p>夜间请降低说话、音乐、电视和拖动行李的声音，避免影响其他住客及邻里。</p>
+        </article>
+        <article class="card" style="--accent: var(--clay)">
+          <h3>垃圾处理</h3>
+          <p>垃圾请按现场指引处理，勿放置于走廊。如不确定，请先留在房内，不要放到公共区域。</p>
+        </article>
+        <article class="card" style="--accent: var(--sage)">
+          <h3>其他提醒</h3>
+          <p>只有登记入住的客人可以住宿。请关好房门，不要在走廊放置行李或垃圾。如有损坏或遗失，请尽早告知。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="checkout">
+      <div class="section-head">
+        <div class="section-kicker">06 / 退房检查</div>
+        <div>
+          <h2>退房前检查</h2>
+          <p class="section-lead">退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。</p>
+        </div>
+      </div>
+      <div class="checklist">
+        <div class="check"><div class="num">01</div><div><h3>个人物品</h3><p>护照、手机、充电器、衣物、洗衣机、抽屉、浴室都请检查一遍。</p></div></div>
+        <div class="check"><div class="num">02</div><div><h3>房间状态</h3><p>关闭灯、空调和水龙头。关好窗户和房门。</p></div></div>
+        <div class="check"><div class="num">03</div><div><h3>冰箱和垃圾</h3><p>带走冰箱内个人食物，垃圾请按现场指引处理，不要放在走廊。</p></div></div>
+        <div class="check"><div class="num">04</div><div><h3>行李寄存</h3><p>行李寄存不是自动提供，如需要请提前咨询，是否可寄存以当天安排为准。</p></div></div>
+      </div>
+    </section>
+
+    <section class="page" id="cafe">
+      <div class="section-head">
+        <div class="section-kicker">07 / 一楼咖啡</div>
+        <div>
+          <h2>一楼有咖啡和司康</h2>
+          <p class="section-lead">咖啡菜单、价格和当天供应情况请以一楼柜台展示为准。如有司康等点心供应，也请以现场为准。</p>
+        </div>
+      </div>
+      <div class="cafe-grid">
+        <div class="cafe-photos">
+          <div class="photo-card">
+            <img src="assets/cafe-menu-board.jpg" alt="SPATIUM GINZA PONY cafe menu board">
+            <div class="caption">一楼咖啡菜单 / 现场价格为准</div>
+          </div>
+        </div>
+        <div class="cafe-copy">
+          <h3>一楼咖啡 / 1F Cafe</h3>
+          <p>一楼可购买咖啡和司康。适合早上出门前，或回房前简单休息。菜单和供应情况请以现场为准。</p>
+          <div class="cafe-menu" aria-label="cafe menu summary">
+            <div class="cafe-row"><div><b>Americano / Espresso</b><span>アメリカーノ / エスプレッソ</span></div><div class="cafe-price">¥500</div></div>
+            <div class="cafe-row"><div><b>Cafe Latte / Cappuccino</b><span>カフェ・ラテ / カプチーノ</span></div><div class="cafe-price">¥580</div></div>
+            <div class="cafe-row"><div><b>Ice / Hot</b><span>部分饮品可选择冷 / 热</span></div><div class="cafe-price">现场确认</div></div>
+            <div class="cafe-row"><div><b>Oat Milk</b><span>オーツミルク変更</span></div><div class="cafe-price">+¥50</div></div>
+            <div class="cafe-row"><div><b>Scone</b><span>如有供应，请以柜台展示为准</span></div><div class="cafe-price">¥500</div></div>
+          </div>
+          <p class="source-note">菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。</p>
+          <div class="cafe-mini-photo">
+            <img src="assets/cafe-coffee-scone.jpg" alt="SPATIUM ART&CAFE coffee and scone">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="neighborhood">
+      <div class="section-head">
+        <div class="section-kicker">08 / 周边与房间</div>
+        <div>
+          <h2>筑地与银座之间的住宿</h2>
+          <p class="section-lead">PONY 位于筑地与银座之间，适合短住、观光、购物和商务行程。房内设备也方便连续住宿。</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card" style="--accent: var(--sage)"><h3>早上 / 筑地</h3><p>可以去筑地吃早餐或散步，然后再开始白天行程。</p></article>
+        <article class="card" style="--accent: var(--gold)"><h3>白天 / 银座</h3><p>银座、东银座一带适合购物、餐厅、展览和会面。</p></article>
+        <article class="card" style="--accent: var(--clay)"><h3>晚上 / 回房间</h3><p>回到房间后可以洗衣、洗澡、整理行李，第二天继续出发。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div>
+        <h2>SPATIUM GINZA PONY</h2>
+        <p>感谢入住 SPATIUM GINZA PONY。<br>最后更新：2026-06-05。如现场说明有变化，请以现场信息为准。</p>
+      </div>
+      <div class="actions">
+        <a class="button" href="https://www.spatium.co.jp/gallery" target="_blank" rel="noreferrer">官网</a>
+        <a class="button primary" href="https://www.google.com/maps/search/?api=1&query=6-6-11+Tsukiji+Chuo-ku+Tokyo+104-0045" target="_blank" rel="noreferrer">打开地图</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
