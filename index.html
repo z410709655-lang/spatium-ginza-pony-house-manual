@@ -6,18 +6,18 @@
   <title>SPATIUM GINZA PONY 中文房间使用手册</title>
   <style>
     :root {
-      --ink: #152631;
-      --ink-2: #20343f;
-      --paper: #f2eee5;
-      --paper-2: #e7ddcc;
-      --cream: #fbf7ee;
-      --card: #fffdf8;
-      --gold: #bda262;
-      --sage: #6f7f68;
-      --clay: #a76f5a;
-      --muted: #677780;
-      --line: rgba(21, 38, 49, .12);
-      --shadow: 0 24px 70px rgba(21, 38, 49, .16);
+      --ink: #1d2628;
+      --ink-2: #2d3838;
+      --paper: #eee8dc;
+      --paper-2: #ded5c6;
+      --cream: #f8f4ec;
+      --card: #fffdf7;
+      --gold: #b69a5a;
+      --sage: #68756b;
+      --clay: #8e6a58;
+      --muted: #657173;
+      --line: rgba(29, 38, 40, .12);
+      --shadow: 0 22px 58px rgba(29, 38, 40, .13);
       --radius: 8px;
     }
 
@@ -33,8 +33,8 @@
       color: var(--ink);
       font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, "Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.32) 1px, transparent 1px) 0 0 / 74px 100%,
-        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,0) 34%),
+        linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,0) 360px),
+        linear-gradient(135deg, rgba(29,38,40,.045), transparent 36%),
         var(--paper);
       line-height: 1.55;
       letter-spacing: 0;
@@ -44,8 +44,9 @@
       content: "";
       position: fixed;
       inset: 0 auto 0 52px;
-      width: 3px;
+      width: 2px;
       background: var(--gold);
+      opacity: .68;
       z-index: 20;
       pointer-events: none;
     }
@@ -79,7 +80,7 @@
       gap: 24px;
       padding: 14px clamp(22px, 5vw, 70px);
       color: #f7f3ea;
-      background: rgba(21, 38, 49, .92);
+      background: rgba(29, 38, 40, .94);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
@@ -93,7 +94,7 @@
 
     .nav-links {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       width: 100%;
       max-width: 100%;
       overflow-x: auto;
@@ -101,12 +102,16 @@
     }
 
     .nav-links a {
-      padding: 8px 10px;
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: 999px;
-      color: rgba(255,255,255,.82);
+      padding: 8px 8px;
+      border-bottom: 1px solid rgba(255,255,255,.18);
+      color: rgba(255,255,255,.76);
       font-size: 12px;
       white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+      border-bottom-color: var(--gold);
     }
 
     .hero {
@@ -120,7 +125,7 @@
 
     .hero-image {
       min-height: 560px;
-      background: linear-gradient(180deg, rgba(0,0,0,.05), rgba(0,0,0,.22)), url("assets/room-hero.jpg") center / cover no-repeat;
+      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.18)), url("assets/brand-room-hero.jpg") center / cover no-repeat;
     }
 
     .hero-copy {
@@ -129,8 +134,7 @@
       justify-content: center;
       padding: clamp(36px, 7vw, 84px);
       background:
-        radial-gradient(circle at 12% 16%, rgba(189, 162, 98, .18), transparent 24%),
-        linear-gradient(135deg, #162631, #24363e);
+        linear-gradient(135deg, #1f292b, #303936 54%, #1b2426);
     }
 
     .eyebrow {
@@ -153,8 +157,9 @@
     h1 {
       font-size: clamp(48px, 8vw, 96px);
       line-height: .96;
-      font-weight: 500;
+      font-weight: 460;
       margin-bottom: 28px;
+      letter-spacing: .01em;
     }
 
     .hero-lead {
@@ -247,9 +252,9 @@
     }
 
     h2 {
-      font-size: clamp(28px, 4vw, 46px);
-      line-height: 1.08;
-      font-weight: 520;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.12;
+      font-weight: 500;
       margin-bottom: 16px;
     }
 
@@ -427,7 +432,7 @@
       border-radius: var(--radius);
       border: 1px solid var(--line);
       background: var(--card);
-      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+      box-shadow: 0 8px 24px rgba(29,38,40,.045);
     }
 
     .warning-card h3 {
@@ -545,7 +550,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 14px 34px rgba(21,38,49,.07);
+      box-shadow: 0 7px 22px rgba(29,38,40,.045);
     }
 
     .washer-step .num {
@@ -614,7 +619,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+      box-shadow: 0 8px 24px rgba(29,38,40,.045);
     }
 
     .cafe-copy h3 {
@@ -625,6 +630,57 @@
     .cafe-copy > p {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .cafe-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .cafe-tags span {
+      padding: 6px 10px;
+      color: var(--ink-2);
+      background: rgba(182,154,90,.12);
+      border: 1px solid rgba(182,154,90,.24);
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    .scone-spotlight {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 16px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 12px;
+      background: rgba(29,38,40,.035);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .scone-spotlight img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      object-position: center 72%;
+      border-radius: 4px;
+    }
+
+    .scone-spotlight b {
+      display: block;
+      font-size: 18px;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .scone-spotlight span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     .cafe-menu {
@@ -673,7 +729,7 @@
     .cafe-photo-feature img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 5;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       object-position: center;
       border-radius: 4px;
@@ -732,7 +788,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+      box-shadow: 0 8px 24px rgba(29,38,40,.045);
     }
 
     .card::before {
@@ -786,7 +842,7 @@
     .feature-band .card {
       background: var(--card);
       border-color: var(--line);
-      box-shadow: 0 16px 46px rgba(21,38,49,.08);
+      box-shadow: 0 8px 24px rgba(29,38,40,.045);
     }
 
     .feature-band .card h3,
@@ -813,7 +869,7 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      box-shadow: 0 14px 34px rgba(21,38,49,.07);
+      box-shadow: 0 7px 22px rgba(29,38,40,.045);
     }
 
     .step::before {
@@ -842,7 +898,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 20px;
-      box-shadow: 0 12px 32px rgba(21,38,49,.06);
+      box-shadow: 0 7px 22px rgba(29,38,40,.04);
     }
 
     .tool-card h3 {
@@ -875,7 +931,7 @@
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 0 22px;
-      box-shadow: 0 12px 36px rgba(21,38,49,.06);
+      box-shadow: 0 7px 22px rgba(29,38,40,.04);
     }
 
     details + details { margin-top: 12px; }
@@ -1005,6 +1061,9 @@
       .page { width: min(100% - 38px, 680px); padding: 56px 0; }
       .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid { grid-template-columns: 1fr; }
       .cafe-photo-feature { position: static; }
+      .cafe-copy { order: 1; }
+      .cafe-photo-feature { order: 2; }
+      .scone-spotlight { grid-template-columns: 1fr; }
       .cards, .cards.two, .cards.four, .tool-grid, .warning-grid, .do-dont, .washer-notes { grid-template-columns: 1fr; }
       .panel-buttons { grid-template-columns: repeat(2, 1fr); }
       .ticket-row { grid-template-columns: 1fr; gap: 6px; }
@@ -1041,12 +1100,12 @@
       <div class="rule"></div>
       <h1>SPATIUM<br>GINZA PONY</h1>
       <p class="hero-lead">欢迎入住 SPATIUM GINZA PONY。</p>
-      <p class="hero-note">这里整理了房内设备的常用方法和注意事项。使用洗衣机、微波炉、空调、浴室等设备前，请先看对应说明。</p>
+      <p class="hero-note">这里是筑地与银座之间的城市型住宿空间。房间内的主要设备、清扫安排和退房前检查，都整理在这本房内指南里。</p>
       <div class="quick-strip" aria-label="quick facts">
-        <div><b>洗衣</b><span>不要超量，异常请停止使用</span></div>
-        <div><b>微波炉</b><span>禁止加热锡纸、金属、密封容器</span></div>
-        <div><b>禁烟</b><span>客房内、酒店门口及入口周边请勿吸烟</span></div>
-        <div><b>退房</b><span>11:00 前完成</span></div>
+        <div><b>35㎡ Studio</b><span>适合短住、商务和连续住宿</span></div>
+        <div><b>Washer Dryer</b><span>房内可洗衣烘干，步骤见下方</span></div>
+        <div><b>Microwave</b><span>请勿放入锡纸、金属或密封容器</span></div>
+        <div><b>11:00 Check-out</b><span>离开前检查电器、水龙头和个人物品</span></div>
       </div>
       <div class="hero-actions">
         <a href="#washer-guide">洗衣机说明</a>
@@ -1066,7 +1125,7 @@
       </div>
       <div class="layout-2">
         <div class="photo-card">
-          <img src="assets/exterior.jpg" alt="SPATIUM GINZA PONY exterior">
+          <img src="assets/brand-exterior-day.jpg" alt="SPATIUM GINZA PONY exterior">
           <div class="caption">酒店入口 / 筑地 6 丁目</div>
         </div>
         <div class="cards two">
@@ -1101,7 +1160,7 @@
         </div>
         <div class="layout-2">
           <div class="photo-card">
-            <img src="assets/room-toolkit.jpg" alt="washer, storage and desk area">
+            <img src="assets/brand-room-vanity-desk.jpg" alt="SPATIUM GINZA PONY desk and vanity area">
             <div class="caption">洗烘机 / 桌面 / 收纳空间</div>
           </div>
           <div class="tool-grid">
@@ -1302,24 +1361,37 @@
       <div class="section-head">
         <div class="section-kicker">07 / 一楼咖啡</div>
         <div>
-          <h2>一楼有咖啡和司康</h2>
-          <p class="section-lead">咖啡菜单、价格和当天供应情况请以一楼柜台展示为准。如有司康等点心供应，也请以现场为准。</p>
+          <h2>1F Lobby + Cafe</h2>
+          <p class="section-lead">一楼咖啡和スコーン适合出门前或回房前短暂停留。菜单、价格和供应情况请以现场展示为准。</p>
         </div>
       </div>
       <div class="cafe-grid">
         <div class="cafe-photo-feature">
-          <img src="assets/cafe-coffee-scone.jpg" alt="SPATIUM ART&CAFE coffee and scone">
-          <div class="caption">一楼咖啡 / 供应情况以现场为准</div>
+          <img src="assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE lounge">
+          <div class="caption">1F Lobby + Cafe / 供应情况以现场为准</div>
         </div>
         <div class="cafe-copy">
           <h3>一楼咖啡 / 1F Cafe</h3>
-          <p>一楼可购买咖啡和司康。适合早上出门前，或回房前简单休息。菜单和供应情况请以现场为准。</p>
+          <p>早上出门前，或回房前想短暂休息时，可以在一楼确认当天咖啡和点心供应。</p>
+          <div class="cafe-tags" aria-label="cafe notes">
+            <span>Morning coffee</span>
+            <span>Fresh scone</span>
+            <span>Before heading out</span>
+            <span>Ask at 1F counter</span>
+          </div>
+          <div class="scone-spotlight">
+            <img src="assets/scone-bake.jpg" alt="SPATIUM ART&CAFE scone">
+            <div>
+              <b>スコーン / Scone</b>
+              <span>毎日焼きたて。外はさっくり、中はしっとり。コーヒーと一緒にどうぞ。</span>
+            </div>
+          </div>
           <div class="cafe-menu" aria-label="cafe menu summary">
             <div class="cafe-row"><div><b>Americano / Espresso</b><span>アメリカーノ / エスプレッソ</span></div><div class="cafe-price">¥500</div></div>
             <div class="cafe-row"><div><b>Cafe Latte / Cappuccino</b><span>カフェ・ラテ / カプチーノ</span></div><div class="cafe-price">¥580</div></div>
             <div class="cafe-row"><div><b>Ice / Hot</b><span>部分饮品可选择冷 / 热</span></div><div class="cafe-price">现场确认</div></div>
             <div class="cafe-row"><div><b>Oat Milk</b><span>オーツミルク変更</span></div><div class="cafe-price">+¥50</div></div>
-            <div class="cafe-row"><div><b>Scone</b><span>如有供应，请以柜台展示为准</span></div><div class="cafe-price">¥500</div></div>
+            <div class="cafe-row"><div><b>Scone / スコーン</b><span>毎日焼きたて / 如有供应，请以柜台展示为准</span></div><div class="cafe-price">¥500</div></div>
           </div>
           <p class="source-note">菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。</p>
         </div>
