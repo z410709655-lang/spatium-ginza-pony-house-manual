@@ -604,7 +604,7 @@
 
     .cafe-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.12fr) minmax(300px, .88fr);
+      grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
       gap: clamp(24px, 5vw, 58px);
       align-items: start;
     }
@@ -661,27 +661,26 @@
       white-space: nowrap;
     }
 
-    .cafe-photos {
-      display: grid;
-      gap: 14px;
+    .cafe-photo-feature {
+      position: sticky;
+      top: 94px;
+      padding: 10px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    .cafe-photos .photo-card:first-child img {
-      aspect-ratio: 4 / 3;
-      object-position: center 34%;
-    }
-
-    .cafe-mini-photo {
-      margin-top: 18px;
-    }
-
-    .cafe-mini-photo img {
+    .cafe-photo-feature img {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 4 / 5;
       object-fit: cover;
       object-position: center;
       border-radius: 4px;
+    }
+
+    .cafe-photo-feature .caption {
+      text-align: left;
     }
 
     .layout-2 {
@@ -1004,7 +1003,8 @@
       .hero-copy { padding: 34px 28px 44px; }
       .quick-strip { grid-template-columns: repeat(2, 1fr); }
       .page { width: min(100% - 38px, 680px); padding: 56px 0; }
-      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid, .cafe-photos { grid-template-columns: 1fr; }
+      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid { grid-template-columns: 1fr; }
+      .cafe-photo-feature { position: static; }
       .cards, .cards.two, .cards.four, .tool-grid, .warning-grid, .do-dont, .washer-notes { grid-template-columns: 1fr; }
       .panel-buttons { grid-template-columns: repeat(2, 1fr); }
       .ticket-row { grid-template-columns: 1fr; gap: 6px; }
@@ -1307,11 +1307,9 @@
         </div>
       </div>
       <div class="cafe-grid">
-        <div class="cafe-photos">
-          <div class="photo-card">
-            <img src="assets/cafe-menu-board.jpg" alt="SPATIUM GINZA PONY cafe menu board">
-            <div class="caption">一楼咖啡菜单 / 现场价格为准</div>
-          </div>
+        <div class="cafe-photo-feature">
+          <img src="assets/cafe-coffee-scone.jpg" alt="SPATIUM ART&CAFE coffee and scone">
+          <div class="caption">一楼咖啡 / 供应情况以现场为准</div>
         </div>
         <div class="cafe-copy">
           <h3>一楼咖啡 / 1F Cafe</h3>
@@ -1324,9 +1322,6 @@
             <div class="cafe-row"><div><b>Scone</b><span>如有供应，请以柜台展示为准</span></div><div class="cafe-price">¥500</div></div>
           </div>
           <p class="source-note">菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。</p>
-          <div class="cafe-mini-photo">
-            <img src="assets/cafe-coffee-scone.jpg" alt="SPATIUM ART&CAFE coffee and scone">
-          </div>
         </div>
       </div>
     </section>
