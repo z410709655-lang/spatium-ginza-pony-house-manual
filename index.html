@@ -71,13 +71,14 @@
     #why-pony { order: 2; }
     #room { order: 3; }
     #cafe { order: 4; }
-    #neighborhood { order: 5; }
-    #appliances { order: 6; }
-    #washer-guide { order: 7; }
-    #amenities { order: 8; }
-    #housekeeping { order: 9; }
-    #rules { order: 10; }
-    #checkout { order: 11; }
+    #terrace { order: 5; }
+    #neighborhood { order: 6; }
+    #appliances { order: 7; }
+    #washer-guide { order: 8; }
+    #amenities { order: 9; }
+    #housekeeping { order: 10; }
+    #rules { order: 11; }
+    #checkout { order: 12; }
 
     .site-nav {
       position: sticky;
@@ -167,7 +168,7 @@
       background:
         linear-gradient(90deg, rgba(13, 24, 27, .82), rgba(13, 24, 27, .42) 48%, rgba(13, 24, 27, .12)),
         linear-gradient(180deg, rgba(13, 24, 27, .08), rgba(13, 24, 27, .72)),
-        url("assets/brand-room-hero.jpg") center / cover no-repeat;
+        url("pony_html_assets/brand-room-hero.jpg") center / cover no-repeat;
       transform: scale(1.02);
     }
 
@@ -1054,6 +1055,105 @@
       text-align: left;
     }
 
+    .terrace-grid {
+      display: grid;
+      grid-template-columns: minmax(360px, 1.04fr) minmax(0, .96fr);
+      gap: clamp(22px, 4vw, 46px);
+      align-items: stretch;
+    }
+
+    .terrace-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .terrace-main {
+      grid-column: 1 / -1;
+    }
+
+    .terrace-main img {
+      aspect-ratio: 16 / 10;
+      object-position: center 58%;
+    }
+
+    .terrace-photos .photo-card:not(.terrace-main) img {
+      aspect-ratio: 4 / 5;
+      object-position: center;
+    }
+
+    .terrace-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: clamp(22px, 3vw, 30px);
+      background: var(--ink);
+      color: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .terrace-panel h3 {
+      color: #fff;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .terrace-panel p {
+      color: rgba(255,255,255,.72);
+      font-size: 14px;
+    }
+
+    .terrace-hours {
+      display: grid;
+      gap: 4px;
+      padding: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 6px;
+    }
+
+    .terrace-hours span {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .terrace-hours b {
+      color: #fff;
+      font-size: 34px;
+      line-height: 1.1;
+      font-weight: 560;
+    }
+
+    .terrace-rules {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .terrace-rule {
+      min-height: 88px;
+      padding: 14px;
+      background: rgba(255,255,255,.055);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 6px;
+    }
+
+    .terrace-rule b {
+      display: block;
+      color: #fff;
+      margin-bottom: 5px;
+      font-size: 15px;
+    }
+
+    .terrace-rule span {
+      color: rgba(255,255,255,.64);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
     .layout-2 {
       display: grid;
       grid-template-columns: minmax(300px, .9fr) minmax(0, 1.1fr);
@@ -1438,7 +1538,7 @@
         background:
           linear-gradient(90deg, rgba(13, 24, 27, .86), rgba(13, 24, 27, .55) 58%, rgba(13, 24, 27, .18)),
           linear-gradient(180deg, rgba(13, 24, 27, .1), rgba(13, 24, 27, .82)),
-          url("assets/brand-room-hero.jpg") 58% center / cover no-repeat;
+          url("pony_html_assets/brand-room-hero.jpg") 58% center / cover no-repeat;
       }
 
       .hero-copy {
@@ -1498,6 +1598,7 @@
       .footer-grid,
       .washer-guide,
       .cafe-grid,
+      .terrace-grid,
       .place-feature,
       .warning-grid {
         grid-template-columns: 1fr;
@@ -1548,6 +1649,10 @@
         aspect-ratio: 4 / 3;
       }
 
+      .terrace-photos { order: 1; }
+      .terrace-panel { order: 2; }
+      .terrace-main img { aspect-ratio: 4 / 3; }
+
       .scone-spotlight {
         grid-template-columns: 132px 1fr;
         gap: 12px;
@@ -1558,6 +1663,7 @@
       .cards.four,
       .tool-grid,
       .do-dont,
+      .terrace-rules,
       .washer-notes {
         grid-template-columns: 1fr;
       }
@@ -1641,6 +1747,7 @@
       .card,
       .tool-card,
       .cafe-copy,
+      .terrace-panel,
       .washer-panel,
       .washer-route,
       .washer-step,
@@ -1656,6 +1763,7 @@
       }
 
       .place-gallery { grid-template-columns: 1fr; }
+      .terrace-photos { grid-template-columns: 1fr; }
 
       .scone-spotlight {
         grid-template-columns: 1fr;
@@ -1714,6 +1822,7 @@
       <a href="#why-pony">为什么住这里</a>
       <a href="#room">房间</a>
       <a href="#cafe">咖啡</a>
+      <a href="#terrace">テラス</a>
       <a href="#neighborhood">築地银座</a>
       <a href="#appliances">设备安全</a>
       <a href="#washer-guide">洗衣机</a>
@@ -1758,6 +1867,7 @@
     <div class="toc-card">
       <b>Experience</b>
       <a href="#cafe">1F Lobby + Cafe</a>
+      <a href="#terrace">屋上テラス</a>
       <a href="#neighborhood">築地・银座周边</a>
     </div>
     <div class="toc-card">
@@ -1785,7 +1895,7 @@
       </div>
       <div class="layout-2">
         <div class="photo-card">
-          <img src="assets/brand-exterior-day.jpg" alt="SPATIUM GINZA PONY exterior">
+          <img src="pony_html_assets/brand-exterior-day.jpg" alt="SPATIUM GINZA PONY exterior">
           <div class="caption">酒店入口 / 築地 6 丁目</div>
         </div>
         <div class="cards two">
@@ -1837,11 +1947,11 @@
         </div>
         <div class="brand-photo-stack">
           <figure>
-            <img src="assets/brand-room-hero.jpg" alt="SPATIUM GINZA PONY room">
+            <img src="pony_html_assets/brand-room-hero.jpg" alt="SPATIUM GINZA PONY room">
             <figcaption>35㎡ Studio / 在城市中心保留可以整理和休息的空间</figcaption>
           </figure>
           <figure>
-            <img src="assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE">
+            <img src="pony_html_assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE">
             <figcaption>1F Lobby + Cafe / 出门前或回房前的短暂停留</figcaption>
           </figure>
         </div>
@@ -1859,7 +1969,7 @@
         </div>
         <div class="layout-2">
           <div class="photo-card">
-            <img src="assets/brand-room-vanity-desk.jpg" alt="SPATIUM GINZA PONY desk and vanity area">
+            <img src="pony_html_assets/brand-room-vanity-desk.jpg" alt="SPATIUM GINZA PONY desk and vanity area">
             <div class="caption">洗烘机 / 桌面 / 收纳空间</div>
           </div>
           <div class="tool-grid">
@@ -1886,7 +1996,7 @@
 
     <section class="page" id="washer-guide">
       <div class="section-head">
-        <div class="section-kicker">07 / 洗衣机</div>
+        <div class="section-kicker">08 / 洗衣机</div>
         <div>
           <h2>SHARP ES-S7E 洗烘机使用说明</h2>
           <p class="section-lead">这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。</p>
@@ -1895,7 +2005,7 @@
       <div class="washer-guide">
         <div class="washer-visual">
           <div class="photo-card">
-            <img src="assets/room-toolkit.jpg" alt="SPATIUM GINZA PONY room washer dryer">
+            <img src="pony_html_assets/room-toolkit.jpg" alt="SPATIUM GINZA PONY room washer dryer">
             <div class="caption">房内洗烘机位置 / ES-S7E</div>
           </div>
           <div class="washer-panel" aria-label="washer control panel guide">
@@ -1930,7 +2040,7 @@
 
     <section class="page" id="appliances">
       <div class="section-head">
-        <div class="section-kicker">06 / 设备安全</div>
+        <div class="section-kicker">07 / 设备安全</div>
         <div>
           <h2>请先避开这些高风险操作</h2>
           <p class="section-lead">微波炉、水壶和洗衣机最容易因为误用造成起火、漏水、异味或设备损坏。请先看完下面几项，再使用房内设备。</p>
@@ -1985,7 +2095,7 @@
 
     <section class="page" id="amenities">
       <div class="section-head">
-        <div class="section-kicker">08 / 备品与追加需求</div>
+        <div class="section-kicker">09 / 备品与追加需求</div>
         <div>
           <h2>房内物品不够时</h2>
           <p class="section-lead">房内备品会按入住人数和现场配置准备。需要追加毛巾、垃圾袋、纸巾或其他物品时，请找前台/工作人员咨询。</p>
@@ -2013,7 +2123,7 @@
 
     <section class="page" id="housekeeping">
       <div class="section-head">
-        <div class="section-kicker">09 / 清扫、毛巾与垃圾</div>
+        <div class="section-kicker">10 / 清扫、毛巾与垃圾</div>
         <div>
           <h2>连住期间的清扫方式</h2>
           <p class="section-lead">为减少打扰，房间不做每日完整清扫。非清扫日主要处理毛巾和垃圾；完整清扫按固定周期安排。</p>
@@ -2041,7 +2151,7 @@
 
     <section class="page" id="rules">
       <div class="section-head">
-        <div class="section-kicker">10 / 住宿规则</div>
+        <div class="section-kicker">11 / 住宿规则</div>
         <div>
           <h2>住宿注意事项</h2>
           <p class="section-lead">请特别注意禁烟、访客、夜间安静和公共区域使用。规则不是为了打扰客人，而是为了让所有住客和邻里都能安静入住。</p>
@@ -2069,7 +2179,7 @@
 
     <section class="page" id="checkout">
       <div class="section-head">
-        <div class="section-kicker">11 / 退房检查</div>
+        <div class="section-kicker">12 / 退房检查</div>
         <div>
           <h2>退房前检查</h2>
           <p class="section-lead">退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。</p>
@@ -2093,7 +2203,7 @@
       </div>
       <div class="cafe-grid">
         <div class="cafe-photo-feature">
-          <img src="assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE lounge">
+          <img src="pony_html_assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE lounge">
           <div class="caption">1F Lobby + Cafe / 供应情况以现场为准</div>
         </div>
         <div class="cafe-copy">
@@ -2106,7 +2216,7 @@
             <span>Ask at 1F counter</span>
           </div>
           <div class="scone-spotlight">
-            <img src="assets/scone-bake.jpg" alt="SPATIUM ART&CAFE scone">
+            <img src="pony_html_assets/scone-bake.jpg" alt="SPATIUM ART&CAFE scone">
             <div>
               <b>スコーン / Scone</b>
               <span>毎日焼きたて。外はさっくり、中はしっとり。コーヒーと一緒にどうぞ。</span>
@@ -2122,9 +2232,58 @@
       </div>
     </section>
 
+    <section class="page" id="terrace">
+      <div class="section-head">
+        <div class="section-kicker">05 / 屋上テラス</div>
+        <div>
+          <h2>屋上テラス</h2>
+          <p class="section-lead">天气好的时候，欢迎到最上面的露台稍作休息。这里适合晒晒太阳、吹吹风、带一杯咖啡安静坐一会儿。开放时间为 8:00-18:00。</p>
+        </div>
+      </div>
+      <div class="terrace-grid">
+        <div class="terrace-photos">
+          <div class="photo-card terrace-main">
+            <img src="pony_html_assets/terrace-main.jpeg" alt="SPATIUM GINZA PONY rooftop terrace">
+            <div class="caption">屋上テラス / 天气好的时候可短暂停留</div>
+          </div>
+          <div class="photo-card">
+            <img src="pony_html_assets/terrace-seating.jpeg" alt="Rooftop terrace seating">
+            <div class="caption">座位区 / 请轻声使用</div>
+          </div>
+          <div class="photo-card">
+            <img src="pony_html_assets/terrace-detail.jpeg" alt="Rooftop terrace table and chairs">
+            <div class="caption">桌椅与植物 / 请不要自行移动家具</div>
+          </div>
+        </div>
+        <div class="terrace-panel">
+          <div>
+            <h3>最上階に、ひらけた時間を。</h3>
+            <p>Coffee upstairs. Quiet air above Tsukiji.</p>
+            <p>请在开放时间内使用。夜间、雨天、强风或地面湿滑时，请不要使用露台。</p>
+          </div>
+          <div class="terrace-hours">
+            <span>Open Hours</span>
+            <b>8:00 - 18:00</b>
+          </div>
+          <div class="terrace-rules">
+            <div class="terrace-rule"><b>安静使用</b><span>请轻声交谈，不播放音乐，不长时间占位。</span></div>
+            <div class="terrace-rule"><b>禁烟</b><span>露台、客房、酒店门口及入口周边均请勿吸烟。</span></div>
+            <div class="terrace-rule"><b>天气不好时不使用</b><span>雨天、强风或地面湿滑时，请回到室内。</span></div>
+            <div class="terrace-rule"><b>离开前</b><span>请带走随身物品、饮品和垃圾。</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cards four" style="margin-top:18px">
+        <article class="card" style="--accent: var(--gold)"><h3>开放时间</h3><p><strong>8:00-18:00。</strong> 18:00 后请不要进入露台区域。</p></article>
+        <article class="card" style="--accent: var(--sage)"><h3>适合这样使用</h3><p>短暂休息、晒太阳、拍照，或在外出前后放松片刻。请保持轻声交谈。</p></article>
+        <article class="card" style="--accent: var(--clay)"><h3>安全提醒</h3><p>请照看儿童，不要攀爬护栏。露台家具如有收起，请不要自行移动。</p></article>
+        <article class="card" style="--accent: var(--sage)"><h3>有问题找前台</h3><p>如发现遗落物品、设施异常，或不确定当天是否可以使用，请联系前台/工作人员。</p></article>
+      </div>
+    </section>
+
     <section class="page" id="neighborhood">
       <div class="section-head">
-        <div class="section-kicker">05 / 築地与银座</div>
+        <div class="section-kicker">06 / 築地与银座</div>
         <div>
           <h2>築地与银座之间的散步指南</h2>
           <p class="section-lead">这里不是完整旅游攻略，而是给住客的短路线。早晨去築地吃早餐，白天去银座购物或看展，雨天也可以用室内路线把一天安排得轻松一点。</p>
@@ -2132,7 +2291,7 @@
       </div>
       <div class="place-feature">
         <figure class="place-photo-main">
-          <img src="assets/tsukiji-market-street.jpg" alt="築地场外市场街景">
+          <img src="pony_html_assets/tsukiji-market-street.jpg" alt="築地场外市场街景">
           <figcaption>築地场外市场 / 清晨到午前最有街区气氛。店铺营业时间各不相同。</figcaption>
         </figure>
         <div>
@@ -2155,15 +2314,15 @@
           </div>
           <div class="place-gallery">
             <figure>
-              <img src="assets/tsukiji-shop-counter.jpg" alt="築地店铺柜台">
+              <img src="pony_html_assets/tsukiji-shop-counter.jpg" alt="築地店铺柜台">
               <figcaption>小店柜台 / 适合边走边看当天有什么。</figcaption>
             </figure>
             <figure>
-              <img src="assets/tsukiji-market-stall.jpg" alt="築地市场摊位">
+              <img src="pony_html_assets/tsukiji-market-stall.jpg" alt="築地市场摊位">
               <figcaption>市場摊位 / 食材、料理工具和传统食品。</figcaption>
             </figure>
             <figure>
-              <img src="assets/tsukiji-tamagoyaki.jpg" alt="築地玉子烧柜台">
+              <img src="pony_html_assets/tsukiji-tamagoyaki.jpg" alt="築地玉子烧柜台">
               <figcaption>玉子烧与小吃 / 清晨散步时很有築地感。</figcaption>
             </figure>
           </div>
@@ -2242,6 +2401,125 @@
       }
     };
 
+    const terraceTranslations = {
+      ja: {
+        "テラス":"テラス",
+        "屋上テラス":"屋上テラス",
+        "05 / 屋上テラス":"05 / 屋上テラス",
+        "天気の良い日は、最上階のテラスで少し休憩できます。日差しや外の空気を感じながら、コーヒーを片手に静かにお過ごしください。利用時間は 8:00-18:00 です。":"天気の良い日は、最上階のテラスで少し休憩できます。日差しや外の空気を感じながら、コーヒーを片手に静かにお過ごしください。利用時間は 8:00-18:00 です。",
+        "天气好的时候，欢迎到最上面的露台稍作休息。这里适合晒晒太阳、吹吹风、带一杯咖啡安静坐一会儿。开放时间为 8:00-18:00。":"天気の良い日は、最上階のテラスで少し休憩できます。日差しや外の空気を感じながら、コーヒーを片手に静かにお過ごしください。利用時間は 8:00-18:00 です。",
+        "屋上テラス / 天气好的时候可短暂停留":"屋上テラス / 天気の良い日の短い休憩に",
+        "座位区 / 请轻声使用":"座席エリア / 静かにご利用ください",
+        "桌椅与植物 / 请不要自行移动家具":"テーブル・椅子・植物 / 家具は移動しないでください",
+        "最上階に、ひらけた時間を。":"最上階に、ひらけた時間を。",
+        "Coffee upstairs. Quiet air above Tsukiji.":"Coffee upstairs. Quiet air above Tsukiji.",
+        "请在开放时间内使用。夜间、雨天、强风或地面湿滑时，请不要使用露台。":"利用時間内にご利用ください。夜間、雨天、強風時、床が滑りやすい時は利用をお控えください。",
+        "Open Hours":"Open Hours",
+        "安静使用":"静かに利用",
+        "请轻声交谈，不播放音乐，不长时间占位。":"会話は控えめに。音楽の再生や長時間の占用はお控えください。",
+        "禁烟":"禁煙",
+        "露台、客房、酒店门口及入口周边均请勿吸烟。":"テラス、客室、ホテル入口および入口周辺は禁煙です。",
+        "天气不好时不使用":"悪天候時は利用不可",
+        "雨天、强风或地面湿滑时，请回到室内。":"雨天、強風、床が滑りやすい時は室内へお戻りください。",
+        "离开前":"出発前",
+        "请带走随身物品、饮品和垃圾。":"持ち物、飲み物、ゴミはお持ちください。",
+        "开放时间":"利用時間",
+        "8:00-18:00。":"8:00-18:00。",
+        "18:00 后请不要进入露台区域。":"18:00以降はテラスエリアに入らないでください。",
+        "适合这样使用":"おすすめの使い方",
+        "短暂休息、晒太阳、拍照，或在外出前后放松片刻。请保持轻声交谈。":"短い休憩、日光浴、写真撮影、外出前後のひと息に。会話は控えめにお願いします。",
+        "安全提醒":"安全のお願い",
+        "请照看儿童，不要攀爬护栏。露台家具如有收起，请不要自行移动。":"お子様から目を離さず、手すりに登らないでください。家具が片付けられている場合は移動しないでください。",
+        "有问题找前台":"お困りの際はフロントへ",
+        "如发现遗落物品、设施异常，或不确定当天是否可以使用，请联系前台/工作人员。":"忘れ物、設備異常、当日の利用可否が不明な場合はフロントまたはスタッフへご連絡ください。",
+        "06 / 築地与银座":"06 / 築地・銀座",
+        "07 / 设备安全":"07 / 設備安全",
+        "08 / 洗衣机":"08 / 洗濯乾燥機",
+        "09 / 备品与追加需求":"09 / 備品・追加リクエスト",
+        "10 / 清扫、毛巾与垃圾":"10 / 清掃・タオル・ゴミ",
+        "11 / 住宿规则":"11 / 滞在ルール",
+        "12 / 退房检查":"12 / チェックアウト確認"
+      },
+      en: {
+        "テラス":"Terrace",
+        "屋上テラス":"Rooftop Terrace",
+        "05 / 屋上テラス":"05 / Rooftop Terrace",
+        "天气好的时候，欢迎到最上面的露台稍作休息。这里适合晒晒太阳、吹吹风、带一杯咖啡安静坐一会儿。开放时间为 8:00-18:00。":"On clear days, the rooftop terrace is available for a short, quiet break. It is a good place to enjoy some sun, fresh air, or a coffee. Open hours are 8:00-18:00.",
+        "屋上テラス / 天气好的时候可短暂停留":"Rooftop Terrace / For a short break on clear days",
+        "座位区 / 请轻声使用":"Seating area / Please keep your voice low",
+        "桌椅与植物 / 请不要自行移动家具":"Tables, chairs and plants / Please do not move furniture",
+        "最上階に、ひらけた時間を。":"A quiet open-air pause upstairs.",
+        "Coffee upstairs. Quiet air above Tsukiji.":"Coffee upstairs. Quiet air above Tsukiji.",
+        "请在开放时间内使用。夜间、雨天、强风或地面湿滑时，请不要使用露台。":"Please use the terrace only during open hours. Do not use it at night, in rain, strong wind, or when the floor is slippery.",
+        "Open Hours":"Open Hours",
+        "安静使用":"Keep It Quiet",
+        "请轻声交谈，不播放音乐，不长时间占位。":"Please speak quietly, do not play music, and avoid occupying seats for a long time.",
+        "禁烟":"No Smoking",
+        "露台、客房、酒店门口及入口周边均请勿吸烟。":"Smoking is not allowed on the terrace, in guest rooms, at the hotel entrance, or around the entrance.",
+        "天气不好时不使用":"Closed in Bad Weather",
+        "雨天、强风或地面湿滑时，请回到室内。":"Please return indoors during rain, strong wind, or when the floor is slippery.",
+        "离开前":"Before Leaving",
+        "请带走随身物品、饮品和垃圾。":"Please take your belongings, drinks, and trash with you.",
+        "开放时间":"Open Hours",
+        "8:00-18:00。":"8:00-18:00.",
+        "18:00 后请不要进入露台区域。":"Please do not enter the terrace area after 18:00.",
+        "适合这样使用":"Best Used For",
+        "短暂休息、晒太阳、拍照，或在外出前后放松片刻。请保持轻声交谈。":"A short rest, sunlight, photos, or a quiet pause before or after going out. Please keep conversations quiet.",
+        "安全提醒":"Safety",
+        "请照看儿童，不要攀爬护栏。露台家具如有收起，请不要自行移动。":"Please watch children, do not climb the railing, and do not move furniture if it has been put away.",
+        "有问题找前台":"Ask the Front Desk",
+        "如发现遗落物品、设施异常，或不确定当天是否可以使用，请联系前台/工作人员。":"If you find a lost item, notice a facility issue, or are unsure whether the terrace is open that day, please contact the front desk or staff.",
+        "06 / 築地与银座":"06 / Tsukiji & Ginza",
+        "07 / 设备安全":"07 / Equipment Safety",
+        "08 / 洗衣机":"08 / Washer-Dryer",
+        "09 / 备品与追加需求":"09 / Amenities & Requests",
+        "10 / 清扫、毛巾与垃圾":"10 / Cleaning, Towels & Trash",
+        "11 / 住宿规则":"11 / House Rules",
+        "12 / 退房检查":"12 / Check-out"
+      },
+      ko: {
+        "テラス":"테라스",
+        "屋上テラス":"루프탑 테라스",
+        "05 / 屋上テラス":"05 / 루프탑 테라스",
+        "天气好的时候，欢迎到最上面的露台稍作休息。这里适合晒晒太阳、吹吹风、带一杯咖啡安静坐一会儿。开放时间为 8:00-18:00。":"날씨가 좋은 날에는 최상층 테라스에서 잠시 쉬어 가실 수 있습니다. 햇볕과 바람을 느끼거나 커피 한 잔과 함께 조용히 머물기 좋습니다. 이용 시간은 8:00-18:00입니다.",
+        "屋上テラス / 天气好的时候可短暂停留":"루프탑 테라스 / 날씨 좋은 날 잠깐 쉬기 좋은 공간",
+        "座位区 / 请轻声使用":"좌석 공간 / 조용히 이용해 주세요",
+        "桌椅与植物 / 请不要自行移动家具":"테이블, 의자, 식물 / 가구를 이동하지 마세요",
+        "最上階に、ひらけた時間を。":"최상층에서 잠깐의 여유를.",
+        "Coffee upstairs. Quiet air above Tsukiji.":"Coffee upstairs. Quiet air above Tsukiji.",
+        "请在开放时间内使用。夜间、雨天、强风或地面湿滑时，请不要使用露台。":"이용 시간 안에만 사용해 주세요. 야간, 비, 강풍, 바닥이 미끄러운 경우에는 이용하지 마세요.",
+        "Open Hours":"Open Hours",
+        "安静使用":"조용히 이용",
+        "请轻声交谈，不播放音乐，不长时间占位。":"작은 목소리로 대화해 주세요. 음악 재생과 장시간 자리 사용은 삼가 주세요.",
+        "禁烟":"금연",
+        "露台、客房、酒店门口及入口周边均请勿吸烟。":"테라스, 객실, 호텔 입구 및 입구 주변은 모두 금연입니다.",
+        "天气不好时不使用":"악천후 시 이용 불가",
+        "雨天、强风或地面湿滑时，请回到室内。":"비, 강풍, 바닥이 미끄러운 경우에는 실내로 돌아와 주세요.",
+        "离开前":"나가기 전",
+        "请带走随身物品、饮品和垃圾。":"소지품, 음료, 쓰레기를 모두 가져가 주세요.",
+        "开放时间":"이용 시간",
+        "8:00-18:00。":"8:00-18:00.",
+        "18:00 后请不要进入露台区域。":"18:00 이후에는 테라스 구역에 들어가지 마세요.",
+        "适合这样使用":"이렇게 이용해 주세요",
+        "短暂休息、晒太阳、拍照，或在外出前后放松片刻。请保持轻声交谈。":"잠깐의 휴식, 햇볕, 사진, 외출 전후의 조용한 휴식에 좋습니다. 대화는 작게 부탁드립니다.",
+        "安全提醒":"안전 안내",
+        "请照看儿童，不要攀爬护栏。露台家具如有收起，请不要自行移动。":"어린이를 잘 살펴봐 주세요. 난간에 오르지 말고, 정리된 가구는 이동하지 마세요.",
+        "有问题找前台":"문제가 있으면 프런트로",
+        "如发现遗落物品、设施异常，或不确定当天是否可以使用，请联系前台/工作人员。":"분실물, 시설 이상, 당일 이용 가능 여부가 불확실한 경우 프런트나 직원에게 문의해 주세요.",
+        "06 / 築地与银座":"06 / 쓰키지와 긴자",
+        "07 / 设备安全":"07 / 설비 안전",
+        "08 / 洗衣机":"08 / 세탁건조기",
+        "09 / 备品与追加需求":"09 / 비품 및 추가 요청",
+        "10 / 清扫、毛巾与垃圾":"10 / 청소, 수건, 쓰레기",
+        "11 / 住宿规则":"11 / 숙박 규칙",
+        "12 / 退房检查":"12 / 체크아웃 확인"
+      }
+    };
+
+    Object.entries(terraceTranslations).forEach(([lang, entries]) => {
+      Object.assign(dictionaries[lang], entries);
+    });
+
     const originalText = new WeakMap();
     const textNodes = [];
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
@@ -2257,7 +2535,7 @@
     }
 
     const traditionalPairs = [
-      ['这里','這裡'],['为什么','為什麼'],['之间','之間'],['东京','東京'],['轻','輕'],['这本','這本'],['信息','資訊'],['设备','設備'],['清扫','清掃'],['退房','退房'],['检查','檢查'],['房间','房間'],['联系','聯絡'],['前台','櫃台'],['工作人员','工作人員'],['门锁','門鎖'],['现场','現場'],['说明','說明'],['确认','確認'],['常用','常用'],['问题','問題'],['直接','直接'],['客人','客人'],['入口','入口'],['地址','地址'],['电话','電話'],['拨打','撥打'],['外部','外部'],['时间','時間'],['离开','離開'],['电器','電器'],['水龙头','水龍頭'],['窗户','窗戶'],['东京','東京'],['价值','價值'],['离','離'],['购物','購物'],['连续','連續'],['动线','動線'],['清单','清單'],['场外','場外'],['餐饮','餐飲'],['传统','傳統'],['适合','適合'],['银座','銀座'],['则是','則是'],['代表性','代表性'],['商业','商業'],['百货','百貨'],['品牌店','品牌店'],['画廊','畫廊'],['范围','範圍'],['实用','實用'],['早餐','早餐'],['海鲜','海鮮'],['厨具','廚具'],['进入','進入'],['展览','展覽'],['食品区','食品區'],['城市','城市'],['整理','整理'],['顺','順'],['轻装','輕裝'],['食物','食物'],['打开','打開'],['附近','附近'],['短暂','短暫'],['日常','日常'],['独立','獨立'],['浴室','浴室'],['桌面','桌面'],['收纳','收納'],['空间','空間'],['空调','空調'],['遥控器','遙控器'],['控制','控制'],['开','開'],['关','關'],['无法','無法'],['制冷','製冷'],['制热','製熱'],['持续','持續'],['报警','警報'],['反应','反應'],['热水','熱水'],['等待','等待'],['反复','反覆'],['换气','換氣'],['通风','通風'],['潮气','濕氣'],['异味','異味'],['冰箱','冰箱'],['轻食','輕食'],['自己的','自己的'],['电热水壶','電熱水壺'],['烧水','燒水'],['溢出','溢出'],['明显','明顯'],['洗烘','洗烘'],['使用说明','使用說明'],['机器','機器'],['控制在','控制在'],['滚筒','滾筒'],['常用按钮示意','常用按鈕示意'],['开机','開機'],['关机','關機'],['洗衣','洗衣'],['烘干','烘乾'],['结束','結束'],['开门','開門'],['选择','選擇'],['放衣物','放衣物'],['官方','官方'],['容量','容量'],['较难','較難'],['减少','減少'],['数量','數量'],['洗衣液','洗衣液'],['洗剂','洗劑'],['请勿','請勿'],['洗手液','洗手液'],['沐浴露','沐浴露'],['洗洁精','洗潔精'],['过量','過量'],['影响','影響'],['脱水','脫水'],['暂停','暫停'],['强行','強行'],['机门','機門'],['锁定','鎖定'],['程序','程序'],['尽早','儘早'],['起皱','起皺'],['潮味','潮味'],['遗忘','遺忘'],['防水','防水'],['胶底','膠底'],['宠物','寵物'],['羊毛','羊毛'],['丝绸','絲綢'],['橡胶','橡膠'],['带油污','帶油污'],['溶剂','溶劑'],['滤网','濾網'],['继续','繼續'],['安全','安全'],['高风险','高風險'],['误用','誤用'],['造成','造成'],['起火','起火'],['损坏','損壞'],['微波炉','微波爐'],['锡纸','錫紙'],['铝膜','鋁膜'],['金属','金屬'],['便利店','便利店'],['便当','便當'],['外卖','外賣'],['容器','容器'],['包装纸','包裝紙'],['边','邊'],['不确定','不確定'],['加热','加熱'],['可微波','可微波'],['少量多次','少量多次'],['擦掉','擦掉'],['汤汁','湯汁'],['铝箔','鋁箔'],['餐具','餐具'],['金边','金邊'],['银边','銀邊'],['密封','密封'],['一次性','一次性'],['水壶','水壺'],['清水','清水'],['牛奶','牛奶'],['留下','留下'],['焦味','焦味'],['强烈','強烈'],['避免','避免'],['简单','簡單'],['烹调','烹調'],['重油烟','重油煙'],['异常','異常'],['跳闸','跳閘'],['尝试','嘗試'],['备品','備品'],['追加','追加'],['需求','需求'],['人数','人數'],['配置','配置'],['毛巾','毛巾'],['垃圾袋','垃圾袋'],['纸巾','紙巾'],['物品','物品'],['规则','規則'],['更换','更換'],['集中','集中'],['房门口','房門口'],['联系','聯絡'],['工作人员','工作人員'],['走廊','走廊'],['公共区域','公共區域'],['借用品','借用品'],['充电器','充電器'],['转换插头','轉換插頭'],['熨斗','熨斗'],['当天','當天'],['库存','庫存'],['损坏','損壞'],['缺失','缺失'],['反馈','反饋'],['安排','安排'],['打扰','打擾'],['每日','每日'],['完整','完整'],['固定周期','固定週期'],['床单','床單'],['床铺','床鋪'],['不会','不會'],['新的','新的'],['挂在','掛在'],['自行','自行'],['取用','取用'],['使用过','使用過'],['回收','回收'],['装袋','裝袋'],['封好','封好'],['其他','其他'],['时间','時間'],['放置','放置'],['注意事项','注意事項'],['特别','特別'],['禁烟','禁菸'],['访客','訪客'],['夜间','夜間'],['安静','安靜'],['邻里','鄰里'],['客房','客房'],['门口','門口'],['吸烟','吸菸'],['停留','停留'],['烟蒂','菸蒂'],['说话','說話'],['拖动','拖動'],['影响','影響'],['登记','登記'],['配送员','配送員'],['区域','區域'],['关好','關好'],['行李','行李'],['遗失','遺失'],['个人','個人'],['护照','護照'],['衣物','衣物'],['抽屉','抽屜'],['关闭','關閉'],['状态','狀態'],['带走','帶走'],['寄存','寄存'],['自动','自動'],['提供','提供'],['提前','提前'],['咨询','諮詢'],['一楼','一樓'],['菜单','菜單'],['价格','價格'],['营业','營業'],['供应','供應'],['柜台','櫃台'],['咖啡','咖啡'],['热咖啡','熱咖啡'],['日期','日期'],['变化','變化'],['外带','外帶'],['点心','點心'],['详细','詳細'],['周边','周邊'],['散步','散步'],['指南','指南'],['完整旅游攻略','完整旅遊攻略'],['住客','住客'],['短路线','短路線'],['早晨','早晨'],['白天','白天'],['雨天','雨天'],['室内','室內'],['轻松','輕鬆'],['場外市场','場外市場'],['街区','街區'],['气氛','氣氛'],['店铺','店鋪'],['小吃','小吃'],['寿司','壽司'],['回酒店','回酒店'],['东银座','東銀座'],['周边','周邊'],['主街','主街'],['商务','商務'],['会面','會面'],['商场','商場'],['地下街','地下街'],['餐厅','餐廳'],['小店','小店'],['摊位','攤位'],['料理工具','料理工具'],['传统食品','傳統食品'],['玉子烧','玉子燒'],['游客','旅客'],['建议','建議'],['长时间','長時間'],['规则','規則'],['奢侈品','奢侈品'],['文具','文具'],['生活用品','生活用品'],['优势','優勢'],['方便','方便'],['洗澡','洗澡'],['继续','繼續'],['排队','排隊'],['每天','每天'],['出门前','出門前'],['最后更新','最後更新'],['变化','變化'],['官网','官網'],['打开地图','打開地圖']
+      ['这里','這裡'],['为什么','為什麼'],['之间','之間'],['东京','東京'],['轻','輕'],['这本','這本'],['信息','資訊'],['设备','設備'],['清扫','清掃'],['退房','退房'],['检查','檢查'],['房间','房間'],['联系','聯絡'],['前台','櫃台'],['工作人员','工作人員'],['门锁','門鎖'],['现场','現場'],['说明','說明'],['确认','確認'],['常用','常用'],['问题','問題'],['直接','直接'],['客人','客人'],['入口','入口'],['地址','地址'],['电话','電話'],['拨打','撥打'],['外部','外部'],['时间','時間'],['离开','離開'],['电器','電器'],['水龙头','水龍頭'],['窗户','窗戶'],['东京','東京'],['价值','價值'],['离','離'],['购物','購物'],['连续','連續'],['动线','動線'],['清单','清單'],['场外','場外'],['餐饮','餐飲'],['传统','傳統'],['适合','適合'],['银座','銀座'],['则是','則是'],['代表性','代表性'],['商业','商業'],['百货','百貨'],['品牌店','品牌店'],['画廊','畫廊'],['范围','範圍'],['实用','實用'],['早餐','早餐'],['海鲜','海鮮'],['厨具','廚具'],['进入','進入'],['展览','展覽'],['食品区','食品區'],['城市','城市'],['整理','整理'],['顺','順'],['轻装','輕裝'],['食物','食物'],['打开','打開'],['附近','附近'],['短暂','短暫'],['日常','日常'],['独立','獨立'],['浴室','浴室'],['桌面','桌面'],['收纳','收納'],['空间','空間'],['空调','空調'],['遥控器','遙控器'],['控制','控制'],['开','開'],['关','關'],['无法','無法'],['制冷','製冷'],['制热','製熱'],['持续','持續'],['报警','警報'],['反应','反應'],['热水','熱水'],['等待','等待'],['反复','反覆'],['换气','換氣'],['通风','通風'],['潮气','濕氣'],['异味','異味'],['冰箱','冰箱'],['轻食','輕食'],['自己的','自己的'],['电热水壶','電熱水壺'],['烧水','燒水'],['溢出','溢出'],['明显','明顯'],['洗烘','洗烘'],['使用说明','使用說明'],['机器','機器'],['控制在','控制在'],['滚筒','滾筒'],['常用按钮示意','常用按鈕示意'],['开机','開機'],['关机','關機'],['洗衣','洗衣'],['烘干','烘乾'],['结束','結束'],['开门','開門'],['选择','選擇'],['放衣物','放衣物'],['官方','官方'],['容量','容量'],['较难','較難'],['减少','減少'],['数量','數量'],['洗衣液','洗衣液'],['洗剂','洗劑'],['请勿','請勿'],['洗手液','洗手液'],['沐浴露','沐浴露'],['洗洁精','洗潔精'],['过量','過量'],['影响','影響'],['脱水','脫水'],['暂停','暫停'],['强行','強行'],['机门','機門'],['锁定','鎖定'],['程序','程序'],['尽早','儘早'],['起皱','起皺'],['潮味','潮味'],['遗忘','遺忘'],['防水','防水'],['胶底','膠底'],['宠物','寵物'],['羊毛','羊毛'],['丝绸','絲綢'],['橡胶','橡膠'],['带油污','帶油污'],['溶剂','溶劑'],['滤网','濾網'],['继续','繼續'],['安全','安全'],['高风险','高風險'],['误用','誤用'],['造成','造成'],['起火','起火'],['损坏','損壞'],['微波炉','微波爐'],['锡纸','錫紙'],['铝膜','鋁膜'],['金属','金屬'],['便利店','便利店'],['便当','便當'],['外卖','外賣'],['容器','容器'],['包装纸','包裝紙'],['边','邊'],['不确定','不確定'],['加热','加熱'],['可微波','可微波'],['少量多次','少量多次'],['擦掉','擦掉'],['汤汁','湯汁'],['铝箔','鋁箔'],['餐具','餐具'],['金边','金邊'],['银边','銀邊'],['密封','密封'],['一次性','一次性'],['水壶','水壺'],['清水','清水'],['牛奶','牛奶'],['留下','留下'],['焦味','焦味'],['强烈','強烈'],['避免','避免'],['简单','簡單'],['烹调','烹調'],['重油烟','重油煙'],['异常','異常'],['跳闸','跳閘'],['尝试','嘗試'],['备品','備品'],['追加','追加'],['需求','需求'],['人数','人數'],['配置','配置'],['毛巾','毛巾'],['垃圾袋','垃圾袋'],['纸巾','紙巾'],['物品','物品'],['规则','規則'],['更换','更換'],['集中','集中'],['房门口','房門口'],['联系','聯絡'],['工作人员','工作人員'],['走廊','走廊'],['公共区域','公共區域'],['借用品','借用品'],['充电器','充電器'],['转换插头','轉換插頭'],['熨斗','熨斗'],['当天','當天'],['库存','庫存'],['损坏','損壞'],['缺失','缺失'],['反馈','反饋'],['安排','安排'],['打扰','打擾'],['每日','每日'],['完整','完整'],['固定周期','固定週期'],['床单','床單'],['床铺','床鋪'],['不会','不會'],['新的','新的'],['挂在','掛在'],['自行','自行'],['取用','取用'],['使用过','使用過'],['回收','回收'],['装袋','裝袋'],['封好','封好'],['其他','其他'],['时间','時間'],['放置','放置'],['注意事项','注意事項'],['特别','特別'],['禁烟','禁菸'],['访客','訪客'],['夜间','夜間'],['安静','安靜'],['邻里','鄰里'],['客房','客房'],['门口','門口'],['吸烟','吸菸'],['停留','停留'],['烟蒂','菸蒂'],['说话','說話'],['拖动','拖動'],['影响','影響'],['登记','登記'],['配送员','配送員'],['区域','區域'],['关好','關好'],['行李','行李'],['遗失','遺失'],['个人','個人'],['护照','護照'],['衣物','衣物'],['抽屉','抽屜'],['关闭','關閉'],['状态','狀態'],['带走','帶走'],['寄存','寄存'],['自动','自動'],['提供','提供'],['提前','提前'],['咨询','諮詢'],['一楼','一樓'],['菜单','菜單'],['价格','價格'],['营业','營業'],['供应','供應'],['柜台','櫃台'],['咖啡','咖啡'],['热咖啡','熱咖啡'],['日期','日期'],['变化','變化'],['外带','外帶'],['点心','點心'],['详细','詳細'],['周边','周邊'],['散步','散步'],['指南','指南'],['完整旅游攻略','完整旅遊攻略'],['住客','住客'],['短路线','短路線'],['早晨','早晨'],['白天','白天'],['雨天','雨天'],['室内','室內'],['轻松','輕鬆'],['場外市场','場外市場'],['街区','街區'],['气氛','氣氛'],['店铺','店鋪'],['小吃','小吃'],['寿司','壽司'],['回酒店','回酒店'],['东银座','東銀座'],['周边','周邊'],['主街','主街'],['商务','商務'],['会面','會面'],['商场','商場'],['地下街','地下街'],['餐厅','餐廳'],['小店','小店'],['摊位','攤位'],['料理工具','料理工具'],['传统食品','傳統食品'],['玉子烧','玉子燒'],['游客','旅客'],['建议','建議'],['长时间','長時間'],['规则','規則'],['奢侈品','奢侈品'],['文具','文具'],['生活用品','生活用品'],['优势','優勢'],['方便','方便'],['洗澡','洗澡'],['继续','繼續'],['排队','排隊'],['每天','每天'],['出门前','出門前'],['最后更新','最後更新'],['变化','變化'],['官网','官網'],['打开地图','打開地圖'],['露台','露台'],['天气','天氣'],['最上面','最上面'],['稍作','稍作'],['晒晒','曬曬'],['太阳','太陽'],['吹吹风','吹吹風'],['一杯','一杯'],['开放','開放'],['座位区','座位區'],['桌椅','桌椅'],['移动','移動'],['区域','區域'],['强风','強風'],['湿滑','濕滑'],['轻声','輕聲'],['交谈','交談'],['播放','播放'],['音乐','音樂'],['占位','佔位'],['随身物品','隨身物品'],['饮品','飲品'],['垃圾','垃圾'],['拍照','拍照'],['放松','放鬆'],['安全提醒','安全提醒'],['照看','照看'],['儿童','兒童'],['攀爬','攀爬'],['护栏','護欄'],['家具','家具'],['遗落','遺落'],['设施','設施'],['当天','當天']
     ];
 
     function toTraditional(value) {
