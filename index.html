@@ -133,6 +133,7 @@
     }
 
     .lang-switcher button {
+      flex: 0 0 auto;
       min-height: 30px;
       padding: 0 9px;
       border: 1px solid rgba(255,255,255,.16);
@@ -140,6 +141,7 @@
       color: rgba(255,255,255,.72);
       background: rgba(255,255,255,.04);
       font-size: 11px;
+      white-space: nowrap;
       cursor: pointer;
     }
 
@@ -198,8 +200,22 @@
 
     h1, h2, h3, p { margin-top: 0; }
 
+    html[lang="ko"] h1,
+    html[lang="ko"] h2,
+    html[lang="ko"] h3,
+    html[lang="ko"] .hero-lead,
+    html[lang="ko"] .section-lead,
+    :lang(ko) h1,
+    :lang(ko) h2,
+    :lang(ko) h3,
+    :lang(ko) .hero-lead,
+    :lang(ko) .section-lead {
+      word-break: keep-all;
+      overflow-wrap: normal;
+    }
+
     h1 {
-      font-size: clamp(48px, 8vw, 96px);
+      font-size: 92px;
       line-height: .96;
       font-weight: 460;
       margin-bottom: 28px;
@@ -208,7 +224,7 @@
 
     .hero-lead {
       max-width: 620px;
-      font-size: clamp(20px, 2.4vw, 30px);
+      font-size: 28px;
       line-height: 1.35;
       margin-bottom: 20px;
     }
@@ -312,7 +328,7 @@
     }
 
     h2 {
-      font-size: clamp(28px, 3.4vw, 42px);
+      font-size: 42px;
       line-height: 1.12;
       font-weight: 500;
       margin-bottom: 16px;
@@ -339,7 +355,7 @@
     }
 
     .brand-quote {
-      font-size: clamp(28px, 4vw, 48px);
+      font-size: 44px;
       line-height: 1.12;
       font-weight: 470;
       margin-bottom: 22px;
@@ -570,7 +586,7 @@
       background: var(--ink);
       color: #fff;
       border-radius: var(--radius);
-      padding: clamp(24px, 4vw, 42px);
+      padding: 42px;
       box-shadow: var(--shadow);
     }
 
@@ -675,12 +691,12 @@
         linear-gradient(135deg, rgba(21,38,49,.96), rgba(70,42,35,.94)),
         var(--ink);
       border-radius: var(--radius);
-      padding: clamp(28px, 4vw, 44px);
+      padding: 44px;
       box-shadow: var(--shadow);
     }
 
     .warning-main h3 {
-      font-size: clamp(30px, 4vw, 48px);
+      font-size: 44px;
       line-height: 1.08;
       font-weight: 520;
       margin-bottom: 18px;
@@ -823,7 +839,7 @@
       background: rgba(189, 162, 98, .16);
       border: 1px solid rgba(189, 162, 98, .32);
       border-radius: var(--radius);
-      font-size: clamp(20px, 2.2vw, 28px);
+      font-size: 26px;
       line-height: 1.25;
       font-weight: 560;
     }
@@ -1350,34 +1366,334 @@
       border-color: var(--gold);
     }
 
+    @media (max-width: 1080px) {
+      .site-nav {
+        gap: 14px;
+        padding: 12px 22px 12px 34px;
+      }
+
+      .brand-mark { font-size: 11px; }
+      .nav-links a { padding: 7px 7px; }
+      h1 { font-size: 78px; }
+      h2 { font-size: 36px; }
+      .hero-lead { font-size: 24px; }
+      .brand-quote,
+      .warning-main h3 { font-size: 38px; }
+      .ticket,
+      .warning-main { padding: 32px; }
+      .washer-route { font-size: 23px; }
+    }
+
     @media (max-width: 860px) {
-      body::before { left: 16px; }
-      .site-nav { align-items: flex-start; flex-direction: column; gap: 10px; padding-left: 28px; }
-      .lang-switcher { flex-wrap: wrap; }
-      .hero { min-height: 720px; }
-      .hero-image { background-position: center; }
-      .hero-copy { min-height: 720px; padding-top: 120px; padding-bottom: 44px; }
-      .quick-strip { grid-template-columns: repeat(2, 1fr); }
-      .toc-band { grid-template-columns: 1fr 1fr; margin-top: 20px; }
-      .page { width: min(100% - 38px, 680px); padding: 56px 0; }
-      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid, .place-feature { grid-template-columns: 1fr; }
-      .brand-board, .brand-values, .brand-day, .route-strip, .place-gallery { grid-template-columns: 1fr; }
-      .cafe-photo-feature { position: static; }
+      body::before { left: 16px; width: 1px; }
+
+      .site-nav {
+        align-items: stretch;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 9px 12px;
+        padding: 10px 14px 10px 26px;
+      }
+
+      .brand-mark {
+        align-self: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .nav-links {
+        grid-column: 1 / -1;
+        order: 3;
+        gap: 8px;
+        padding-bottom: 2px;
+        mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 28px), transparent);
+      }
+
+      .nav-links a {
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        padding: 0 11px;
+        border: 1px solid rgba(255,255,255,.14);
+        border-radius: 999px;
+        background: rgba(255,255,255,.045);
+        font-size: 12px;
+      }
+
+      .lang-switcher {
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 5px;
+      }
+
+      .lang-switcher button {
+        min-height: 28px;
+        padding: 0 8px;
+        font-size: 10px;
+      }
+
+      .hero { min-height: calc(100svh - 92px); }
+
+      .hero-image {
+        background:
+          linear-gradient(90deg, rgba(13, 24, 27, .86), rgba(13, 24, 27, .55) 58%, rgba(13, 24, 27, .18)),
+          linear-gradient(180deg, rgba(13, 24, 27, .1), rgba(13, 24, 27, .82)),
+          url("assets/brand-room-hero.jpg") 58% center / cover no-repeat;
+      }
+
+      .hero-copy {
+        min-height: calc(100svh - 92px);
+        width: min(100% - 40px, 680px);
+        padding: 76px 0 30px;
+      }
+
+      h1 {
+        font-size: 58px;
+        margin-bottom: 18px;
+      }
+
+      h2 { font-size: 32px; }
+      .hero-lead { font-size: 21px; margin-bottom: 14px; }
+      .hero-note { font-size: 14px; max-width: 92%; }
+      .rule { margin-bottom: 24px; }
+
+      .quick-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 28px;
+      }
+
+      .quick-strip div {
+        min-height: auto;
+        padding: 13px;
+      }
+
+      .toc-band {
+        display: flex;
+        gap: 10px;
+        width: calc(100% - 36px);
+        margin: 16px auto 0;
+        padding: 10px;
+        overflow-x: auto;
+        border-color: var(--line);
+        background: rgba(255,253,247,.92);
+        scrollbar-width: none;
+      }
+
+      .toc-card {
+        flex: 0 0 230px;
+        min-height: auto;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+      }
+
+      .page {
+        width: min(100% - 38px, 680px);
+        padding: 52px 0;
+      }
+
+      .section-head,
+      .layout-2,
+      .stay-card,
+      .footer-grid,
+      .washer-guide,
+      .cafe-grid,
+      .place-feature,
+      .warning-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .section-kicker {
+        border-top-width: 2px;
+        padding-top: 10px;
+      }
+
+      .brand-board,
+      .brand-values,
+      .brand-day,
+      .route-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-board { padding: 24px; }
+      .brand-quote,
+      .warning-main h3 { font-size: 32px; }
+
+      .brand-photo-stack figure:first-child img,
+      .brand-photo-stack figure:last-child img,
+      .photo-card img {
+        aspect-ratio: 4 / 3;
+      }
+
       .place-photo-main { position: static; }
+      .place-photo-main img { aspect-ratio: 4 / 3; }
+      .place-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
       .cafe-copy { order: 1; }
-      .cafe-photo-feature { order: 2; }
-      .scone-spotlight { grid-template-columns: 1fr; }
-      .cards, .cards.two, .cards.four, .tool-grid, .warning-grid, .do-dont, .washer-notes { grid-template-columns: 1fr; }
-      .panel-buttons { grid-template-columns: repeat(2, 1fr); }
+      .cafe-photo-feature {
+        order: 2;
+        height: auto;
+        min-height: auto;
+      }
+
+      .cafe-photo-feature img {
+        height: auto;
+        min-height: auto;
+        flex: none;
+        aspect-ratio: 4 / 3;
+      }
+
+      .scone-spotlight {
+        grid-template-columns: 132px 1fr;
+        gap: 12px;
+      }
+
+      .cards,
+      .cards.two,
+      .cards.four,
+      .tool-grid,
+      .do-dont,
+      .washer-notes {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .tool-card,
+      details,
+      .step,
+      .check,
+      .washer-step {
+        padding: 18px;
+      }
+
+      .panel-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .ticket-row { grid-template-columns: 1fr; gap: 6px; }
       .footer .actions { justify-content: flex-start; }
     }
 
     @media (max-width: 560px) {
-      .quick-strip,
-      .toc-band { grid-template-columns: 1fr; }
-      h1 { font-size: 46px; }
-      .hero-lead { font-size: 20px; }
+      .site-nav {
+        grid-template-columns: minmax(0, 1fr) minmax(0, auto);
+        padding-right: 12px;
+      }
+
+      .lang-switcher {
+        justify-content: flex-end;
+        max-width: min(190px, 46vw);
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+
+      .hero {
+        min-height: calc(100svh - 86px);
+      }
+
+      .hero-copy {
+        min-height: calc(100svh - 86px);
+        width: calc(100% - 34px);
+        padding: 58px 0 26px;
+      }
+
+      h1 {
+        font-size: 43px;
+        line-height: .98;
+      }
+
+      h2 { font-size: 27px; }
+      html[lang="ko"] h2,
+      :lang(ko) h2 { font-size: 24px; }
+      .hero-lead { font-size: 19px; }
+      .section-lead { font-size: 15px; }
+
+      .quick-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 22px;
+      }
+
+      .toc-band {
+        width: calc(100% - 30px);
+        margin-top: 12px;
+      }
+
+      .toc-card { flex-basis: 210px; }
+      .page { width: calc(100% - 30px); padding: 42px 0; }
+
+      .brand-board,
+      .ticket,
+      .warning-main,
+      .message-template {
+        padding: 20px;
+      }
+
+      .brand-quote,
+      .warning-main h3 {
+        font-size: 28px;
+      }
+
+      .brand-value,
+      .brand-day div,
+      .route-card,
+      .card,
+      .tool-card,
+      .cafe-copy,
+      .washer-panel,
+      .washer-route,
+      .washer-step,
+      .washer-note,
+      .warning-card {
+        padding: 16px;
+      }
+
+      .route-card,
+      .card,
+      .brand-value {
+        min-height: auto;
+      }
+
+      .place-gallery { grid-template-columns: 1fr; }
+
+      .scone-spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .cafe-row {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .cafe-price { font-size: 15px; }
+      .washer-route { font-size: 20px; }
+
+      .washer-step,
+      .step,
+      .check {
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+      }
+
+      .washer-step .num,
+      .step::before,
+      .num {
+        width: 34px;
+        height: 34px;
+        font-size: 11px;
+      }
+
+      .panel-buttons { gap: 8px; }
+
+      .panel-button {
+        min-height: 54px;
+        padding: 9px;
+      }
+
+      .footer {
+        padding: 42px 16px 44px 26px;
+      }
     }
 
     @media print {
