@@ -3,9 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SPATIUM GINZA PONY 中文房间使用手册</title>
+  <title>SPATIUM GINZA PONY Stay Guide</title>
   <style>
     :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Noto Sans CJK JP", sans-serif;
       --ink: #1d2628;
       --ink-2: #2d3838;
       --paper: #eee8dc;
@@ -31,13 +32,21 @@
     body {
       margin: 0;
       color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, "Yu Gothic", "Hiragino Sans", "Noto Sans CJK JP", sans-serif;
+      font-family: var(--font-sans);
       background:
         linear-gradient(180deg, rgba(255,255,255,.42), rgba(255,255,255,0) 360px),
         linear-gradient(135deg, rgba(29,38,40,.045), transparent 36%),
         var(--paper);
       line-height: 1.55;
       letter-spacing: 0;
+    }
+
+    button, input, textarea, select, summary {
+      font-family: var(--font-sans);
+    }
+
+    h1, h2, h3, h4, p, a, b, strong, span, li, dt, dd, figcaption {
+      font-family: inherit;
     }
 
     body::before {
@@ -58,15 +67,17 @@
       flex-direction: column;
     }
 
-    #washer-guide { order: 1; }
-    #appliances { order: 2; }
+    #hotel-info { order: 1; }
+    #why-pony { order: 2; }
     #room { order: 3; }
-    #housekeeping { order: 4; }
-    #rules { order: 5; }
-    #checkout { order: 6; }
-    #cafe { order: 7; }
-    #neighborhood { order: 8; }
-    #hotel-info { order: 9; }
+    #cafe { order: 4; }
+    #neighborhood { order: 5; }
+    #appliances { order: 6; }
+    #washer-guide { order: 7; }
+    #amenities { order: 8; }
+    #housekeeping { order: 9; }
+    #rules { order: 10; }
+    #checkout { order: 11; }
 
     .site-nav {
       position: sticky;
@@ -114,27 +125,60 @@
       border-bottom-color: var(--gold);
     }
 
+    .lang-switcher {
+      display: flex;
+      flex: 0 0 auto;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .lang-switcher button {
+      min-height: 30px;
+      padding: 0 9px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 999px;
+      color: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.04);
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .lang-switcher button.is-active {
+      color: var(--ink);
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
     .hero {
-      min-height: 92vh;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(360px, .9fr);
-      gap: 0;
+      position: relative;
+      min-height: 88vh;
+      overflow: hidden;
+      display: block;
       background: var(--ink);
       color: #fff;
     }
 
     .hero-image {
-      min-height: 560px;
-      background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.18)), url("assets/brand-room-hero.jpg") center / cover no-repeat;
+      position: absolute;
+      inset: 0;
+      min-height: 100%;
+      background:
+        linear-gradient(90deg, rgba(13, 24, 27, .82), rgba(13, 24, 27, .42) 48%, rgba(13, 24, 27, .12)),
+        linear-gradient(180deg, rgba(13, 24, 27, .08), rgba(13, 24, 27, .72)),
+        url("assets/brand-room-hero.jpg") center / cover no-repeat;
+      transform: scale(1.02);
     }
 
     .hero-copy {
+      position: relative;
+      z-index: 2;
+      min-height: 88vh;
+      width: min(1120px, calc(100% - 44px));
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: clamp(36px, 7vw, 84px);
-      background:
-        linear-gradient(135deg, #1f292b, #303936 54%, #1b2426);
+      justify-content: flex-end;
+      padding: clamp(96px, 14vh, 150px) 0 clamp(36px, 7vh, 72px);
     }
 
     .eyebrow {
@@ -182,6 +226,7 @@
       background: rgba(255,255,255,.1);
       margin-top: 44px;
       border: 1px solid rgba(255,255,255,.12);
+      max-width: 940px;
     }
 
     .quick-strip div {
@@ -202,37 +247,52 @@
       font-size: 12px;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .hero-actions a,
-    .hero-actions button {
-      min-height: 44px;
-      padding: 0 16px;
-      border: 1px solid rgba(255,255,255,.2);
-      border-radius: 4px;
-      color: #fff;
-      background: rgba(255,255,255,.08);
-      font: inherit;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .hero-actions a:first-child {
-      color: var(--ink);
-      background: var(--gold);
-      border-color: var(--gold);
-    }
-
     .page {
       width: min(1120px, calc(100% - 44px));
       margin: 0 auto;
       padding: clamp(46px, 7vw, 82px) 0;
     }
+
+    .toc-band {
+      width: min(1120px, calc(100% - 44px));
+      margin: -34px auto 0;
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .toc-card {
+      display: grid;
+      gap: 10px;
+      min-height: 140px;
+      padding: 18px;
+      background: rgba(255,253,247,.86);
+    }
+
+    .toc-card b {
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .toc-card a {
+      display: block;
+      padding: 4px 0;
+      color: var(--ink);
+      font-size: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .toc-card a:hover { color: var(--gold); }
 
     .section-head {
       display: grid;
@@ -262,6 +322,241 @@
       max-width: 760px;
       color: var(--muted);
       font-size: 17px;
+    }
+
+    .brand-board {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, .95fr);
+      gap: clamp(24px, 5vw, 56px);
+      align-items: stretch;
+      padding: clamp(26px, 5vw, 54px);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(31,41,43,.98), rgba(50,57,54,.96) 58%, rgba(28,36,38,.98)),
+        var(--ink);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .brand-quote {
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.12;
+      font-weight: 470;
+      margin-bottom: 22px;
+    }
+
+    .brand-copy p {
+      max-width: 650px;
+      color: rgba(255,255,255,.72);
+      font-size: 16px;
+    }
+
+    .brand-values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 30px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.12);
+    }
+
+    .brand-value {
+      min-height: 150px;
+      padding: 18px;
+      background: rgba(255,255,255,.055);
+    }
+
+    .brand-value span {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .brand-value b {
+      display: block;
+      font-size: 19px;
+      margin-bottom: 8px;
+    }
+
+    .brand-value p {
+      margin: 0;
+      color: rgba(255,255,255,.65);
+      font-size: 13px;
+    }
+
+    .brand-day {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.12);
+    }
+
+    .brand-day div {
+      min-height: 94px;
+      padding: 14px;
+      background: rgba(255,255,255,.04);
+    }
+
+    .brand-day span {
+      display: block;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .brand-day b {
+      display: block;
+      color: rgba(255,255,255,.92);
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .brand-day p {
+      margin: 0;
+      color: rgba(255,255,255,.58);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .brand-photo-stack {
+      display: grid;
+      grid-template-rows: auto auto;
+      gap: 14px;
+    }
+
+    .brand-photo-stack figure {
+      margin: 0;
+      padding: 10px;
+      background: rgba(255,255,255,.92);
+      border-radius: var(--radius);
+      box-shadow: 0 20px 48px rgba(0,0,0,.18);
+    }
+
+    .brand-photo-stack img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .brand-photo-stack figure:first-child img {
+      aspect-ratio: 16 / 10;
+    }
+
+    .brand-photo-stack figure:last-child img {
+      aspect-ratio: 16 / 7;
+      object-position: center 58%;
+    }
+
+    .brand-photo-stack figcaption {
+      padding: 10px 2px 0;
+      color: rgba(29,38,40,.66);
+      font-size: 12px;
+    }
+
+    .route-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      overflow: hidden;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .route-card {
+      min-height: 180px;
+      padding: 22px;
+      background: var(--card);
+    }
+
+    .route-card span {
+      display: block;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .route-card h3 {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .route-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .place-feature {
+      display: grid;
+      grid-template-columns: minmax(320px, .95fr) minmax(0, 1.05fr);
+      gap: clamp(24px, 5vw, 56px);
+      align-items: start;
+      margin-bottom: 22px;
+    }
+
+    .place-photo-main {
+      position: sticky;
+      top: 94px;
+      padding: 10px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .place-photo-main img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 4px;
+    }
+
+    .place-gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .place-gallery figure {
+      margin: 0;
+      padding: 8px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .place-gallery img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+
+    .place-gallery figcaption,
+    .place-photo-main figcaption {
+      padding: 9px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
     }
 
     .stay-card {
@@ -609,9 +904,9 @@
 
     .cafe-grid {
       display: grid;
-      grid-template-columns: minmax(320px, .86fr) minmax(0, 1.14fr);
-      gap: clamp(24px, 5vw, 58px);
-      align-items: start;
+      grid-template-columns: minmax(320px, .82fr) minmax(0, 1.18fr);
+      gap: clamp(22px, 4vw, 44px);
+      align-items: stretch;
     }
 
     .cafe-copy {
@@ -650,11 +945,11 @@
 
     .scone-spotlight {
       display: grid;
-      grid-template-columns: 150px 1fr;
+      grid-template-columns: 170px 1fr;
       gap: 16px;
       align-items: center;
-      margin-top: 18px;
-      padding: 12px;
+      margin: 18px 0 18px;
+      padding: 14px;
       background: rgba(29,38,40,.035);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -718,18 +1013,22 @@
     }
 
     .cafe-photo-feature {
-      position: sticky;
-      top: 94px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
       padding: 10px;
       background: #fff;
       border-radius: var(--radius);
       box-shadow: var(--shadow);
+      min-height: 620px;
     }
 
     .cafe-photo-feature img {
       display: block;
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 0;
+      min-height: 0;
+      flex: 1 1 auto;
       object-fit: cover;
       object-position: center;
       border-radius: 4px;
@@ -1054,13 +1353,17 @@
     @media (max-width: 860px) {
       body::before { left: 16px; }
       .site-nav { align-items: flex-start; flex-direction: column; gap: 10px; padding-left: 28px; }
-      .hero { grid-template-columns: 1fr; min-height: 0; }
-      .hero-image { min-height: 360px; }
-      .hero-copy { padding: 34px 28px 44px; }
+      .lang-switcher { flex-wrap: wrap; }
+      .hero { min-height: 720px; }
+      .hero-image { background-position: center; }
+      .hero-copy { min-height: 720px; padding-top: 120px; padding-bottom: 44px; }
       .quick-strip { grid-template-columns: repeat(2, 1fr); }
+      .toc-band { grid-template-columns: 1fr 1fr; margin-top: 20px; }
       .page { width: min(100% - 38px, 680px); padding: 56px 0; }
-      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid { grid-template-columns: 1fr; }
+      .section-head, .layout-2, .stay-card, .footer-grid, .washer-guide, .cafe-grid, .place-feature { grid-template-columns: 1fr; }
+      .brand-board, .brand-values, .brand-day, .route-strip, .place-gallery { grid-template-columns: 1fr; }
       .cafe-photo-feature { position: static; }
+      .place-photo-main { position: static; }
       .cafe-copy { order: 1; }
       .cafe-photo-feature { order: 2; }
       .scone-spotlight { grid-template-columns: 1fr; }
@@ -1068,6 +1371,13 @@
       .panel-buttons { grid-template-columns: repeat(2, 1fr); }
       .ticket-row { grid-template-columns: 1fr; gap: 6px; }
       .footer .actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 560px) {
+      .quick-strip,
+      .toc-band { grid-template-columns: 1fr; }
+      h1 { font-size: 46px; }
+      .hero-lead { font-size: 20px; }
     }
 
     @media print {
@@ -1084,67 +1394,140 @@
   <nav class="site-nav" aria-label="Guest guide navigation">
     <a class="brand-mark" href="#top">SPATIUM GINZA PONY</a>
     <div class="nav-links">
+      <a href="#hotel-info">先看这里</a>
+      <a href="#why-pony">为什么住这里</a>
+      <a href="#room">房间</a>
+      <a href="#cafe">咖啡</a>
+      <a href="#neighborhood">築地银座</a>
+      <a href="#appliances">设备安全</a>
       <a href="#washer-guide">洗衣机</a>
-      <a href="#appliances">设备注意</a>
-      <a href="#room">设备速查</a>
+      <a href="#amenities">备品</a>
       <a href="#housekeeping">清扫</a>
       <a href="#rules">住宿规则</a>
       <a href="#checkout">退房</a>
+    </div>
+    <div class="lang-switcher" aria-label="Language">
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="zh-CN" class="is-active">简体</button>
+      <button type="button" data-lang="zh-TW">繁體</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ko">한국어</button>
     </div>
   </nav>
 
   <header class="hero" id="top">
     <div class="hero-image" role="img" aria-label="SPATIUM GINZA PONY room interior"></div>
     <div class="hero-copy">
-      <p class="eyebrow">中文房间使用手册 / Room Guide</p>
+      <p class="eyebrow">Stay Guide / 中文房内指南</p>
       <div class="rule"></div>
-      <h1>SPATIUM<br>GINZA PONY</h1>
-      <p class="hero-lead">欢迎入住 SPATIUM GINZA PONY。</p>
-      <p class="hero-note">这里是筑地与银座之间的城市型住宿空间。房间内的主要设备、清扫安排和退房前检查，都整理在这本房内指南里。</p>
+      <h1>SPATIUM <br>GINZA PONY</h1>
+      <p class="hero-lead">住在築地与银座之间，把东京的一天过得更轻一点。</p>
+      <p class="hero-note">这本指南放在房间里使用：先看常用信息，再按需要查看咖啡、房内设备、清扫方式和退房检查。</p>
       <div class="quick-strip" aria-label="quick facts">
-        <div><b>35㎡ Studio</b><span>适合短住、商务和连续住宿</span></div>
-        <div><b>Washer Dryer</b><span>房内可洗衣烘干，步骤见下方</span></div>
-        <div><b>Microwave</b><span>请勿放入锡纸、金属或密封容器</span></div>
+        <div><b>Front Desk</b><span>房号、门锁、Wi-Fi 或其他问题请找前台</span></div>
+        <div><b>1F Cafe</b><span>咖啡和スコーン，供应情况以现场为准</span></div>
+        <div><b>Room Essentials</b><span>微波炉、洗衣机、水壶请先看安全说明</span></div>
         <div><b>11:00 Check-out</b><span>离开前检查电器、水龙头和个人物品</span></div>
-      </div>
-      <div class="hero-actions">
-        <a href="#washer-guide">洗衣机说明</a>
-        <a href="#appliances">微波炉注意</a>
       </div>
     </div>
   </header>
 
+  <section class="toc-band" aria-label="Manual contents">
+    <div class="toc-card">
+      <b>Stay Basics</b>
+      <a href="#hotel-info">房间信息、地址、前台联系</a>
+      <a href="#why-pony">为什么住在築地与银座之间</a>
+      <a href="#room">房间与日常使用</a>
+    </div>
+    <div class="toc-card">
+      <b>Experience</b>
+      <a href="#cafe">1F Lobby + Cafe</a>
+      <a href="#neighborhood">築地・银座周边</a>
+    </div>
+    <div class="toc-card">
+      <b>Room Use</b>
+      <a href="#appliances">设备安全</a>
+      <a href="#washer-guide">洗烘机使用说明</a>
+      <a href="#amenities">备品与追加需求</a>
+    </div>
+    <div class="toc-card">
+      <b>Before Leaving</b>
+      <a href="#housekeeping">清扫、毛巾与垃圾</a>
+      <a href="#rules">住宿规则</a>
+      <a href="#checkout">退房前检查</a>
+    </div>
+  </section>
+
   <main>
     <section class="page" id="hotel-info">
       <div class="section-head">
-        <div class="section-kicker">09 / 酒店信息</div>
+        <div class="section-kicker">01 / 先看这里</div>
         <div>
-          <h2>酒店基本信息</h2>
-          <p class="section-lead">房号、门锁等入住信息请以入住通知为准。本手册主要说明房内设备和退房前检查。</p>
+          <h2>入住后先确认</h2>
+          <p class="section-lead">房号、门锁、Wi-Fi 和其他入住相关问题，请以现场说明为准；不清楚时直接找前台/工作人员。本页只保留客人最常用的信息。</p>
         </div>
       </div>
       <div class="layout-2">
         <div class="photo-card">
           <img src="assets/brand-exterior-day.jpg" alt="SPATIUM GINZA PONY exterior">
-          <div class="caption">酒店入口 / 筑地 6 丁目</div>
+          <div class="caption">酒店入口 / 築地 6 丁目</div>
         </div>
         <div class="cards two">
+          <article class="card" style="--accent: var(--sage)">
+            <h3>房间信息</h3>
+            <p><strong>房号、门锁、Wi-Fi</strong> 如不清楚，请直接找前台/工作人员确认。请不要在公共区域大声讨论门锁或密码信息。</p>
+          </article>
+          <article class="card" style="--accent: var(--gold)">
+            <h3>有事请先找前台</h3>
+            <p>设备异常、漏水、跳闸、无法进门或需要帮助时，请先停止操作，并找前台/工作人员处理。请不要自行随意拨打外部紧急电话。</p>
+          </article>
+          <article class="card" style="--accent: var(--clay)">
+            <h3>退房时间</h3>
+            <p><strong>11:00 前退房。</strong> 离开前请检查护照、手机、充电器、衣物、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。</p>
+          </article>
           <article class="card" style="--accent: var(--sage)">
             <h3>地址</h3>
             <p><strong>6-6-11 Tsukiji, Chuo-ku, Tokyo 104-0045</strong><br>〒104-0045 東京都中央区築地6丁目6-11</p>
           </article>
-          <article class="card" style="--accent: var(--gold)">
-            <h3>所在区域</h3>
-            <p>酒店位于筑地区域，前往银座、东银座、筑地市场一带较方便。</p>
-          </article>
-          <article class="card" style="--accent: var(--clay)">
-            <h3>退房时间</h3>
-            <p><strong>11:00 前退房。</strong> 离开前请检查个人物品、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。</p>
-          </article>
-          <article class="card" style="--accent: var(--sage)">
-            <h3>怎么看</h3>
-            <p>洗衣服看“洗衣机”；加热食品看“微波炉”；离开前看“退房”。其他部分可按需要查看。</p>
-          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="page" id="why-pony">
+      <div class="section-head">
+        <div class="section-kicker">02 / 为什么住这里</div>
+        <div>
+          <h2>築地的早晨，银座的白天，回到 PONY 的夜晚</h2>
+          <p class="section-lead">SPATIUM GINZA PONY 的价值，不只是“离哪里近”。它把东京的食、街、购物和连续住宿的便利，放在同一个日常动线里。</p>
+        </div>
+      </div>
+      <div class="brand-board">
+        <div class="brand-copy">
+          <p class="brand-quote">住在这里，东京不是一天跑完的清单，而是一条可以慢慢使用的城市路线。</p>
+          <p>築地是东京食文化的入口。场外市场至今仍有许多餐饮、食材、厨具和传统食品店，适合清晨散步、吃早餐，感受东京厨房的一面。</p>
+          <p>银座则是东京最有代表性的商业街区之一。百货、品牌店、画廊、餐厅、咖啡店和歌舞伎座一带，把传统与现代放在同一个步行范围里。</p>
+          <p>PONY 夹在这两个区域之间：早上可以去築地，白天可以去银座，晚上回到房间洗衣、休息、整理行李。对短住、商务、购物和连续住宿的客人来说，这种节奏比单纯“离景点近”更实用。</p>
+          <div class="brand-values">
+            <div class="brand-value"><span>Food Town</span><b>築地</b><p>早餐、海鲜、玉子烧、茶、厨具和小店。适合用早晨慢慢进入东京。</p></div>
+            <div class="brand-value"><span>Urban Walk</span><b>银座</b><p>购物、餐厅、展览、百货地下食品区和城市散步。适合白天和傍晚。</p></div>
+            <div class="brand-value"><span>Stay Easy</span><b>PONY</b><p>回到房间后能洗衣、加热、整理行李，把东京行程接得更顺。</p></div>
+          </div>
+          <div class="brand-day" aria-label="A day around PONY">
+            <div><span>Morning</span><b>築地早餐</b><p>轻装出门，先用食物和街区打开一天。</p></div>
+            <div><span>Daytime</span><b>银座散步</b><p>购物、展览、咖啡和会面都在附近。</p></div>
+            <div><span>Evening</span><b>回到房间</b><p>洗衣、加热、整理行李，让第二天更轻松。</p></div>
+            <div><span>1F</span><b>Cafe & Scone</b><p>出门前或回房前，到一楼短暂停留。</p></div>
+          </div>
+        </div>
+        <div class="brand-photo-stack">
+          <figure>
+            <img src="assets/brand-room-hero.jpg" alt="SPATIUM GINZA PONY room">
+            <figcaption>35㎡ Studio / 在城市中心保留可以整理和休息的空间</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/brand-cafe-lounge.jpg" alt="SPATIUM ART&CAFE">
+            <figcaption>1F Lobby + Cafe / 出门前或回房前的短暂停留</figcaption>
+          </figure>
         </div>
       </div>
     </section>
@@ -1152,10 +1535,10 @@
     <section class="feature-band" id="room">
       <div class="page">
         <div class="section-head">
-          <div class="section-kicker">03 / 设备速查</div>
+          <div class="section-kicker">03 / 房间与日常使用</div>
           <div>
-            <h2>房间设备速查</h2>
-            <p class="section-lead">这里放空调、浴室、冰箱和水壶的简单说明。洗衣机和微波炉请看前两页。</p>
+            <h2>城市型 Studio 的使用方式</h2>
+            <p class="section-lead">PONY 适合短住、商务、购物和连续住宿。房内有洗烘机、微波炉、冰箱、水壶和独立浴室，适合把一天的行程轻松整理好。</p>
           </div>
         </div>
         <div class="layout-2">
@@ -1166,11 +1549,11 @@
           <div class="tool-grid">
             <article class="tool-card">
               <h3>空调</h3>
-              <dl><dt>使用</dt><dd>用房间里的遥控器或控制面板。开空调时请关好窗户。</dd><dt>离开前</dt><dd>退房前请关掉空调。</dd></dl>
+              <dl><dt>使用</dt><dd>用房间里的遥控器或控制面板。开空调时请关好窗户。</dd><dt>异常</dt><dd>如果无法制冷/制热、持续报警或没有反应，请找前台/工作人员处理。</dd><dt>离开前</dt><dd>退房前请关掉空调。</dd></dl>
             </article>
             <article class="tool-card">
               <h3>浴室 / 淋浴</h3>
-              <dl><dt>使用前</dt><dd>如需淋浴，请先确认热水正常。</dd><dt>使用后</dt><dd>淋浴后请开启换气或保持通风。</dd></dl>
+              <dl><dt>热水</dt><dd>如长时间没有热水，请停止等待并联系工作人员，不要反复开关设备。</dd><dt>使用后</dt><dd>淋浴后请开启换气或保持通风，避免潮气和异味。</dd></dl>
             </article>
             <article class="tool-card">
               <h3>冰箱</h3>
@@ -1187,7 +1570,7 @@
 
     <section class="page" id="washer-guide">
       <div class="section-head">
-        <div class="section-kicker">01 / 洗衣机</div>
+        <div class="section-kicker">07 / 洗衣机</div>
         <div>
           <h2>SHARP ES-S7E 洗烘机使用说明</h2>
           <p class="section-lead">这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。</p>
@@ -1225,24 +1608,23 @@
             <div class="washer-note"><b>不要烘</b><span>羊毛、丝绸、皮革、橡胶/海绵、带油污或溶剂的衣物。</span></div>
             <div class="washer-note"><b>看到 U05</b><span>通常是衣物太多或滤网堵塞。请减少衣物，不要继续硬烘。</span></div>
           </div>
-          <p class="source-note">参考：<a href="https://jp.sharp/support/washer/doc/ess7e_mn.pdf?productId=ES-S7E" target="_blank" rel="noreferrer">SHARP ES-S7E 取扱説明書</a>。本页为客人简化版，以安全、少误操作、少损坏为优先。</p>
         </div>
       </div>
     </section>
 
     <section class="page" id="appliances">
       <div class="section-head">
-        <div class="section-kicker">02 / 设备注意</div>
+        <div class="section-kicker">06 / 设备安全</div>
         <div>
-          <h2>请先看这几个注意事项</h2>
-          <p class="section-lead">微波炉、水壶和洗衣机最容易用错。下面几项请特别注意。</p>
+          <h2>请先避开这些高风险操作</h2>
+          <p class="section-lead">微波炉、水壶和洗衣机最容易因为误用造成起火、漏水、异味或设备损坏。请先看完下面几项，再使用房内设备。</p>
         </div>
       </div>
       <div class="warning-grid">
         <div class="warning-main">
           <p class="eyebrow">Microwave Safety</p>
-          <h3>请不要把锡纸便当放进微波炉。</h3>
-          <p>便当盒、包装纸或外卖容器中可能含有铝膜或金属边。不确定是否可微波加热时，请不要加热。</p>
+          <h3>请勿把锡纸、铝膜或金属放进微波炉。</h3>
+          <p>便利店便当、外卖容器和包装纸可能含有铝膜或金属边，可能起火或损坏设备。不确定是否可微波加热时，请换成可微波容器，或不要加热。</p>
           <div class="do-dont">
             <div>
               <b>可以</b>
@@ -1267,11 +1649,11 @@
         <div class="warning-stack">
           <article class="warning-card">
             <h3>洗衣机不要超量</h3>
-            <p>衣物放太满会影响脱水，也容易产生异响或漏水。请留出空间，让衣物可以转动。</p>
+            <p>洗烘请勿超过滚筒一半。衣物太多会无法烘干、报警、漏水或停机。</p>
           </article>
           <article class="warning-card">
-            <h3>水壶只烧水</h3>
-            <p>请不要用水壶煮茶包、咖啡、牛奶、汤或食物。这样会留下味道，也可能损坏设备。</p>
+            <h3>水壶只能烧清水</h3>
+            <p>请勿煮茶包、咖啡、牛奶、汤或食物，可能溢出、留下焦味或损坏设备。</p>
           </article>
           <article class="warning-card">
             <h3>强烈气味请避免</h3>
@@ -1279,18 +1661,46 @@
           </article>
           <article class="warning-card">
             <h3>异常时先停止</h3>
-            <p>设备冒烟、异味、漏水、跳闸、持续报警或明显异常时，先停止使用，再按入住信息中的渠道反馈。</p>
+            <p>设备冒烟、焦味、漏水、跳闸、持续报警或明显异常时，请立即停止使用，不要继续尝试操作，并找前台/工作人员处理。</p>
           </article>
         </div>
       </div>
     </section>
 
+    <section class="page" id="amenities">
+      <div class="section-head">
+        <div class="section-kicker">08 / 备品与追加需求</div>
+        <div>
+          <h2>房内物品不够时</h2>
+          <p class="section-lead">房内备品会按入住人数和现场配置准备。需要追加毛巾、垃圾袋、纸巾或其他物品时，请找前台/工作人员咨询。</p>
+        </div>
+      </div>
+      <div class="cards four">
+        <article class="card" style="--accent: var(--sage)">
+          <h3>毛巾</h3>
+          <p>连住期间会按清扫规则提供新毛巾。需要更换时，请把旧毛巾装好或集中放在房门口。</p>
+        </article>
+        <article class="card" style="--accent: var(--gold)">
+          <h3>垃圾袋 / 纸巾</h3>
+          <p>如需追加，请联系工作人员。垃圾请装袋封好，不要散放在走廊或公共区域。</p>
+        </article>
+        <article class="card" style="--accent: var(--clay)">
+          <h3>借用品</h3>
+          <p>充电器、转换插头、熨斗等物品如有需求，请先咨询。是否可借用以当天库存为准。</p>
+        </article>
+        <article class="card" style="--accent: var(--sage)">
+          <h3>物品损坏</h3>
+          <p>如果发现设备或备品损坏、缺失，请尽早告知。越早反馈，越容易安排处理。</p>
+        </article>
+      </div>
+    </section>
+
     <section class="page" id="housekeeping">
       <div class="section-head">
-        <div class="section-kicker">04 / 清扫与毛巾</div>
+        <div class="section-kicker">09 / 清扫、毛巾与垃圾</div>
         <div>
           <h2>连住期间的清扫方式</h2>
-          <p class="section-lead">为减少打扰，房间不做每日完整清扫。毛巾和垃圾每天可以处理；房间清扫按固定周期安排。</p>
+          <p class="section-lead">为减少打扰，房间不做每日完整清扫。非清扫日主要处理毛巾和垃圾；完整清扫按固定周期安排。</p>
         </div>
       </div>
       <div class="cards two">
@@ -1304,46 +1714,46 @@
         </article>
         <article class="card" style="--accent: var(--clay)">
           <h3>旧毛巾请放门口</h3>
-          <p>需要更换时，请把使用过的毛巾拿出来，放在房门口。工作人员会回收。</p>
+          <p>需要更换时，请把使用过的毛巾拿出来，集中放在房门口。工作人员会回收。</p>
         </article>
         <article class="card" style="--accent: var(--sage)">
-          <h3>垃圾请放门口</h3>
-          <p>如有垃圾需要回收，请装好后放在房门口。工作人员会在巡回时收走。</p>
+          <h3>垃圾请装袋后放门口</h3>
+          <p>如有垃圾需要当天回收，请装袋封好后放在房门口。其他时间不要把垃圾散放在走廊或公共区域。</p>
         </article>
       </div>
     </section>
 
     <section class="page" id="rules">
       <div class="section-head">
-        <div class="section-kicker">05 / 住宿规则</div>
+        <div class="section-kicker">10 / 住宿规则</div>
         <div>
           <h2>住宿注意事项</h2>
-          <p class="section-lead">请特别注意禁烟、夜间安静和垃圾处理。</p>
+          <p class="section-lead">请特别注意禁烟、访客、夜间安静和公共区域使用。规则不是为了打扰客人，而是为了让所有住客和邻里都能安静入住。</p>
         </div>
       </div>
       <div class="cards two">
         <article class="card" style="--accent: var(--gold)">
           <h3>客房内和酒店门口禁烟</h3>
-          <p>客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟味带入房间。</p>
+          <p>客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟蒂丢入房内垃圾桶。</p>
         </article>
         <article class="card" style="--accent: var(--sage)">
           <h3>夜间安静</h3>
           <p>夜间请降低说话、音乐、电视和拖动行李的声音，避免影响其他住客及邻里。</p>
         </article>
         <article class="card" style="--accent: var(--clay)">
-          <h3>垃圾处理</h3>
-          <p>垃圾请按现场指引处理，勿放置于走廊。如不确定，请先留在房内，不要放到公共区域。</p>
+          <h3>访客与外卖</h3>
+          <p>只有登记入住的客人可以住宿。外卖请尽量在入口或公共区域领取，不要让配送员进入客房区域。</p>
         </article>
         <article class="card" style="--accent: var(--sage)">
-          <h3>其他提醒</h3>
-          <p>只有登记入住的客人可以住宿。请关好房门，不要在走廊放置行李或垃圾。如有损坏或遗失，请尽早告知。</p>
+          <h3>公共区域</h3>
+          <p>请关好房门，不要在走廊放置行李、垃圾或私人物品。如有损坏、遗失或异常，请尽早告知。</p>
         </article>
       </div>
     </section>
 
     <section class="page" id="checkout">
       <div class="section-head">
-        <div class="section-kicker">06 / 退房检查</div>
+        <div class="section-kicker">11 / 退房检查</div>
         <div>
           <h2>退房前检查</h2>
           <p class="section-lead">退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。</p>
@@ -1359,10 +1769,10 @@
 
     <section class="page" id="cafe">
       <div class="section-head">
-        <div class="section-kicker">07 / 一楼咖啡</div>
+        <div class="section-kicker">04 / 一楼咖啡</div>
         <div>
           <h2>1F Lobby + Cafe</h2>
-          <p class="section-lead">一楼咖啡和スコーン适合出门前或回房前短暂停留。菜单、价格和供应情况请以现场展示为准。</p>
+          <p class="section-lead">一楼咖啡和スコーン适合出门前、回房前或短暂等人时使用。菜单、价格、营业情况和当天供应，请以一楼现场展示为准。</p>
         </div>
       </div>
       <div class="cafe-grid">
@@ -1372,7 +1782,7 @@
         </div>
         <div class="cafe-copy">
           <h3>一楼咖啡 / 1F Cafe</h3>
-          <p>早上出门前，或回房前想短暂休息时，可以在一楼确认当天咖啡和点心供应。</p>
+          <p>早上去築地前想喝一杯，下午回到酒店想休息一下，或想带一份热咖啡出门时，都可以先到一楼柜台确认当天供应。</p>
           <div class="cafe-tags" aria-label="cafe notes">
             <span>Morning coffee</span>
             <span>Fresh scone</span>
@@ -1389,9 +1799,7 @@
           <div class="cafe-menu" aria-label="cafe menu summary">
             <div class="cafe-row"><div><b>Americano / Espresso</b><span>アメリカーノ / エスプレッソ</span></div><div class="cafe-price">¥500</div></div>
             <div class="cafe-row"><div><b>Cafe Latte / Cappuccino</b><span>カフェ・ラテ / カプチーノ</span></div><div class="cafe-price">¥580</div></div>
-            <div class="cafe-row"><div><b>Ice / Hot</b><span>部分饮品可选择冷 / 热</span></div><div class="cafe-price">现场确认</div></div>
             <div class="cafe-row"><div><b>Oat Milk</b><span>オーツミルク変更</span></div><div class="cafe-price">+¥50</div></div>
-            <div class="cafe-row"><div><b>Scone / スコーン</b><span>毎日焼きたて / 如有供应，请以柜台展示为准</span></div><div class="cafe-price">¥500</div></div>
           </div>
           <p class="source-note">菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。</p>
         </div>
@@ -1400,17 +1808,58 @@
 
     <section class="page" id="neighborhood">
       <div class="section-head">
-        <div class="section-kicker">08 / 周边与房间</div>
+        <div class="section-kicker">05 / 築地与银座</div>
         <div>
-          <h2>筑地与银座之间的住宿</h2>
-          <p class="section-lead">PONY 位于筑地与银座之间，适合短住、观光、购物和商务行程。房内设备也方便连续住宿。</p>
+          <h2>築地与银座之间的散步指南</h2>
+          <p class="section-lead">这里不是完整旅游攻略，而是给住客的短路线。早晨去築地吃早餐，白天去银座购物或看展，雨天也可以用室内路线把一天安排得轻松一点。</p>
         </div>
       </div>
-      <div class="cards">
-        <article class="card" style="--accent: var(--sage)"><h3>早上 / 筑地</h3><p>可以去筑地吃早餐或散步，然后再开始白天行程。</p></article>
-        <article class="card" style="--accent: var(--gold)"><h3>白天 / 银座</h3><p>银座、东银座一带适合购物、餐厅、展览和会面。</p></article>
-        <article class="card" style="--accent: var(--clay)"><h3>晚上 / 回房间</h3><p>回到房间后可以洗衣、洗澡、整理行李，第二天继续出发。</p></article>
+      <div class="place-feature">
+        <figure class="place-photo-main">
+          <img src="assets/tsukiji-market-street.jpg" alt="築地场外市场街景">
+          <figcaption>築地场外市场 / 清晨到午前最有街区气氛。店铺营业时间各不相同。</figcaption>
+        </figure>
+        <div>
+          <div class="route-strip">
+            <article class="route-card">
+              <span>30-60 min / Morning</span>
+              <h3>築地早餐路线</h3>
+              <p>酒店 → 築地场外市场 → 小吃、寿司、玉子烧或咖啡 → 回酒店 / 去银座。清晨适合轻装出门，市场小店营业时间各不相同。</p>
+            </article>
+            <article class="route-card">
+              <span>Half Day / Shopping</span>
+              <h3>银座白天路线</h3>
+              <p>酒店 → 东银座 / 歌舞伎座周边 → 银座主街 → 百货地下食品区或咖啡店。适合购物、展览、餐厅和商务会面。</p>
+            </article>
+            <article class="route-card">
+              <span>Rainy Day / Easy</span>
+              <h3>雨天轻松路线</h3>
+              <p>先在 1F Cafe 喝咖啡，再去银座商场、百货、地下街或室内餐厅。回房后可以洗衣、烘干衣物、整理行李。</p>
+            </article>
+          </div>
+          <div class="place-gallery">
+            <figure>
+              <img src="assets/tsukiji-shop-counter.jpg" alt="築地店铺柜台">
+              <figcaption>小店柜台 / 适合边走边看当天有什么。</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/tsukiji-market-stall.jpg" alt="築地市场摊位">
+              <figcaption>市場摊位 / 食材、料理工具和传统食品。</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/tsukiji-tamagoyaki.jpg" alt="築地玉子烧柜台">
+              <figcaption>玉子烧与小吃 / 清晨散步时很有築地感。</figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
+      <div class="cards four" style="margin-top:18px">
+        <article class="card" style="--accent: var(--sage)"><h3>築地是什么</h3><p>築地场外市场仍保留许多食品、餐饮、厨具和传统食材店。现在的鱼类拍卖已迁往丰洲，但築地仍适合游客吃早餐和逛小店。</p></article>
+        <article class="card" style="--accent: var(--gold)"><h3>怎么逛更舒服</h3><p>早上人会比较多，建议少带行李、穿好走的鞋。很多店铺空间较小，边走边吃和长时间占位请注意现场规则。</p></article>
+        <article class="card" style="--accent: var(--clay)"><h3>银座怎么用</h3><p>银座不只是奢侈品，也有百货、文具、生活用品、咖啡店、餐厅和画廊。适合白天逛，也适合晚上吃饭后散步。</p></article>
+        <article class="card" style="--accent: var(--sage)"><h3>回到 PONY</h3><p>这一区域的优势是“出去方便，回来也方便”。回房后可以洗衣、加热轻食、洗澡休息，让第二天行程继续得更顺。</p></article>
+      </div>
+      <p class="source-note">店铺营业时间、排队情况和菜单每天可能不同。出门前请以现场信息和当天营业情况为准。</p>
     </section>
   </main>
 
@@ -1418,7 +1867,7 @@
     <div class="footer-grid">
       <div>
         <h2>SPATIUM GINZA PONY</h2>
-        <p>感谢入住 SPATIUM GINZA PONY。<br>最后更新：2026-06-05。如现场说明有变化，请以现场信息为准。</p>
+        <p>感谢入住 SPATIUM GINZA PONY。<br>最后更新：2026-06-06。如现场说明有变化，请以现场信息为准。</p>
       </div>
       <div class="actions">
         <a class="button" href="https://www.spatium.co.jp/gallery" target="_blank" rel="noreferrer">官网</a>
@@ -1426,5 +1875,109 @@
       </div>
     </div>
   </footer>
+  <script>
+    const dictionaries = {
+      ja: {
+        "先看这里":"まず見る","为什么住这里":"ここに泊まる理由","房间":"客室","咖啡":"カフェ","築地银座":"築地・銀座","设备安全":"設備安全","洗衣机":"洗濯乾燥機","备品":"備品","清扫":"清掃","住宿规则":"滞在ルール","退房":"チェックアウト",
+        "Stay Guide / 中文房内指南":"Stay Guide / 客室ガイド","住在築地与银座之间，把东京的一天过得更轻一点。":"築地と銀座のあいだで、東京の一日を軽やかに。","这本指南放在房间里使用：先看常用信息，再按需要查看咖啡、房内设备、清扫方式和退房检查。":"このガイドは客室内で確認するためのものです。基本情報、カフェ、客室設備、清掃、チェックアウト前の確認をまとめています。",
+        "Front Desk":"Front Desk","房号、门锁、Wi-Fi 或其他问题请找前台":"客室番号、ドアロック、Wi-Fiなどはフロントへ","1F Cafe":"1F Cafe","咖啡和スコーン，供应情况以现场为准":"コーヒーとスコーンは当日の提供状況をご確認ください","Room Essentials":"Room Essentials","微波炉、洗衣机、水壶请先看安全说明":"電子レンジ、洗濯機、ケトルは先に注意事項をご確認ください","11:00 Check-out":"11:00 Check-out","离开前检查电器、水龙头和个人物品":"出発前に電源、水栓、忘れ物をご確認ください","退房检查":"チェックアウト確認",
+        "房间信息、地址、前台联系":"客室情報・住所・フロント連絡","为什么住在築地与银座之间":"築地と銀座のあいだに泊まる理由","房间与日常使用":"客室と日常の使い方","築地・银座周边":"築地・銀座周辺","洗烘机使用说明":"洗濯乾燥機の使い方","备品与追加需求":"備品・追加リクエスト","清扫、毛巾与垃圾":"清掃・タオル・ゴミ","退房前检查":"チェックアウト前確認",
+        "01 / 先看这里":"01 / まず見る","入住后先确认":"到着後にまず確認","房号、门锁、Wi-Fi 和其他入住相关问题，请以现场说明为准；不清楚时直接找前台/工作人员。本页只保留客人最常用的信息。":"客室番号、ドアロック、Wi-Fiなど滞在に関することは現地案内をご確認ください。不明な場合はフロントまたはスタッフへお声がけください。","酒店入口 / 築地 6 丁目":"ホテル入口 / 築地6丁目","房间信息":"客室情報","房号、门锁、Wi-Fi":"客室番号、ドアロック、Wi-Fi","如不清楚，请直接找前台/工作人员确认。请不要在公共区域大声讨论门锁或密码信息。":"不明な場合はフロントまたはスタッフにご確認ください。ドアロックやパスワードの情報を共用部で大きな声で話さないようお願いします。","有事请先找前台":"お困りの際はまずフロントへ","设备异常、漏水、跳闸、无法进门或需要帮助时，请先停止操作，并找前台/工作人员处理。请不要自行随意拨打外部紧急电话。":"設備異常、水漏れ、ブレーカー、入室できない場合などは、まず操作を止めてフロントまたはスタッフへご連絡ください。外部の緊急番号へ自己判断で連絡しないでください。","退房时间":"チェックアウト時間","11:00 前退房。":"11:00までにチェックアウトしてください。","离开前请检查护照、手机、充电器、衣物、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。":"出発前にパスポート、携帯、充電器、衣類、洗濯機、冷蔵庫、エアコン、照明、水栓、窓、ドアをご確認ください。","地址":"住所",
+        "02 / 为什么住这里":"02 / ここに泊まる理由","築地的早晨，银座的白天，回到 PONY 的夜晚":"築地の朝、銀座の昼、PONYに戻る夜","SPATIUM GINZA PONY 的价值，不只是“离哪里近”。它把东京的食、街、购物和连续住宿的便利，放在同一个日常动线里。":"SPATIUM GINZA PONYの価値は、ただ近いだけではありません。東京の食、街歩き、買い物、連泊の便利さが一つの動線につながります。","住在这里，东京不是一天跑完的清单，而是一条可以慢慢使用的城市路线。":"ここに泊まると、東京は急いで回るリストではなく、ゆっくり使える街のルートになります。","築地是东京食文化的入口。场外市场至今仍有许多餐饮、食材、厨具和传统食品店，适合清晨散步、吃早餐，感受东京厨房的一面。":"築地は東京の食文化への入口です。場外市場には今も飲食店、食材店、調理道具、伝統食品の店があり、朝の散歩や朝食に向いています。","银座则是东京最有代表性的商业街区之一。百货、品牌店、画廊、餐厅、咖啡店和歌舞伎座一带，把传统与现代放在同一个步行范围里。":"銀座は東京を代表する商業エリアの一つです。百貨店、ブランド店、ギャラリー、レストラン、カフェ、歌舞伎座周辺が歩ける範囲にあります。","PONY 夹在这两个区域之间：早上可以去築地，白天可以去银座，晚上回到房间洗衣、休息、整理行李。对短住、商务、购物和连续住宿的客人来说，这种节奏比单纯“离景点近”更实用。":"PONYはこの二つのエリアのあいだにあります。朝は築地へ、昼は銀座へ、夜は部屋に戻って洗濯や荷物整理。短期滞在、出張、買い物、連泊のお客様に実用的なリズムです。","早餐、海鲜、玉子烧、茶、厨具和小店。适合用早晨慢慢进入东京。":"朝食、海鮮、玉子焼き、お茶、調理道具、小さな店。朝から東京に入っていく感覚があります。","购物、餐厅、展览、百货地下食品区和城市散步。适合白天和傍晚。":"買い物、食事、展示、デパ地下、街歩き。昼から夕方に使いやすいエリアです。","回到房间后能洗衣、加热、整理行李，把东京行程接得更顺。":"部屋に戻って洗濯、温め、荷物整理ができ、翌日の予定につなげやすくなります。","築地早餐":"築地の朝食","轻装出门，先用食物和街区打开一天。":"軽い荷物で出かけ、食と街で一日を始めます。","银座散步":"銀座散歩","购物、展览、咖啡和会面都在附近。":"買い物、展示、カフェ、打ち合わせが近くにあります。","回到房间":"部屋に戻る","洗衣、加热、整理行李，让第二天更轻松。":"洗濯、温め、荷物整理で翌日を軽くします。","出门前或回房前，到一楼短暂停留。":"外出前や帰室前に1階でひと息。","35㎡ Studio / 在城市中心保留可以整理和休息的空间":"35㎡ Studio / 都心で荷物を整え、休める空間","1F Lobby + Cafe / 出门前或回房前的短暂停留":"1F Lobby + Cafe / 外出前・帰室前の短い休憩",
+        "03 / 房间与日常使用":"03 / 客室と日常の使い方","城市型 Studio 的使用方式":"都市型Studioの使い方","PONY 适合短住、商务、购物和连续住宿。房内有洗烘机、微波炉、冰箱、水壶和独立浴室，适合把一天的行程轻松整理好。":"PONYは短期滞在、出張、買い物、連泊に便利です。室内には洗濯乾燥機、電子レンジ、冷蔵庫、ケトル、独立した浴室があります。","洗烘机 / 桌面 / 收纳空间":"洗濯乾燥機 / デスク / 収納","空调":"エアコン","使用":"使い方","用房间里的遥控器或控制面板。开空调时请关好窗户。":"客室内のリモコンまたは操作パネルをご利用ください。使用時は窓を閉めてください。","异常":"異常時","如果无法制冷/制热、持续报警或没有反应，请找前台/工作人员处理。":"冷暖房が効かない、警告音が続く、反応しない場合はフロントまたはスタッフへご連絡ください。","离开前":"出発前","退房前请关掉空调。":"チェックアウト前にエアコンをお切りください。","浴室 / 淋浴":"浴室 / シャワー","热水":"お湯","如长时间没有热水，请停止等待并联系工作人员，不要反复开关设备。":"長時間お湯が出ない場合は、繰り返し操作せずスタッフへご連絡ください。","使用后":"使用後","淋浴后请开启换气或保持通风，避免潮气和异味。":"シャワー後は換気を行い、湿気やにおいを防いでください。","冰箱":"冷蔵庫","可以放":"入れられるもの","饮料、早餐和轻食。":"飲み物、朝食、軽食。","退房前":"チェックアウト前","请带走自己的食物。":"ご自身の食品はお持ち帰りください。","电热水壶":"電気ケトル","只能烧水":"水だけを沸かす","不要煮茶、咖啡、汤、牛奶或食物。":"お茶、コーヒー、スープ、牛乳、食べ物を入れないでください。","保持干净":"清潔に","有溢出或明显异味时，请停止使用。":"吹きこぼれや強いにおいがある場合は使用を止めてください。",
+        "07 / 洗衣机":"07 / 洗濯乾燥機","SHARP ES-S7E 洗烘机使用说明":"SHARP ES-S7E 洗濯乾燥機の使い方","这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。":"この機械は洗濯と乾燥ができます。洗濯乾燥時は詰め込みすぎず、ドラムの半分程度を目安にしてください。","房内洗烘机位置 / ES-S7E":"室内洗濯乾燥機 / ES-S7E","常用按钮示意":"よく使うボタン","开机 / 关机":"電源オン / オフ","洗衣 + 烘干":"洗濯 + 乾燥","只洗不烘":"洗濯のみ","日常衣物":"普段着","开始 / 暂停":"開始 / 一時停止","结束后开门":"終了後に開ける","日常衣物最常用。只洗不烘时，把“洗〜乾”换成“洗濯”。":"普段の衣類はこの流れが基本です。洗濯のみの場合は「洗〜乾」ではなく「洗濯」を選んでください。","放衣物：洗烘请半桶以内":"衣類を入れる：洗濯乾燥は半分まで","官方容量是洗涤 7kg、洗烘/干燥 3.5kg。请勿塞满。厚毛巾、牛仔裤等较难烘干，请减少数量后再使用。":"容量は洗濯7kg、洗濯乾燥/乾燥3.5kgです。詰め込みすぎないでください。厚手のタオルやジーンズは少なめにしてください。","放洗衣液：只能用洗衣用洗剂":"洗剤：洗濯用洗剤のみ","请勿使用洗手液、沐浴露、洗洁精或过量洗衣液。泡沫太多会影响脱水，也可能让机器停住。":"ハンドソープ、ボディソープ、食器用洗剤、過量の洗剤は使用しないでください。泡が多いと脱水不良や停止の原因になります。","日常推荐：電源 → 洗〜乾 → 標準 → スタート":"おすすめ：電源 → 洗〜乾 → 標準 → スタート","需要洗完后直接烘干，请选择“洗〜乾”。如果只是清洗后自行晾干，请选择“洗濯”。普通衣物选择“標準”即可。":"洗濯後そのまま乾燥する場合は「洗〜乾」を選びます。洗濯のみの場合は「洗濯」を選びます。通常の衣類は「標準」で十分です。","运行中不要强行开机门":"運転中にドアを無理に開けない","机门锁定时不要用力拉。需要暂停时按“スタート/一時停止”；如果机门仍不开，请等机器解锁，不要硬拉。":"ドアロック中は無理に引かないでください。一時停止は「スタート/一時停止」を押し、ロック解除をお待ちください。","结束后请取出衣物":"終了後は衣類を取り出す","程序结束后请尽早取出衣物，避免起皱、潮味和遗忘。":"終了後はできるだけ早く取り出し、しわ、湿気、置き忘れを防いでください。","不要洗":"洗えないもの","防水衣物、胶底垫、地毯、枕头、皮革、宠物毛很多的衣物。":"防水衣類、ゴム底マット、カーペット、枕、革製品、ペットの毛が多い衣類。","不要烘":"乾燥できないもの","羊毛、丝绸、皮革、橡胶/海绵、带油污或溶剂的衣物。":"ウール、シルク、革、ゴム/スポンジ、油汚れや溶剤が付いた衣類。","看到 U05":"U05が表示されたら","通常是衣物太多或滤网堵塞。请减少衣物，不要继续硬烘。":"衣類が多すぎる、またはフィルター詰まりの可能性があります。衣類を減らし、無理に続けないでください。",
+        "06 / 设备安全":"06 / 設備安全","请先避开这些高风险操作":"まず避けてほしい操作","微波炉、水壶和洗衣机最容易因为误用造成起火、漏水、异味或设备损坏。请先看完下面几项，再使用房内设备。":"電子レンジ、ケトル、洗濯機は誤使用で火災、水漏れ、におい、故障につながりやすい設備です。先にご確認ください。","请勿把锡纸、铝膜或金属放进微波炉。":"アルミホイル、金属、アルミ加工の容器を電子レンジに入れないでください。","便利店便当、外卖容器和包装纸可能含有铝膜或金属边，可能起火或损坏设备。不确定是否可微波加热时，请换成可微波容器，或不要加热。":"コンビニ弁当、テイクアウト容器、包装にはアルミや金属が含まれる場合があります。電子レンジ対応か不明な場合は、対応容器に移すか加熱しないでください。","可以":"OK","可微波加热容器":"電子レンジ対応容器","打开盖子的便当":"ふたを開けた弁当","少量多次加热":"少量ずつ加熱","加热后擦掉汤汁":"加熱後は汚れを拭く","不要":"NG","锡纸、铝箔、金属餐具":"アルミホイル、金属食器","带金边或银边的餐具":"金/銀縁の食器","密封容器、生鸡蛋":"密閉容器、生卵","不可加热的一次性包装":"加熱不可の使い捨て容器","洗衣机不要超量":"洗濯機に詰め込みすぎない","洗烘请勿超过滚筒一半。衣物太多会无法烘干、报警、漏水或停机。":"洗濯乾燥はドラム半分まで。多すぎると乾かない、警告音、水漏れ、停止の原因になります。","水壶只能烧清水":"ケトルは水だけ","请勿煮茶包、咖啡、牛奶、汤或食物，可能溢出、留下焦味或损坏设备。":"ティーバッグ、コーヒー、牛乳、スープ、食べ物を入れないでください。吹きこぼれ、におい、故障の原因になります。","强烈气味请避免":"強いにおいは避ける","房内可简单加热食品。请避免烹调重油烟或气味较重的食物。":"室内では簡単な温めにとどめ、油煙や強いにおいの出る調理はお控えください。","异常时先停止":"異常時はまず停止","设备冒烟、焦味、漏水、跳闸、持续报警或明显异常时，请立即停止使用，不要继续尝试操作，并找前台/工作人员处理。":"煙、焦げ臭いにおい、水漏れ、ブレーカー、警告音など異常がある場合は使用を止め、フロントまたはスタッフへご連絡ください。",
+        "08 / 备品与追加需求":"08 / 備品・追加リクエスト","房内物品不够时":"備品が足りないとき","房内备品会按入住人数和现场配置准备。需要追加毛巾、垃圾袋、纸巾或其他物品时，请找前台/工作人员咨询。":"備品は宿泊人数と現地設定に合わせてご用意しています。タオル、ゴミ袋、ティッシュなどが必要な場合はフロントまたはスタッフへ。","毛巾":"タオル","连住期间会按清扫规则提供新毛巾。需要更换时，请把旧毛巾装好或集中放在房门口。":"連泊中は清掃ルールに沿って新しいタオルをお渡しします。交換時は使用済みタオルをまとめて客室ドア前へ。","垃圾袋 / 纸巾":"ゴミ袋 / ティッシュ","如需追加，请联系工作人员。垃圾请装袋封好，不要散放在走廊或公共区域。":"追加が必要な場合はスタッフへ。ゴミは袋に入れて閉じ、廊下や共用部に散らかさないでください。","借用品":"貸出品","充电器、转换插头、熨斗等物品如有需求，请先咨询。是否可借用以当天库存为准。":"充電器、変換プラグ、アイロン等が必要な場合はご相談ください。貸出可否は当日の在庫によります。","物品损坏":"破損・不足","如果发现设备或备品损坏、缺失，请尽早告知。越早反馈，越容易安排处理。":"設備や備品の破損・不足に気づいた場合は早めにお知らせください。",
+        "09 / 清扫、毛巾与垃圾":"09 / 清掃・タオル・ゴミ","连住期间的清扫方式":"連泊中の清掃","为减少打扰，房间不做每日完整清扫。非清扫日主要处理毛巾和垃圾；完整清扫按固定周期安排。":"滞在中のご負担を減らすため、毎日のフル清掃は行いません。清掃日以外は主にタオルとゴミ対応、フル清掃は周期に沿って行います。","每 3 天清扫一次":"3日に1回清掃","连住期间，每 3 天安排一次房间清扫。清扫时可更换床单、整理床铺，并进行房间清洁。":"連泊中は3日に1回客室清掃を行います。シーツ交換、ベッドメイク、室内清掃を行います。","每天提供新毛巾":"新しいタオルは毎日提供","非清扫日不会进入房间。新的毛巾会挂在房门口，请自行取用。":"清掃日以外は入室しません。新しいタオルは客室ドア前に掛けます。","旧毛巾请放门口":"使用済みタオルはドア前へ","需要更换时，请把使用过的毛巾拿出来，集中放在房门口。工作人员会回收。":"交換が必要な場合は使用済みタオルをまとめてドア前へお出しください。","垃圾请装袋后放门口":"ゴミは袋に入れてドア前へ","如有垃圾需要当天回收，请装袋封好后放在房门口。其他时间不要把垃圾散放在走廊或公共区域。":"当日回収が必要な場合は袋を閉じてドア前へ。その他の時間は廊下や共用部に置かないでください。",
+        "10 / 住宿规则":"10 / 滞在ルール","住宿注意事项":"滞在中のお願い","请特别注意禁烟、访客、夜间安静和公共区域使用。规则不是为了打扰客人，而是为了让所有住客和邻里都能安静入住。":"禁煙、訪問者、夜間の音、共用部の使い方にご注意ください。すべてのお客様と近隣のためのお願いです。","客房内和酒店门口禁烟":"客室内・ホテル入口付近は禁煙","客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟蒂丢入房内垃圾桶。":"客室内、ホテル入口、入口周辺での喫煙はご遠慮ください。入口での喫煙や吸い殻の室内ゴミ箱への廃棄はお控えください。","夜间安静":"夜間は静かに","夜间请降低说话、音乐、电视和拖动行李的声音，避免影响其他住客及邻里。":"夜間は会話、音楽、テレビ、荷物を引く音にご配慮ください。","访客与外卖":"訪問者・デリバリー","只有登记入住的客人可以住宿。外卖请尽量在入口或公共区域领取，不要让配送员进入客房区域。":"宿泊できるのは登録済みのお客様のみです。デリバリーは入口または共用部でお受け取りください。","公共区域":"共用部","请关好房门，不要在走廊放置行李、垃圾或私人物品。如有损坏、遗失或异常，请尽早告知。":"ドアを閉め、廊下に荷物、ゴミ、私物を置かないでください。破損、紛失、異常は早めにお知らせください。",
+        "11 / 退房检查":"11 / チェックアウト確認","退房前检查":"チェックアウト前確認","退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。":"チェックアウトは11:00です。出発前に忘れ物、電源、水栓、窓、ドアをご確認ください。","个人物品":"忘れ物","护照、手机、充电器、衣物、洗衣机、抽屉、浴室都请检查一遍。":"パスポート、携帯、充電器、衣類、洗濯機、引き出し、浴室をご確認ください。","房间状态":"客室状態","关闭灯、空调和水龙头。关好窗户和房门。":"照明、エアコン、水栓を止め、窓とドアを閉めてください。","冰箱和垃圾":"冷蔵庫とゴミ","带走冰箱内个人食物，垃圾请按现场指引处理，不要放在走廊。":"冷蔵庫内の私物をお持ち帰りください。ゴミは現地案内に従い、廊下に置かないでください。","行李寄存":"荷物預かり","行李寄存不是自动提供，如需要请提前咨询，是否可寄存以当天安排为准。":"荷物預かりは自動提供ではありません。必要な場合は事前にご相談ください。当日の状況によります。",
+        "04 / 一楼咖啡":"04 / 1階カフェ","一楼咖啡和スコーン适合出门前、回房前或短暂等人时使用。菜单、价格、营业情况和当天供应，请以一楼现场展示为准。":"1階のコーヒーとスコーンは、外出前、帰室前、少し待つ時間に便利です。メニュー、価格、営業状況、当日の提供は現地表示をご確認ください。","1F Lobby + Cafe / 供应情况以现场为准":"1F Lobby + Cafe / 提供状況は現地でご確認ください","一楼咖啡 / 1F Cafe":"1階カフェ / 1F Cafe","早上去築地前想喝一杯，下午回到酒店想休息一下，或想带一份热咖啡出门时，都可以先到一楼柜台确认当天供应。":"築地へ出かける前、午後に戻って休みたい時、温かいコーヒーを持って出たい時は、1階カウンターで当日の提供をご確認ください。","毎日焼きたて。外はさっくり、中はしっとり。コーヒーと一緒にどうぞ。":"毎日焼きたて。外はさっくり、中はしっとり。コーヒーと一緒にどうぞ。","菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。":"メニューは日付や時間で変わる場合があります。営業状況、テイクアウト、菓子類、詳細メニューは1階の現地表示をご確認ください。",
+        "05 / 築地与银座":"05 / 築地と銀座","築地与银座之间的散步指南":"築地と銀座の散歩ガイド","这里不是完整旅游攻略，而是给住客的短路线。早晨去築地吃早餐，白天去银座购物或看展，雨天也可以用室内路线把一天安排得轻松一点。":"完全な観光ガイドではなく、宿泊者向けの短いルートです。朝は築地、昼は銀座、雨の日は屋内中心で過ごしやすくなります。","築地场外市场 / 清晨到午前最有街区气氛。店铺营业时间各不相同。":"築地場外市場 / 朝から午前中に街の雰囲気が出ます。営業時間は店舗により異なります。","築地早餐路线":"築地朝食ルート","酒店 → 築地场外市场 → 小吃、寿司、玉子烧或咖啡 → 回酒店 / 去银座。清晨适合轻装出门，市场小店营业时间各不相同。":"ホテル → 築地場外市場 → 軽食、寿司、玉子焼き、カフェ → ホテルへ戻る / 銀座へ。朝は軽い荷物がおすすめです。","银座白天路线":"銀座昼ルート","酒店 → 东银座 / 歌舞伎座周边 → 银座主街 → 百货地下食品区或咖啡店。适合购物、展览、餐厅和商务会面。":"ホテル → 東銀座 / 歌舞伎座周辺 → 銀座中央通り → デパ地下やカフェ。買い物、展示、食事、打ち合わせに便利です。","雨天轻松路线":"雨の日ルート","先在 1F Cafe 喝咖啡，再去银座商场、百货、地下街或室内餐厅。回房后可以洗衣、烘干衣物、整理行李。":"まず1階カフェで一息。その後、銀座の商業施設、百貨店、地下街、室内レストランへ。戻ったら洗濯や荷物整理ができます。","小店柜台 / 适合边走边看当天有什么。":"小さな店のカウンター / その日の品を見ながら歩けます。","市場摊位 / 食材、料理工具和传统食品。":"市場の店先 / 食材、調理道具、伝統食品。","玉子烧与小吃 / 清晨散步时很有築地感。":"玉子焼きと軽食 / 朝の散歩に築地らしさを感じます。","築地是什么":"築地とは","築地场外市场仍保留许多食品、餐饮、厨具和传统食材店。现在的鱼类拍卖已迁往丰洲，但築地仍适合游客吃早餐和逛小店。":"築地場外市場には今も食品、飲食、調理道具、伝統食材の店が多く残っています。魚の競りは豊洲へ移りましたが、朝食や街歩きに向いています。","怎么逛更舒服":"歩き方のコツ","早上人会比较多，建议少带行李、穿好走的鞋。很多店铺空间较小，边走边吃和长时间占位请注意现场规则。":"朝は混みやすいため、荷物は少なく歩きやすい靴がおすすめです。店内が狭い場所も多く、食べ歩きや長時間の滞在は現地ルールに従ってください。","银座怎么用":"銀座の使い方","银座不只是奢侈品，也有百货、文具、生活用品、咖啡店、餐厅和画廊。适合白天逛，也适合晚上吃饭后散步。":"銀座は高級店だけでなく、百貨店、文具、生活用品、カフェ、レストラン、ギャラリーもあります。昼の街歩きにも、夕食後の散歩にも向いています。","这一区域的优势是“出去方便，回来也方便”。回房后可以洗衣、加热轻食、洗澡休息，让第二天行程继续得更顺。":"このエリアの良さは、出かけやすく戻りやすいことです。部屋に戻って洗濯、軽食の温め、入浴、休憩ができます。","店铺营业时间、排队情况和菜单每天可能不同。出门前请以现场信息和当天营业情况为准。":"店舗の営業時間、混雑、メニューは日によって変わります。お出かけ前に現地情報と当日の営業状況をご確認ください。","感谢入住 SPATIUM GINZA PONY。":"SPATIUM GINZA PONYにご宿泊いただきありがとうございます。","最后更新：2026-06-06。如现场说明有变化，请以现场信息为准。":"最終更新：2026-06-06。現地案内に変更がある場合は、現地情報を優先してください。","官网":"公式サイト","打开地图":"地図を開く"
+      },
+      en: {
+        "先看这里":"Start Here","为什么住这里":"Why Stay Here","房间":"Room","咖啡":"Cafe","築地银座":"Tsukiji / Ginza","设备安全":"Safety","洗衣机":"Washer","备品":"Amenities","清扫":"Cleaning","住宿规则":"Rules","退房":"Check-out",
+        "Stay Guide / 中文房内指南":"Stay Guide","住在築地与银座之间，把东京的一天过得更轻一点。":"Stay between Tsukiji and Ginza, and let Tokyo feel a little easier.","这本指南放在房间里使用：先看常用信息，再按需要查看咖啡、房内设备、清扫方式和退房检查。":"This in-room guide covers the essentials, cafe, room equipment, cleaning, and check-out notes.","房号、门锁、Wi-Fi 或其他问题请找前台":"For room, lock, Wi-Fi, or other questions, please ask the front desk.","咖啡和スコーン，供应情况以现场为准":"Coffee and scones are subject to availability.","微波炉、洗衣机、水壶请先看安全说明":"Please read the safety notes before using the microwave, washer, or kettle.","离开前检查电器、水龙头和个人物品":"Check appliances, taps, and personal belongings before leaving.","房间信息、地址、前台联系":"Room info, address, front desk","为什么住在築地与银座之间":"Why stay between Tsukiji and Ginza","房间与日常使用":"Room and daily use","築地・银座周边":"Tsukiji and Ginza","洗烘机使用说明":"Washer-dryer guide","备品与追加需求":"Amenities and requests","清扫、毛巾与垃圾":"Cleaning, towels, trash","退房前检查":"Check-out checklist",
+        "01 / 先看这里":"01 / Start Here","入住后先确认":"Check First After Arrival","房号、门锁、Wi-Fi 和其他入住相关问题，请以现场说明为准；不清楚时直接找前台/工作人员。本页只保留客人最常用的信息。":"For room number, door lock, Wi-Fi, and other stay details, please follow the on-site instructions. If anything is unclear, ask the front desk or staff.","房间信息":"Room Information","房号、门锁、Wi-Fi":"Room number, door lock, Wi-Fi","如不清楚，请直接找前台/工作人员确认。请不要在公共区域大声讨论门锁或密码信息。":"If anything is unclear, please ask the front desk or staff. Please do not discuss lock or password information loudly in public areas.","有事请先找前台":"Ask the Front Desk First","设备异常、漏水、跳闸、无法进门或需要帮助时，请先停止操作，并找前台/工作人员处理。请不要自行随意拨打外部紧急电话。":"If equipment is abnormal, leaking, tripped, or you cannot enter the room, stop using it and ask the front desk or staff. Please do not call outside emergency numbers casually.","退房时间":"Check-out Time","11:00 前退房。":"Check out by 11:00.","离开前请检查护照、手机、充电器、衣物、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。":"Before leaving, check your passport, phone, chargers, clothes, washer, fridge, air conditioner, lights, taps, windows, and door.","地址":"Address",
+        "02 / 为什么住这里":"02 / Why Stay Here","築地的早晨，银座的白天，回到 PONY 的夜晚":"Tsukiji mornings, Ginza days, and evenings back at PONY","SPATIUM GINZA PONY 的价值，不只是“离哪里近”。它把东京的食、街、购物和连续住宿的便利，放在同一个日常动线里。":"SPATIUM GINZA PONY is not just about being close to places. It connects food, walking, shopping, and the convenience of a longer stay into one easy Tokyo rhythm.","住在这里，东京不是一天跑完的清单，而是一条可以慢慢使用的城市路线。":"Here, Tokyo is not a checklist to rush through. It becomes a city route you can use at your own pace.","築地是东京食文化的入口。场外市场至今仍有许多餐饮、食材、厨具和传统食品店，适合清晨散步、吃早餐，感受东京厨房的一面。":"Tsukiji is an entry point into Tokyo food culture, with restaurants, food shops, kitchenware, and traditional food stores still active around the outer market.","银座则是东京最有代表性的商业街区之一。百货、品牌店、画廊、餐厅、咖啡店和歌舞伎座一带，把传统与现代放在同一个步行范围里。":"Ginza is one of Tokyo's most representative commercial districts, with department stores, shops, galleries, restaurants, cafes, and Kabuki-za all within walking range.","PONY 夹在这两个区域之间：早上可以去築地，白天可以去银座，晚上回到房间洗衣、休息、整理行李。对短住、商务、购物和连续住宿的客人来说，这种节奏比单纯“离景点近”更实用。":"PONY sits between the two: Tsukiji in the morning, Ginza during the day, then back to your room to wash clothes, rest, and organize. It is practical for short stays, business, shopping, and longer stays.","早餐、海鲜、玉子烧、茶、厨具和小店。适合用早晨慢慢进入东京。":"Breakfast, seafood, tamagoyaki, tea, kitchenware, and small shops. A gentle way to begin Tokyo in the morning.","购物、餐厅、展览、百货地下食品区和城市散步。适合白天和傍晚。":"Shopping, restaurants, exhibitions, department-store food floors, and city walks. Good for daytime and early evening.","回到房间后能洗衣、加热、整理行李，把东京行程接得更顺。":"Back in the room, you can wash clothes, heat food, and organize luggage for a smoother next day.","築地早餐":"Tsukiji Breakfast","轻装出门，先用食物和街区打开一天。":"Go out light and start the day with food and the neighborhood.","银座散步":"Ginza Walk","购物、展览、咖啡和会面都在附近。":"Shopping, exhibitions, coffee, and meetings are nearby.","回到房间":"Back to the Room","洗衣、加热、整理行李，让第二天更轻松。":"Wash, heat, and organize so tomorrow feels easier.","出门前或回房前，到一楼短暂停留。":"Stop by the 1F cafe before going out or coming back.","35㎡ Studio / 在城市中心保留可以整理和休息的空间":"35 sqm Studio / Space to rest and reset in central Tokyo","1F Lobby + Cafe / 出门前或回房前的短暂停留":"1F Lobby + Cafe / A quick pause before heading out or returning",
+        "03 / 房间与日常使用":"03 / Room and Daily Use","城市型 Studio 的使用方式":"How to Use the Urban Studio","PONY 适合短住、商务、购物和连续住宿。房内有洗烘机、微波炉、冰箱、水壶和独立浴室，适合把一天的行程轻松整理好。":"PONY works well for short stays, business, shopping, and longer stays. The room includes a washer-dryer, microwave, fridge, kettle, and private bathroom.","洗烘机 / 桌面 / 收纳空间":"Washer-dryer / Desk / Storage","空调":"Air Conditioner","使用":"Use","用房间里的遥控器或控制面板。开空调时请关好窗户。":"Use the remote or control panel in the room. Please close the windows when using it.","异常":"If abnormal","如果无法制冷/制热、持续报警或没有反应，请找前台/工作人员处理。":"If it does not cool/heat, keeps alarming, or does not respond, please ask the front desk or staff.","离开前":"Before leaving","退房前请关掉空调。":"Please turn it off before check-out.","浴室 / 淋浴":"Bathroom / Shower","热水":"Hot water","如长时间没有热水，请停止等待并联系工作人员，不要反复开关设备。":"If there is no hot water for a long time, please contact staff instead of repeatedly switching equipment on and off.","使用后":"After use","淋浴后请开启换气或保持通风，避免潮气和异味。":"After showering, use ventilation to reduce humidity and odor.","冰箱":"Fridge","可以放":"Good for","饮料、早餐和轻食。":"Drinks, breakfast, and light food.","退房前":"Before check-out","请带走自己的食物。":"Please take your own food with you.","电热水壶":"Electric Kettle","只能烧水":"Water only","不要煮茶、咖啡、汤、牛奶或食物。":"Do not boil tea, coffee, soup, milk, or food.","保持干净":"Keep clean","有溢出或明显异味时，请停止使用。":"Stop using it if it spills or smells unusual.",
+        "07 / 洗衣机":"07 / Washer-dryer","SHARP ES-S7E 洗烘机使用说明":"SHARP ES-S7E Washer-dryer Guide","这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。":"This machine can wash and dry. For wash-dry cycles, keep clothing to about half the drum.","房内洗烘机位置 / ES-S7E":"In-room washer-dryer / ES-S7E","常用按钮示意":"Common buttons","开机 / 关机":"Power on / off","洗衣 + 烘干":"Wash + dry","只洗不烘":"Wash only","日常衣物":"Daily clothes","开始 / 暂停":"Start / pause","结束后开门":"Open after finish","日常衣物最常用。只洗不烘时，把“洗〜乾”换成“洗濯”。":"For everyday clothes, this is the common route. For wash only, choose 洗濯 instead of 洗〜乾.","放衣物：洗烘请半桶以内":"Load clothes: half drum for wash-dry","官方容量是洗涤 7kg、洗烘/干燥 3.5kg。请勿塞满。厚毛巾、牛仔裤等较难烘干，请减少数量后再使用。":"Capacity is 7kg wash and 3.5kg wash-dry/dry. Do not overfill. Use fewer thick towels or jeans.","放洗衣液：只能用洗衣用洗剂":"Add detergent: laundry detergent only","请勿使用洗手液、沐浴露、洗洁精或过量洗衣液。泡沫太多会影响脱水，也可能让机器停住。":"Do not use hand soap, body wash, dish soap, or too much detergent. Excess foam may stop the machine.","日常推荐：電源 → 洗〜乾 → 標準 → スタート":"Daily route: Power → 洗〜乾 → 標準 → Start","需要洗完后直接烘干，请选择“洗〜乾”。如果只是清洗后自行晾干，请选择“洗濯”。普通衣物选择“標準”即可。":"Choose 洗〜乾 for wash and dry. Choose 洗濯 for wash only. 標準 is fine for normal clothes.","运行中不要强行开机门":"Do not force the door open","机门锁定时不要用力拉。需要暂停时按“スタート/一時停止”；如果机门仍不开，请等机器解锁，不要硬拉。":"When locked, do not pull hard. Press Start/Pause and wait for it to unlock.","结束后请取出衣物":"Remove clothes after finish","程序结束后请尽早取出衣物，避免起皱、潮味和遗忘。":"Remove clothes soon to avoid wrinkles, damp smell, or forgetting them.","不要洗":"Do not wash","防水衣物、胶底垫、地毯、枕头、皮革、宠物毛很多的衣物。":"Waterproof items, rubber mats, carpets, pillows, leather, or pet-hair-heavy items.","不要烘":"Do not dry","羊毛、丝绸、皮革、橡胶/海绵、带油污或溶剂的衣物。":"Wool, silk, leather, rubber/sponge, or items with oil/solvent stains.","看到 U05":"If U05 appears","通常是衣物太多或滤网堵塞。请减少衣物，不要继续硬烘。":"Usually too many clothes or a clogged filter. Reduce the load and do not keep forcing dry.",
+        "06 / 设备安全":"06 / Equipment Safety","请先避开这些高风险操作":"Avoid These High-risk Mistakes","微波炉、水壶和洗衣机最容易因为误用造成起火、漏水、异味或设备损坏。请先看完下面几项，再使用房内设备。":"The microwave, kettle, and washer are the easiest to misuse. Please read these notes before using them.","请勿把锡纸、铝膜或金属放进微波炉。":"Do not put foil, aluminum, or metal in the microwave.","便利店便当、外卖容器和包装纸可能含有铝膜或金属边，可能起火或损坏设备。不确定是否可微波加热时，请换成可微波容器，或不要加热。":"Convenience-store meals, takeout containers, or wrappers may contain aluminum or metal edges. If unsure, use a microwave-safe container or do not heat it.","可以":"OK","可微波加热容器":"Microwave-safe containers","打开盖子的便当":"Open-lid meals","少量多次加热":"Heat in short rounds","加热后擦掉汤汁":"Wipe spills after heating","不要":"Do not","锡纸、铝箔、金属餐具":"Foil, aluminum, metal utensils","带金边或银边的餐具":"Gold/silver-rimmed dishes","密封容器、生鸡蛋":"Sealed containers, raw eggs","不可加热的一次性包装":"Non-microwave disposable packaging","洗衣机不要超量":"Do not overload the washer","洗烘请勿超过滚筒一半。衣物太多会无法烘干、报警、漏水或停机。":"For wash-dry, keep it under half the drum. Too much clothing may not dry, may alarm, leak, or stop.","水壶只能烧清水":"Kettle is for water only","请勿煮茶包、咖啡、牛奶、汤或食物，可能溢出、留下焦味或损坏设备。":"Do not boil tea bags, coffee, milk, soup, or food. It may overflow, smell, or damage the kettle.","强烈气味请避免":"Avoid strong smells","房内可简单加热食品。请避免烹调重油烟或气味较重的食物。":"Simple reheating is fine. Please avoid oily smoke or strong-smelling cooking.","异常时先停止":"Stop first if abnormal","设备冒烟、焦味、漏水、跳闸、持续报警或明显异常时，请立即停止使用，不要继续尝试操作，并找前台/工作人员处理。":"If there is smoke, burning smell, leaking, power trip, repeated alarm, or clear abnormality, stop using it and ask the front desk or staff.",
+        "08 / 备品与追加需求":"08 / Amenities and Requests","房内物品不够时":"If Something Is Missing","房内备品会按入住人数和现场配置准备。需要追加毛巾、垃圾袋、纸巾或其他物品时，请找前台/工作人员咨询。":"Room amenities are prepared based on the number of guests and room setup. For extra towels, trash bags, tissues, or other items, please ask the front desk or staff.","毛巾":"Towels","连住期间会按清扫规则提供新毛巾。需要更换时，请把旧毛巾装好或集中放在房门口。":"New towels are provided according to the cleaning rules. For exchange, place used towels together by the door.","垃圾袋 / 纸巾":"Trash bags / tissues","如需追加，请联系工作人员。垃圾请装袋封好，不要散放在走廊或公共区域。":"Ask staff if you need more. Please bag and seal trash; do not leave it loose in corridors or common areas.","借用品":"Loan items","充电器、转换插头、熨斗等物品如有需求，请先咨询。是否可借用以当天库存为准。":"For chargers, adapters, irons, etc., please ask first. Availability depends on the day.","物品损坏":"Damage or missing items","如果发现设备或备品损坏、缺失，请尽早告知。越早反馈，越容易安排处理。":"If anything is damaged or missing, please let us know early so we can help.",
+        "09 / 清扫、毛巾与垃圾":"09 / Cleaning, Towels, Trash","连住期间的清扫方式":"Cleaning During Longer Stays","为减少打扰，房间不做每日完整清扫。非清扫日主要处理毛巾和垃圾；完整清扫按固定周期安排。":"To reduce disturbance, full room cleaning is not done every day. On non-cleaning days, towels and trash are handled; full cleaning follows a set cycle.","每 3 天清扫一次":"Full cleaning every 3 days","连住期间，每 3 天安排一次房间清扫。清扫时可更换床单、整理床铺，并进行房间清洁。":"During longer stays, full cleaning is arranged every 3 days, including sheets, bed making, and room cleaning.","每天提供新毛巾":"New towels daily","非清扫日不会进入房间。新的毛巾会挂在房门口，请自行取用。":"On non-cleaning days, staff will not enter the room. New towels will be hung by the door.","旧毛巾请放门口":"Place used towels by the door","需要更换时，请把使用过的毛巾拿出来，集中放在房门口。工作人员会回收。":"For towel exchange, place used towels together by the door for collection.","垃圾请装袋后放门口":"Bag trash before placing by the door","如有垃圾需要当天回收，请装袋封好后放在房门口。其他时间不要把垃圾散放在走廊或公共区域。":"If trash needs collection that day, seal it in a bag and place it by the door. Do not leave loose trash in corridors or common areas.",
+        "10 / 住宿规则":"10 / House Rules","住宿注意事项":"House Rules","请特别注意禁烟、访客、夜间安静和公共区域使用。规则不是为了打扰客人，而是为了让所有住客和邻里都能安静入住。":"Please pay attention to smoking, visitors, quiet hours, and common areas. These rules help all guests and neighbors stay comfortably.","客房内和酒店门口禁烟":"No smoking in rooms or by the entrance","客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟蒂丢入房内垃圾桶。":"Do not smoke in the room, at the hotel entrance, or nearby. Do not smoke by the doorway or throw cigarette butts into the room trash.","夜间安静":"Quiet at night","夜间请降低说话、音乐、电视和拖动行李的声音，避免影响其他住客及邻里。":"At night, please lower voices, music, TV, and luggage noise.","访客与外卖":"Visitors and delivery","只有登记入住的客人可以住宿。外卖请尽量在入口或公共区域领取，不要让配送员进入客房区域。":"Only registered guests may stay overnight. Please receive deliveries at the entrance or common area when possible.","公共区域":"Common areas","请关好房门，不要在走廊放置行李、垃圾或私人物品。如有损坏、遗失或异常，请尽早告知。":"Please close your door and do not leave luggage, trash, or personal items in corridors. Report damage, loss, or abnormalities early.",
+        "11 / 退房检查":"11 / Check-out","退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。":"Check-out is 11:00. Before leaving, check your belongings, appliances, taps, windows, and door.","个人物品":"Personal belongings","护照、手机、充电器、衣物、洗衣机、抽屉、浴室都请检查一遍。":"Check your passport, phone, chargers, clothes, washer, drawers, and bathroom.","房间状态":"Room condition","关闭灯、空调和水龙头。关好窗户和房门。":"Turn off lights, air conditioner, and taps. Close windows and the door.","冰箱和垃圾":"Fridge and trash","带走冰箱内个人食物，垃圾请按现场指引处理，不要放在走廊。":"Take your food from the fridge. Handle trash according to on-site instructions; do not leave it in the corridor.","行李寄存":"Luggage storage","行李寄存不是自动提供，如需要请提前咨询，是否可寄存以当天安排为准。":"Luggage storage is not automatic. Please ask in advance; availability depends on the day.",
+        "04 / 一楼咖啡":"04 / 1F Cafe","一楼咖啡和スコーン适合出门前、回房前或短暂等人时使用。菜单、价格、营业情况和当天供应，请以一楼现场展示为准。":"The 1F coffee and scones are convenient before going out, after returning, or while waiting briefly. Please check the 1F display for menu, prices, hours, and availability.","1F Lobby + Cafe / 供应情况以现场为准":"1F Lobby + Cafe / Please check availability on site","一楼咖啡 / 1F Cafe":"1F Cafe","早上去築地前想喝一杯，下午回到酒店想休息一下，或想带一份热咖啡出门时，都可以先到一楼柜台确认当天供应。":"Before going to Tsukiji, after returning in the afternoon, or when you want a hot coffee to go, please check availability at the 1F counter.","菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。":"Menu items may change by day and time. Please check the 1F display for hours, takeaway, sweets, and details.",
+        "05 / 築地与银座":"05 / Tsukiji and Ginza","築地与银座之间的散步指南":"Walking Guide Between Tsukiji and Ginza","这里不是完整旅游攻略，而是给住客的短路线。早晨去築地吃早餐，白天去银座购物或看展，雨天也可以用室内路线把一天安排得轻松一点。":"This is not a full travel guide, but a few short routes for guests: Tsukiji breakfast, Ginza shopping or exhibitions, and an easy indoor plan for rainy days.","築地场外市场 / 清晨到午前最有街区气氛。店铺营业时间各不相同。":"Tsukiji Outer Market / Best atmosphere from morning to late morning. Hours vary by shop.","築地早餐路线":"Tsukiji Breakfast Route","酒店 → 築地场外市场 → 小吃、寿司、玉子烧或咖啡 → 回酒店 / 去银座。清晨适合轻装出门，市场小店营业时间各不相同。":"Hotel → Tsukiji Outer Market → snacks, sushi, tamagoyaki, or coffee → back to hotel / to Ginza. Go light in the morning.","银座白天路线":"Ginza Daytime Route","酒店 → 东银座 / 歌舞伎座周边 → 银座主街 → 百货地下食品区或咖啡店。适合购物、展览、餐厅和商务会面。":"Hotel → Higashi-Ginza / Kabuki-za area → Ginza main street → department-store food floors or cafes. Good for shopping, exhibitions, dining, and meetings.","雨天轻松路线":"Rainy Day Route","先在 1F Cafe 喝咖啡，再去银座商场、百货、地下街或室内餐厅。回房后可以洗衣、烘干衣物、整理行李。":"Start with coffee at the 1F Cafe, then go to Ginza malls, department stores, underground areas, or indoor restaurants. Back in the room, you can wash, dry, and organize.","小店柜台 / 适合边走边看当天有什么。":"Small shop counters / Good for seeing what is available that day.","市場摊位 / 食材、料理工具和传统食品。":"Market stalls / Ingredients, kitchen tools, and traditional foods.","玉子烧与小吃 / 清晨散步时很有築地感。":"Tamagoyaki and snacks / A very Tsukiji morning feeling.","築地是什么":"What is Tsukiji?","築地场外市场仍保留许多食品、餐饮、厨具和传统食材店。现在的鱼类拍卖已迁往丰洲，但築地仍适合游客吃早餐和逛小店。":"Tsukiji Outer Market still has many food shops, restaurants, kitchenware shops, and traditional ingredient stores. The fish auction moved to Toyosu, but Tsukiji remains great for breakfast and small shops.","怎么逛更舒服":"How to enjoy it","早上人会比较多，建议少带行李、穿好走的鞋。很多店铺空间较小，边走边吃和长时间占位请注意现场规则。":"It can be crowded in the morning. Bring little luggage and wear comfortable shoes. Many shops are small, so follow local rules for eating and staying.","银座怎么用":"How to use Ginza","银座不只是奢侈品，也有百货、文具、生活用品、咖啡店、餐厅和画廊。适合白天逛，也适合晚上吃饭后散步。":"Ginza is not only luxury shopping. It also has department stores, stationery, lifestyle goods, cafes, restaurants, and galleries. Good by day and after dinner.","这一区域的优势是“出去方便，回来也方便”。回房后可以洗衣、加热轻食、洗澡休息，让第二天行程继续得更顺。":"The advantage of this area is that it is easy to go out and easy to come back. Back in your room, you can wash, heat light food, shower, and rest.","店铺营业时间、排队情况和菜单每天可能不同。出门前请以现场信息和当天营业情况为准。":"Shop hours, queues, and menus may change daily. Please check on-site information and same-day business status.","感谢入住 SPATIUM GINZA PONY。":"Thank you for staying at SPATIUM GINZA PONY.","最后更新：2026-06-06。如现场说明有变化，请以现场信息为准。":"Last updated: 2026-06-06. If on-site instructions change, please follow the on-site information.","官网":"Official site","打开地图":"Open map"
+      },
+      ko: {
+        "先看这里":"먼저 확인","为什么住这里":"이곳에 머무는 이유","房间":"객실","咖啡":"카페","築地银座":"쓰키지・긴자","设备安全":"설비 안전","洗衣机":"세탁기","备品":"비품","清扫":"청소","住宿规则":"숙박 규칙","退房":"체크아웃",
+        "Stay Guide / 中文房内指南":"Stay Guide / 객실 안내","住在築地与银座之间，把东京的一天过得更轻一点。":"쓰키지와 긴자 사이에서 도쿄의 하루를 조금 더 편하게.","这本指南放在房间里使用：先看常用信息，再按需要查看咖啡、房内设备、清扫方式和退房检查。":"이 안내는 객실에서 확인하는 가이드입니다. 기본 정보, 카페, 객실 설비, 청소, 체크아웃 전 확인 사항을 담았습니다.","房号、门锁、Wi-Fi 或其他问题请找前台":"객실 번호, 도어락, Wi-Fi 등은 프런트에 문의해 주세요","咖啡和スコーン，供应情况以现场为准":"커피와 스콘은 현장 제공 상황을 확인해 주세요","微波炉、洗衣机、水壶请先看安全说明":"전자레인지, 세탁기, 전기포트는 먼저 안전 안내를 확인해 주세요","离开前检查电器、水龙头和个人物品":"나가기 전 전기, 수도, 소지품을 확인해 주세요","房间信息、地址、前台联系":"객실 정보, 주소, 프런트 연락","为什么住在築地与银座之间":"쓰키지와 긴자 사이에 머무는 이유","房间与日常使用":"객실과 일상 사용","築地・银座周边":"쓰키지・긴자 주변","洗烘机使用说明":"세탁건조기 사용법","备品与追加需求":"비품 및 추가 요청","清扫、毛巾与垃圾":"청소, 수건, 쓰레기","退房前检查":"체크아웃 전 확인",
+        "01 / 先看这里":"01 / 먼저 확인","入住后先确认":"입실 후 먼저 확인","房号、门锁、Wi-Fi 和其他入住相关问题，请以现场说明为准；不清楚时直接找前台/工作人员。本页只保留客人最常用的信息。":"객실 번호, 도어락, Wi-Fi 등 숙박 관련 사항은 현장 안내를 확인해 주세요. 불명확하면 프런트나 직원에게 문의해 주세요.","房间信息":"객실 정보","房号、门锁、Wi-Fi":"객실 번호, 도어락, Wi-Fi","如不清楚，请直接找前台/工作人员确认。请不要在公共区域大声讨论门锁或密码信息。":"불명확하면 프런트나 직원에게 확인해 주세요. 공용 공간에서 도어락이나 비밀번호 정보를 큰 소리로 말하지 말아 주세요.","有事请先找前台":"문제가 있으면 먼저 프런트로","设备异常、漏水、跳闸、无法进门或需要帮助时，请先停止操作，并找前台/工作人员处理。请不要自行随意拨打外部紧急电话。":"설비 이상, 누수, 차단기, 입실 불가 등 도움이 필요하면 먼저 사용을 멈추고 프런트나 직원에게 알려 주세요. 외부 긴급 번호에 임의로 연락하지 말아 주세요.","退房时间":"체크아웃 시간","11:00 前退房。":"11:00까지 체크아웃해 주세요.","离开前请检查护照、手机、充电器、衣物、洗衣机、冰箱、空调、电灯、水龙头、窗户和房门。":"나가기 전 여권, 휴대폰, 충전기, 의류, 세탁기, 냉장고, 에어컨, 조명, 수도, 창문, 문을 확인해 주세요.","地址":"주소",
+        "02 / 为什么住这里":"02 / 이곳에 머무는 이유","築地的早晨，银座的白天，回到 PONY 的夜晚":"쓰키지의 아침, 긴자의 낮, PONY로 돌아오는 밤","SPATIUM GINZA PONY 的价值，不只是“离哪里近”。它把东京的食、街、购物和连续住宿的便利，放在同一个日常动线里。":"SPATIUM GINZA PONY의 가치는 단순히 가까운 위치가 아닙니다. 도쿄의 음식, 거리, 쇼핑, 연박의 편리함을 하나의 동선으로 연결합니다.","住在这里，东京不是一天跑完的清单，而是一条可以慢慢使用的城市路线。":"이곳에 머물면 도쿄는 하루에 끝내는 체크리스트가 아니라 천천히 사용할 수 있는 도시 루트가 됩니다.","築地是东京食文化的入口。场外市场至今仍有许多餐饮、食材、厨具和传统食品店，适合清晨散步、吃早餐，感受东京厨房的一面。":"쓰키지는 도쿄 식문화의 입구입니다. 장외시장에는 음식점, 식재료, 조리도구, 전통 식품 가게가 남아 있어 아침 산책과 식사에 좋습니다.","银座则是东京最有代表性的商业街区之一。百货、品牌店、画廊、餐厅、咖啡店和歌舞伎座一带，把传统与现代放在同一个步行范围里。":"긴자는 도쿄를 대표하는 상업 지역입니다. 백화점, 브랜드숍, 갤러리, 레스토랑, 카페, 가부키자 주변이 도보권에 있습니다.","PONY 夹在这两个区域之间：早上可以去築地，白天可以去银座，晚上回到房间洗衣、休息、整理行李。对短住、商务、购物和连续住宿的客人来说，这种节奏比单纯“离景点近”更实用。":"PONY는 두 지역 사이에 있습니다. 아침에는 쓰키지, 낮에는 긴자, 밤에는 객실에서 세탁과 휴식, 짐 정리. 단기 숙박, 출장, 쇼핑, 연박에 실용적입니다.","早餐、海鲜、玉子烧、茶、厨具和小店。适合用早晨慢慢进入东京。":"아침 식사, 해산물, 계란말이, 차, 조리도구, 작은 가게들. 아침에 도쿄를 천천히 시작하기 좋습니다.","购物、餐厅、展览、百货地下食品区和城市散步。适合白天和傍晚。":"쇼핑, 레스토랑, 전시, 백화점 식품관, 도시 산책. 낮과 저녁에 좋습니다.","回到房间后能洗衣、加热、整理行李，把东京行程接得更顺。":"객실로 돌아와 세탁, 데우기, 짐 정리를 할 수 있어 다음 일정이 더 편해집니다.","築地早餐":"쓰키지 아침","轻装出门，先用食物和街区打开一天。":"가볍게 나가 음식과 거리로 하루를 시작하세요.","银座散步":"긴자 산책","购物、展览、咖啡和会面都在附近。":"쇼핑, 전시, 커피, 미팅이 모두 가까이에 있습니다.","回到房间":"객실로 돌아오기","洗衣、加热、整理行李，让第二天更轻松。":"세탁, 데우기, 짐 정리로 다음 날을 더 편하게.","出门前或回房前，到一楼短暂停留。":"외출 전이나 귀실 전 1층에서 잠시 쉬어 보세요.","35㎡ Studio / 在城市中心保留可以整理和休息的空间":"35㎡ Studio / 도심에서 정리하고 쉴 수 있는 공간","1F Lobby + Cafe / 出门前或回房前的短暂停留":"1F Lobby + Cafe / 외출 전과 귀실 전의 짧은 휴식",
+        "03 / 房间与日常使用":"03 / 객실과 일상 사용","城市型 Studio 的使用方式":"도시형 Studio 사용법","PONY 适合短住、商务、购物和连续住宿。房内有洗烘机、微波炉、冰箱、水壶和独立浴室，适合把一天的行程轻松整理好。":"PONY는 단기 숙박, 비즈니스, 쇼핑, 연박에 적합합니다. 객실에는 세탁건조기, 전자레인지, 냉장고, 전기포트, 독립 욕실이 있습니다.","洗烘机 / 桌面 / 收纳空间":"세탁건조기 / 데스크 / 수납","空调":"에어컨","使用":"사용","用房间里的遥控器或控制面板。开空调时请关好窗户。":"객실 리모컨 또는 조작 패널을 사용하세요. 에어컨 사용 시 창문을 닫아 주세요.","异常":"이상 시","如果无法制冷/制热、持续报警或没有反应，请找前台/工作人员处理。":"냉난방이 되지 않거나 알람이 계속되거나 반응이 없으면 프런트나 직원에게 알려 주세요.","离开前":"나가기 전","退房前请关掉空调。":"체크아웃 전 에어컨을 꺼 주세요.","浴室 / 淋浴":"욕실 / 샤워","热水":"온수","如长时间没有热水，请停止等待并联系工作人员，不要反复开关设备。":"오랫동안 온수가 나오지 않으면 반복 조작하지 말고 직원에게 알려 주세요.","使用后":"사용 후","淋浴后请开启换气或保持通风，避免潮气和异味。":"샤워 후 환기를 켜거나 통풍해 습기와 냄새를 줄여 주세요.","冰箱":"냉장고","可以放":"보관 가능","饮料、早餐和轻食。":"음료, 아침, 간단한 음식.","退房前":"체크아웃 전","请带走自己的食物。":"개인 음식은 가져가 주세요.","电热水壶":"전기포트","只能烧水":"물만 끓이기","不要煮茶、咖啡、汤、牛奶或食物。":"차, 커피, 수프, 우유, 음식은 넣지 마세요.","保持干净":"깨끗하게 사용","有溢出或明显异味时，请停止使用。":"넘침이나 강한 냄새가 있으면 사용을 중지해 주세요.",
+        "07 / 洗衣机":"07 / 세탁건조기","SHARP ES-S7E 洗烘机使用说明":"SHARP ES-S7E 세탁건조기 사용법","这台机器可洗衣和烘干。洗烘时请勿放满，建议衣物量控制在滚筒一半以内。":"이 기계는 세탁과 건조가 가능합니다. 세탁건조 시 드럼의 절반 이하로 넣어 주세요.","房内洗烘机位置 / ES-S7E":"객실 세탁건조기 / ES-S7E","常用按钮示意":"자주 쓰는 버튼","开机 / 关机":"전원 켜기 / 끄기","洗衣 + 烘干":"세탁 + 건조","只洗不烘":"세탁만","日常衣物":"일상 의류","开始 / 暂停":"시작 / 일시정지","结束后开门":"종료 후 문 열기","日常衣物最常用。只洗不烘时，把“洗〜乾”换成“洗濯”。":"일상 의류에는 이 순서가 가장 일반적입니다. 세탁만 할 때는 洗〜乾 대신 洗濯을 선택하세요.","放衣物：洗烘请半桶以内":"의류 넣기: 세탁건조는 반 통 이하","官方容量是洗涤 7kg、洗烘/干燥 3.5kg。请勿塞满。厚毛巾、牛仔裤等较难烘干，请减少数量后再使用。":"용량은 세탁 7kg, 세탁건조/건조 3.5kg입니다. 너무 많이 넣지 마세요. 두꺼운 수건이나 청바지는 양을 줄여 주세요.","放洗衣液：只能用洗衣用洗剂":"세제: 세탁용 세제만","请勿使用洗手液、沐浴露、洗洁精或过量洗衣液。泡沫太多会影响脱水，也可能让机器停住。":"손세정제, 바디워시, 주방세제, 과다한 세제는 사용하지 마세요. 거품이 많으면 탈수 불량이나 정지의 원인이 됩니다.","日常推荐：電源 → 洗〜乾 → 標準 → スタート":"일상 추천: 電源 → 洗〜乾 → 標準 → スタート","需要洗完后直接烘干，请选择“洗〜乾”。如果只是清洗后自行晾干，请选择“洗濯”。普通衣物选择“標準”即可。":"세탁 후 바로 건조하려면 洗〜乾을 선택하세요. 세탁만 하려면 洗濯을 선택하세요. 일반 의류는 標準이면 충분합니다.","运行中不要强行开机门":"운전 중 문을 억지로 열지 마세요","机门锁定时不要用力拉。需要暂停时按“スタート/一時停止”；如果机门仍不开，请等机器解锁，不要硬拉。":"문이 잠겨 있을 때 세게 당기지 마세요. 일시정지는 スタート/一時停止를 누르고 잠금 해제를 기다려 주세요.","结束后请取出衣物":"종료 후 의류 꺼내기","程序结束后请尽早取出衣物，避免起皱、潮味和遗忘。":"종료 후 가능한 빨리 꺼내 주름, 습기 냄새, 분실을 방지하세요.","不要洗":"세탁 금지","防水衣物、胶底垫、地毯、枕头、皮革、宠物毛很多的衣物。":"방수 의류, 고무 매트, 카펫, 베개, 가죽, 반려동물 털이 많은 의류.","不要烘":"건조 금지","羊毛、丝绸、皮革、橡胶/海绵、带油污或溶剂的衣物。":"울, 실크, 가죽, 고무/스펀지, 기름때나 용제가 묻은 의류.","看到 U05":"U05가 보이면","通常是衣物太多或滤网堵塞。请减少衣物，不要继续硬烘。":"보통 의류가 너무 많거나 필터가 막힌 경우입니다. 양을 줄이고 무리하게 계속 건조하지 마세요.",
+        "06 / 设备安全":"06 / 설비 안전","请先避开这些高风险操作":"먼저 피해야 할 고위험 사용","微波炉、水壶和洗衣机最容易因为误用造成起火、漏水、异味或设备损坏。请先看完下面几项，再使用房内设备。":"전자레인지, 전기포트, 세탁기는 잘못 사용하면 화재, 누수, 냄새, 고장의 원인이 될 수 있습니다.","请勿把锡纸、铝膜或金属放进微波炉。":"호일, 알루미늄, 금속은 전자레인지에 넣지 마세요.","便利店便当、外卖容器和包装纸可能含有铝膜或金属边，可能起火或损坏设备。不确定是否可微波加热时，请换成可微波容器，或不要加热。":"편의점 도시락, 포장 용기, 포장지에는 알루미늄이나 금속이 있을 수 있습니다. 확실하지 않으면 전자레인지용 용기에 옮기거나 가열하지 마세요.","可以":"가능","可微波加热容器":"전자레인지용 용기","打开盖子的便当":"뚜껑을 연 도시락","少量多次加热":"짧게 여러 번 가열","加热后擦掉汤汁":"가열 후 국물 닦기","不要":"금지","锡纸、铝箔、金属餐具":"호일, 알루미늄, 금속 식기","带金边或银边的餐具":"금/은 테두리 식기","密封容器、生鸡蛋":"밀폐 용기, 날달걀","不可加热的一次性包装":"가열 불가 일회용 포장","洗衣机不要超量":"세탁기를 과하게 채우지 마세요","洗烘请勿超过滚筒一半。衣物太多会无法烘干、报警、漏水或停机。":"세탁건조는 드럼 절반 이하로. 너무 많으면 마르지 않거나 알람, 누수, 정지의 원인이 됩니다.","水壶只能烧清水":"전기포트는 물만","请勿煮茶包、咖啡、牛奶、汤或食物，可能溢出、留下焦味或损坏设备。":"티백, 커피, 우유, 수프, 음식은 넣지 마세요. 넘침, 냄새, 고장의 원인이 됩니다.","强烈气味请避免":"강한 냄새는 피해주세요","房内可简单加热食品。请避免烹调重油烟或气味较重的食物。":"객실에서는 간단한 데우기만 가능하며, 기름 연기나 강한 냄새가 나는 조리는 피해주세요.","异常时先停止":"이상 시 먼저 중지","设备冒烟、焦味、漏水、跳闸、持续报警或明显异常时，请立即停止使用，不要继续尝试操作，并找前台/工作人员处理。":"연기, 탄 냄새, 누수, 차단기, 지속 알람 등 이상이 있으면 즉시 사용을 중지하고 프런트나 직원에게 알려 주세요.",
+        "08 / 备品与追加需求":"08 / 비품 및 추가 요청","房内物品不够时":"객실 비품이 부족할 때","房内备品会按入住人数和现场配置准备。需要追加毛巾、垃圾袋、纸巾或其他物品时，请找前台/工作人员咨询。":"객실 비품은 숙박 인원과 현장 구성에 맞게 준비됩니다. 수건, 쓰레기봉투, 티슈 등이 필요하면 프런트나 직원에게 문의해 주세요.","毛巾":"수건","连住期间会按清扫规则提供新毛巾。需要更换时，请把旧毛巾装好或集中放在房门口。":"연박 중에는 청소 규칙에 따라 새 수건을 제공합니다. 교환 시 사용한 수건을 모아 객실 문 앞에 놓아 주세요.","垃圾袋 / 纸巾":"쓰레기봉투 / 티슈","如需追加，请联系工作人员。垃圾请装袋封好，不要散放在走廊或公共区域。":"추가가 필요하면 직원에게 문의해 주세요. 쓰레기는 봉투에 넣어 닫고 복도나 공용 공간에 흩어 놓지 마세요.","借用品":"대여품","充电器、转换插头、熨斗等物品如有需求，请先咨询。是否可借用以当天库存为准。":"충전기, 변환 플러그, 다리미 등이 필요하면 먼저 문의해 주세요. 대여 가능 여부는 당일 재고에 따릅니다.","物品损坏":"파손・부족","如果发现设备或备品损坏、缺失，请尽早告知。越早反馈，越容易安排处理。":"설비나 비품의 파손, 부족을 발견하면 빠르게 알려 주세요.",
+        "09 / 清扫、毛巾与垃圾":"09 / 청소, 수건, 쓰레기","连住期间的清扫方式":"연박 중 청소 방식","为减少打扰，房间不做每日完整清扫。非清扫日主要处理毛巾和垃圾；完整清扫按固定周期安排。":"방해를 줄이기 위해 매일 전체 청소는 하지 않습니다. 비청소일에는 수건과 쓰레기를 중심으로 처리하고, 전체 청소는 정해진 주기에 따라 진행됩니다.","每 3 天清扫一次":"3일마다 청소","连住期间，每 3 天安排一次房间清扫。清扫时可更换床单、整理床铺，并进行房间清洁。":"연박 중에는 3일마다 객실 청소가 진행됩니다. 시트 교체, 침대 정리, 객실 청소가 포함됩니다.","每天提供新毛巾":"새 수건 매일 제공","非清扫日不会进入房间。新的毛巾会挂在房门口，请自行取用。":"비청소일에는 객실에 들어가지 않습니다. 새 수건은 문 앞에 걸어 둡니다.","旧毛巾请放门口":"사용한 수건은 문 앞에","需要更换时，请把使用过的毛巾拿出来，集中放在房门口。工作人员会回收。":"교환이 필요하면 사용한 수건을 모아 문 앞에 놓아 주세요.","垃圾请装袋后放门口":"쓰레기는 봉투에 넣어 문 앞에","如有垃圾需要当天回收，请装袋封好后放在房门口。其他时间不要把垃圾散放在走廊或公共区域。":"당일 회수가 필요한 쓰레기는 봉투를 닫아 문 앞에 놓아 주세요. 그 외 시간에는 복도나 공용 공간에 두지 마세요.",
+        "10 / 住宿规则":"10 / 숙박 규칙","住宿注意事项":"숙박 중 주의사항","请特别注意禁烟、访客、夜间安静和公共区域使用。规则不是为了打扰客人，而是为了让所有住客和邻里都能安静入住。":"금연, 방문객, 야간 소음, 공용 공간 이용에 주의해 주세요. 모든 투숙객과 이웃을 위한 규칙입니다.","客房内和酒店门口禁烟":"객실 및 호텔 입구 금연","客房内、酒店门口及入口周边请勿吸烟。请不要在门口停留吸烟，也不要把烟蒂丢入房内垃圾桶。":"객실, 호텔 입구 및 주변에서 흡연하지 마세요. 입구에서 흡연하거나 담배꽁초를 객실 쓰레기통에 버리지 마세요.","夜间安静":"야간 정숙","夜间请降低说话、音乐、电视和拖动行李的声音，避免影响其他住客及邻里。":"야간에는 대화, 음악, TV, 캐리어 소리를 줄여 주세요.","访客与外卖":"방문객 및 배달","只有登记入住的客人可以住宿。外卖请尽量在入口或公共区域领取，不要让配送员进入客房区域。":"등록된 투숙객만 숙박할 수 있습니다. 배달은 가능하면 입구나 공용 공간에서 받아 주세요.","公共区域":"공용 공간","请关好房门，不要在走廊放置行李、垃圾或私人物品。如有损坏、遗失或异常，请尽早告知。":"문을 닫고 복도에 짐, 쓰레기, 개인 물품을 두지 마세요. 파손, 분실, 이상은 빠르게 알려 주세요.",
+        "11 / 退房检查":"11 / 체크아웃 확인","退房前检查":"체크아웃 전 확인","退房时间为 11:00。离开前请确认个人物品、电器、水龙头、窗户和房门。":"체크아웃은 11:00입니다. 나가기 전 소지품, 전기, 수도, 창문, 문을 확인해 주세요.","个人物品":"개인 물품","护照、手机、充电器、衣物、洗衣机、抽屉、浴室都请检查一遍。":"여권, 휴대폰, 충전기, 의류, 세탁기, 서랍, 욕실을 확인해 주세요.","房间状态":"객실 상태","关闭灯、空调和水龙头。关好窗户和房门。":"조명, 에어컨, 수도를 끄고 창문과 문을 닫아 주세요.","冰箱和垃圾":"냉장고와 쓰레기","带走冰箱内个人食物，垃圾请按现场指引处理，不要放在走廊。":"냉장고 안 개인 음식은 가져가 주세요. 쓰레기는 현장 안내에 따라 처리하고 복도에 두지 마세요.","行李寄存":"짐 보관","行李寄存不是自动提供，如需要请提前咨询，是否可寄存以当天安排为准。":"짐 보관은 자동 제공되지 않습니다. 필요하면 미리 문의해 주세요. 당일 상황에 따릅니다.",
+        "04 / 一楼咖啡":"04 / 1층 카페","一楼咖啡和スコーン适合出门前、回房前或短暂等人时使用。菜单、价格、营业情况和当天供应，请以一楼现场展示为准。":"1층 커피와 스콘은 외출 전, 귀실 전, 잠시 기다릴 때 이용하기 좋습니다. 메뉴, 가격, 영업 및 당일 제공은 현장 표시를 확인해 주세요.","1F Lobby + Cafe / 供应情况以现场为准":"1F Lobby + Cafe / 제공 상황은 현장 확인","一楼咖啡 / 1F Cafe":"1층 카페 / 1F Cafe","早上去築地前想喝一杯，下午回到酒店想休息一下，或想带一份热咖啡出门时，都可以先到一楼柜台确认当天供应。":"아침 쓰키지에 가기 전, 오후 호텔에 돌아와 쉬고 싶을 때, 따뜻한 커피를 들고 나가고 싶을 때 1층 카운터에서 당일 제공을 확인해 주세요.","菜单可能因日期和时间变化。营业情况、外带、点心供应和详细菜单，请以一楼现场展示为准。":"메뉴는 날짜와 시간에 따라 달라질 수 있습니다. 영업, 테이크아웃, 디저트, 상세 메뉴는 1층 현장 표시를 확인해 주세요.",
+        "05 / 築地与银座":"05 / 쓰키지와 긴자","築地与银座之间的散步指南":"쓰키지와 긴자 사이 산책 가이드","这里不是完整旅游攻略，而是给住客的短路线。早晨去築地吃早餐，白天去银座购物或看展，雨天也可以用室内路线把一天安排得轻松一点。":"완전한 관광 안내가 아니라 투숙객을 위한 짧은 루트입니다. 아침 쓰키지, 낮 긴자, 비 오는 날 실내 루트로 하루를 편하게 계획할 수 있습니다.","築地场外市场 / 清晨到午前最有街区气氛。店铺营业时间各不相同。":"쓰키지 장외시장 / 아침부터 오전까지 거리 분위기가 좋습니다. 영업시간은 가게마다 다릅니다.","築地早餐路线":"쓰키지 아침 루트","酒店 → 築地场外市场 → 小吃、寿司、玉子烧或咖啡 → 回酒店 / 去银座。清晨适合轻装出门，市场小店营业时间各不相同。":"호텔 → 쓰키지 장외시장 → 간식, 스시, 계란말이 또는 커피 → 호텔로 돌아가기 / 긴자로 이동. 아침에는 가볍게 나가는 것을 추천합니다.","银座白天路线":"긴자 낮 루트","酒店 → 东银座 / 歌舞伎座周边 → 银座主街 → 百货地下食品区或咖啡店。适合购物、展览、餐厅和商务会面。":"호텔 → 히가시긴자 / 가부키자 주변 → 긴자 메인 스트리트 → 백화점 식품관 또는 카페. 쇼핑, 전시, 식사, 비즈니스 미팅에 좋습니다.","雨天轻松路线":"비 오는 날 루트","先在 1F Cafe 喝咖啡，再去银座商场、百货、地下街或室内餐厅。回房后可以洗衣、烘干衣物、整理行李。":"먼저 1층 카페에서 커피를 마시고 긴자 쇼핑몰, 백화점, 지하가, 실내 레스토랑으로 이동하세요. 객실로 돌아와 세탁, 건조, 짐 정리를 할 수 있습니다.","小店柜台 / 适合边走边看当天有什么。":"작은 가게 카운터 / 그날의 물건을 보며 걷기 좋습니다.","市場摊位 / 食材、料理工具和传统食品。":"시장 가판 / 식재료, 조리도구, 전통 식품.","玉子烧与小吃 / 清晨散步时很有築地感。":"계란말이와 간식 / 아침 산책에 쓰키지다운 느낌.","築地是什么":"쓰키지란","築地场外市场仍保留许多食品、餐饮、厨具和传统食材店。现在的鱼类拍卖已迁往丰洲，但築地仍适合游客吃早餐和逛小店。":"쓰키지 장외시장에는 음식, 식당, 조리도구, 전통 식재료 가게가 많이 남아 있습니다. 생선 경매는 도요스로 이전했지만, 아침 식사와 작은 가게 구경에 좋습니다.","怎么逛更舒服":"편하게 걷는 방법","早上人会比较多，建议少带行李、穿好走的鞋。很多店铺空间较小，边走边吃和长时间占位请注意现场规则。":"아침에는 사람이 많을 수 있으니 짐은 적게, 신발은 편하게. 많은 가게가 작으므로 먹으며 걷기나 장시간 점유는 현장 규칙을 따라 주세요.","银座怎么用":"긴자 이용법","银座不只是奢侈品，也有百货、文具、生活用品、咖啡店、餐厅和画廊。适合白天逛，也适合晚上吃饭后散步。":"긴자는 명품만 있는 곳이 아닙니다. 백화점, 문구, 생활용품, 카페, 레스토랑, 갤러리도 있습니다. 낮 산책과 저녁 식사 후 산책 모두 좋습니다.","这一区域的优势是“出去方便，回来也方便”。回房后可以洗衣、加热轻食、洗澡休息，让第二天行程继续得更顺。":"이 지역의 장점은 나가기도 쉽고 돌아오기도 쉽다는 점입니다. 객실에서 세탁, 간단한 음식 데우기, 샤워, 휴식을 할 수 있습니다.","店铺营业时间、排队情况和菜单每天可能不同。出门前请以现场信息和当天营业情况为准。":"가게 영업시간, 대기 상황, 메뉴는 매일 달라질 수 있습니다. 외출 전 현장 정보와 당일 영업 상황을 확인해 주세요.","感谢入住 SPATIUM GINZA PONY。":"SPATIUM GINZA PONY에 숙박해 주셔서 감사합니다.","最后更新：2026-06-06。如现场说明有变化，请以现场信息为准。":"최종 업데이트: 2026-06-06. 현장 안내가 변경된 경우 현장 정보를 우선해 주세요.","官网":"공식 사이트","打开地图":"지도 열기"
+      }
+    };
+
+    const originalText = new WeakMap();
+    const textNodes = [];
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node) {
+        if (!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if (node.parentElement && node.parentElement.closest('script, style, .lang-switcher')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    while (walker.nextNode()) {
+      textNodes.push(walker.currentNode);
+      originalText.set(walker.currentNode, walker.currentNode.nodeValue);
+    }
+
+    const traditionalPairs = [
+      ['这里','這裡'],['为什么','為什麼'],['之间','之間'],['东京','東京'],['轻','輕'],['这本','這本'],['信息','資訊'],['设备','設備'],['清扫','清掃'],['退房','退房'],['检查','檢查'],['房间','房間'],['联系','聯絡'],['前台','櫃台'],['工作人员','工作人員'],['门锁','門鎖'],['现场','現場'],['说明','說明'],['确认','確認'],['常用','常用'],['问题','問題'],['直接','直接'],['客人','客人'],['入口','入口'],['地址','地址'],['电话','電話'],['拨打','撥打'],['外部','外部'],['时间','時間'],['离开','離開'],['电器','電器'],['水龙头','水龍頭'],['窗户','窗戶'],['东京','東京'],['价值','價值'],['离','離'],['购物','購物'],['连续','連續'],['动线','動線'],['清单','清單'],['场外','場外'],['餐饮','餐飲'],['传统','傳統'],['适合','適合'],['银座','銀座'],['则是','則是'],['代表性','代表性'],['商业','商業'],['百货','百貨'],['品牌店','品牌店'],['画廊','畫廊'],['范围','範圍'],['实用','實用'],['早餐','早餐'],['海鲜','海鮮'],['厨具','廚具'],['进入','進入'],['展览','展覽'],['食品区','食品區'],['城市','城市'],['整理','整理'],['顺','順'],['轻装','輕裝'],['食物','食物'],['打开','打開'],['附近','附近'],['短暂','短暫'],['日常','日常'],['独立','獨立'],['浴室','浴室'],['桌面','桌面'],['收纳','收納'],['空间','空間'],['空调','空調'],['遥控器','遙控器'],['控制','控制'],['开','開'],['关','關'],['无法','無法'],['制冷','製冷'],['制热','製熱'],['持续','持續'],['报警','警報'],['反应','反應'],['热水','熱水'],['等待','等待'],['反复','反覆'],['换气','換氣'],['通风','通風'],['潮气','濕氣'],['异味','異味'],['冰箱','冰箱'],['轻食','輕食'],['自己的','自己的'],['电热水壶','電熱水壺'],['烧水','燒水'],['溢出','溢出'],['明显','明顯'],['洗烘','洗烘'],['使用说明','使用說明'],['机器','機器'],['控制在','控制在'],['滚筒','滾筒'],['常用按钮示意','常用按鈕示意'],['开机','開機'],['关机','關機'],['洗衣','洗衣'],['烘干','烘乾'],['结束','結束'],['开门','開門'],['选择','選擇'],['放衣物','放衣物'],['官方','官方'],['容量','容量'],['较难','較難'],['减少','減少'],['数量','數量'],['洗衣液','洗衣液'],['洗剂','洗劑'],['请勿','請勿'],['洗手液','洗手液'],['沐浴露','沐浴露'],['洗洁精','洗潔精'],['过量','過量'],['影响','影響'],['脱水','脫水'],['暂停','暫停'],['强行','強行'],['机门','機門'],['锁定','鎖定'],['程序','程序'],['尽早','儘早'],['起皱','起皺'],['潮味','潮味'],['遗忘','遺忘'],['防水','防水'],['胶底','膠底'],['宠物','寵物'],['羊毛','羊毛'],['丝绸','絲綢'],['橡胶','橡膠'],['带油污','帶油污'],['溶剂','溶劑'],['滤网','濾網'],['继续','繼續'],['安全','安全'],['高风险','高風險'],['误用','誤用'],['造成','造成'],['起火','起火'],['损坏','損壞'],['微波炉','微波爐'],['锡纸','錫紙'],['铝膜','鋁膜'],['金属','金屬'],['便利店','便利店'],['便当','便當'],['外卖','外賣'],['容器','容器'],['包装纸','包裝紙'],['边','邊'],['不确定','不確定'],['加热','加熱'],['可微波','可微波'],['少量多次','少量多次'],['擦掉','擦掉'],['汤汁','湯汁'],['铝箔','鋁箔'],['餐具','餐具'],['金边','金邊'],['银边','銀邊'],['密封','密封'],['一次性','一次性'],['水壶','水壺'],['清水','清水'],['牛奶','牛奶'],['留下','留下'],['焦味','焦味'],['强烈','強烈'],['避免','避免'],['简单','簡單'],['烹调','烹調'],['重油烟','重油煙'],['异常','異常'],['跳闸','跳閘'],['尝试','嘗試'],['备品','備品'],['追加','追加'],['需求','需求'],['人数','人數'],['配置','配置'],['毛巾','毛巾'],['垃圾袋','垃圾袋'],['纸巾','紙巾'],['物品','物品'],['规则','規則'],['更换','更換'],['集中','集中'],['房门口','房門口'],['联系','聯絡'],['工作人员','工作人員'],['走廊','走廊'],['公共区域','公共區域'],['借用品','借用品'],['充电器','充電器'],['转换插头','轉換插頭'],['熨斗','熨斗'],['当天','當天'],['库存','庫存'],['损坏','損壞'],['缺失','缺失'],['反馈','反饋'],['安排','安排'],['打扰','打擾'],['每日','每日'],['完整','完整'],['固定周期','固定週期'],['床单','床單'],['床铺','床鋪'],['不会','不會'],['新的','新的'],['挂在','掛在'],['自行','自行'],['取用','取用'],['使用过','使用過'],['回收','回收'],['装袋','裝袋'],['封好','封好'],['其他','其他'],['时间','時間'],['放置','放置'],['注意事项','注意事項'],['特别','特別'],['禁烟','禁菸'],['访客','訪客'],['夜间','夜間'],['安静','安靜'],['邻里','鄰里'],['客房','客房'],['门口','門口'],['吸烟','吸菸'],['停留','停留'],['烟蒂','菸蒂'],['说话','說話'],['拖动','拖動'],['影响','影響'],['登记','登記'],['配送员','配送員'],['区域','區域'],['关好','關好'],['行李','行李'],['遗失','遺失'],['个人','個人'],['护照','護照'],['衣物','衣物'],['抽屉','抽屜'],['关闭','關閉'],['状态','狀態'],['带走','帶走'],['寄存','寄存'],['自动','自動'],['提供','提供'],['提前','提前'],['咨询','諮詢'],['一楼','一樓'],['菜单','菜單'],['价格','價格'],['营业','營業'],['供应','供應'],['柜台','櫃台'],['咖啡','咖啡'],['热咖啡','熱咖啡'],['日期','日期'],['变化','變化'],['外带','外帶'],['点心','點心'],['详细','詳細'],['周边','周邊'],['散步','散步'],['指南','指南'],['完整旅游攻略','完整旅遊攻略'],['住客','住客'],['短路线','短路線'],['早晨','早晨'],['白天','白天'],['雨天','雨天'],['室内','室內'],['轻松','輕鬆'],['場外市场','場外市場'],['街区','街區'],['气氛','氣氛'],['店铺','店鋪'],['小吃','小吃'],['寿司','壽司'],['回酒店','回酒店'],['东银座','東銀座'],['周边','周邊'],['主街','主街'],['商务','商務'],['会面','會面'],['商场','商場'],['地下街','地下街'],['餐厅','餐廳'],['小店','小店'],['摊位','攤位'],['料理工具','料理工具'],['传统食品','傳統食品'],['玉子烧','玉子燒'],['游客','旅客'],['建议','建議'],['长时间','長時間'],['规则','規則'],['奢侈品','奢侈品'],['文具','文具'],['生活用品','生活用品'],['优势','優勢'],['方便','方便'],['洗澡','洗澡'],['继续','繼續'],['排队','排隊'],['每天','每天'],['出门前','出門前'],['最后更新','最後更新'],['变化','變化'],['官网','官網'],['打开地图','打開地圖']
+    ];
+
+    function toTraditional(value) {
+      let out = value;
+      traditionalPairs.forEach(([from, to]) => { out = out.split(from).join(to); });
+      return out;
+    }
+
+    function translateNode(node, value) {
+      const original = originalText.get(node);
+      const leading = original.match(/^\s*/)[0];
+      const trailing = original.match(/\s*$/)[0];
+      node.nodeValue = leading + value + trailing;
+    }
+
+    function setLanguage(lang) {
+      const dict = dictionaries[lang] || {};
+      document.documentElement.lang = lang;
+      textNodes.forEach(node => {
+        const original = originalText.get(node);
+        const key = original.trim();
+        if (lang === 'zh-CN') translateNode(node, key);
+        else if (lang === 'zh-TW') translateNode(node, toTraditional(key));
+        else translateNode(node, dict[key] || key);
+      });
+      document.querySelectorAll('.lang-switcher button').forEach(button => {
+        button.classList.toggle('is-active', button.dataset.lang === lang);
+      });
+      localStorage.setItem('pony-guide-lang', lang);
+      document.title = lang === 'zh-CN' ? 'SPATIUM GINZA PONY Stay Guide' : 'SPATIUM GINZA PONY Stay Guide';
+    }
+
+    document.querySelectorAll('.lang-switcher button').forEach(button => {
+      button.addEventListener('click', () => setLanguage(button.dataset.lang));
+    });
+    setLanguage(localStorage.getItem('pony-guide-lang') || 'zh-CN');
+  </script>
 </body>
 </html>
